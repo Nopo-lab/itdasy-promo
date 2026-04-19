@@ -679,6 +679,18 @@
     .footer-links a { font-size: 12px; color: rgba(255,255,255,.22); text-decoration: none; transition: color .2s; }
     .footer-links a:hover { color: var(--accent); }
     .footer-copy { font-size: 11px; color: rgba(255,255,255,.12); }
+    .footer-biz {
+      max-width: 640px; margin: 18px auto 12px;
+      padding: 14px 18px; border-radius: 10px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      text-align: left;
+    }
+    .footer-biz-title { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.38); letter-spacing: 0.04em; margin-bottom: 8px; text-transform: uppercase; }
+    .footer-biz-row { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.9; }
+    .footer-biz-row b { color: rgba(255,255,255,0.5); font-weight: 600; margin-right: 6px; }
+    .footer-biz-row a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer-biz-row a:hover { color: var(--accent); }
 
     /* ── Responsive ── */
     @media (max-width: 960px) {
@@ -1182,7 +1194,19 @@
       <a href="guide.html" id="footerGuide">이용가이드</a>
       <a href="https://dnjsdud4563.github.io/itdasy-studio/" id="footerApp">앱 바로가기</a>
     </div>
-    <div class="footer-copy">© 2026 Nopo Lab. All rights reserved.</div>
+
+    <!-- 사업자 정보 (전자상거래법·개인정보보호법·Meta Business Verification 대응) -->
+    <div class="footer-biz">
+      <div class="footer-biz-title">사업자 정보</div>
+      <div class="footer-biz-row"><b>상호:</b>Y2do (와이투두)</div>
+      <div class="footer-biz-row"><b>대표:</b>강연준</div>
+      <div class="footer-biz-row"><b>사업장 소재지:</b>경기도 화성시 효행로 1068, 6층 603-J257호 (병점동, 리더스프라자), 18405</div>
+      <div class="footer-biz-row"><b>사업자등록번호:</b><span id="bizRegNo">등록 진행 중</span></div>
+      <div class="footer-biz-row"><b>고객문의:</b><a href="mailto:l2doworks@gmail.com">l2doworks@gmail.com</a></div>
+      <div class="footer-biz-row" style="margin-top:6px;font-size:10px;color:rgba(255,255,255,0.2);">본 서비스 "잇데이(itdasy)"는 Y2do가 제공하는 뷰티샵 AI 인스타 자동화 솔루션입니다.</div>
+    </div>
+
+    <div class="footer-copy">© 2026 Y2do. All rights reserved.</div>
   </footer>
 
   <!-- Preview Modal -->
