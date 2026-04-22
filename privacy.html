@@ -209,13 +209,24 @@
     </ul>
 
     <h2>4. 정보주체의 권리·의무 및 행사 방법</h2>
-    <p>이용자(회원·고객)는 언제든지 다음 권리를 행사할 수 있습니다:</p>
+    <p>이용자(회원·고객)는 「개인정보 보호법」 제4조·제35조~제37조에 따라 언제든지 다음 권리를 행사할 수 있습니다:</p>
     <ul>
-      <li>개인정보 열람·정정·삭제·처리 정지 요구</li>
-      <li>개인정보 처리 동의 철회</li>
-      <li>앱 내 설정 → 계정 → 데이터 내보내기 (CSV 다운로드)</li>
-      <li>권리 행사: <a href="mailto:contact@itdasy.com">contact@itdasy.com</a> 로 이메일 요청 → 7일 이내 처리</li>
+      <li><strong>열람권:</strong> 처리하는 개인정보의 내용·처리 목적·제3자 제공 내역 조회</li>
+      <li><strong>정정·삭제권:</strong> 본인의 정보가 사실과 다를 경우 정정 요구, 수집·처리 목적 달성 시 삭제 요구</li>
+      <li><strong>처리 정지권:</strong> 특정 목적의 처리(예: 마케팅, AI 분석)에 대해 정지 요구</li>
+      <li><strong>동의 철회권:</strong> 선택적 동의 항목(마케팅 수신 등)은 언제든 철회 가능. 국외 이전 동의 철회 시 해당 AI 기능 불가</li>
+      <li><strong>이동권(데이터 포터빌리티):</strong> 앱 내 설정 → 계정 → 데이터 내보내기 → 고객·예약·매출 CSV 즉시 다운로드</li>
+      <li><strong>회원 탈퇴권(완전 삭제):</strong> 앱 내 설정 → 계정 탈퇴 버튼 1회 → "탈퇴" 두 글자 입력 확인 → 즉시 모든 개인정보 영구 삭제 (Apple/Google 앱스토어 가이드라인 의무 준수, 웹 폼이나 이메일 요청 필요 없음)</li>
+      <li><strong>자동화된 의사결정 거부권:</strong> 제6조의2 참고</li>
     </ul>
+    <p>
+      위 권리 행사는 <strong>앱 내에서 즉시 가능</strong>하며, 이메일(<a href="mailto:contact@itdasy.com">contact@itdasy.com</a>) 요청 시
+      <strong>10일 이내</strong> 처리합니다. 대리인을 통한 행사는 위임장·신분증 사본 첨부로 가능합니다.
+      회사는 열람·정정·삭제 요구에 대해 정당한 사유 없이 거부·지연하지 않으며, 거부 시 사유와 불복 방법을 서면 통지합니다.
+    </p>
+    <div class="hl">
+      <strong>📲 만 14세 미만 아동</strong>의 경우 법정대리인이 대신 권리를 행사할 수 있습니다.
+    </div>
 
     <h2>5. 개인정보의 안전성 확보 조치</h2>
     <ul>
@@ -228,31 +239,89 @@
 
     <h2>6. 쿠키 및 자동 수집 도구</h2>
     <p>
-      서비스는 <strong>제3자 광고·추적 쿠키를 사용하지 않습니다.</strong>
-      로그인 유지 목적의 자체 세션 쿠키(또는 localStorage 토큰)만 사용하며, 브라우저 설정에서 삭제 가능합니다.
+      서비스는 <strong>제3자 광고·추적 쿠키·크로스 사이트 추적을 일체 사용하지 않습니다.</strong>
+      다음의 자체 저장소만 사용합니다:
+    </p>
+    <table>
+      <tr><th>저장소</th><th>용도</th><th>보관 기간</th><th>삭제 방법</th></tr>
+      <tr><td>localStorage: itdasy_token</td><td>로그인 세션 유지 (JWT)</td><td>30일</td><td>로그아웃 또는 앱 초기화</td></tr>
+      <tr><td>localStorage: itdasy_consented*</td><td>약관·국외이전 동의 기록</td><td>회원 탈퇴 시</td><td>앱 초기화</td></tr>
+      <tr><td>localStorage: theme, fontSize</td><td>다크모드·글씨크기 설정</td><td>영구 (기기 한정)</td><td>앱 초기화</td></tr>
+      <tr><td>IndexedDB / Cache API</td><td>오프라인 접속용 정적 리소스 캐시</td><td>30일 (자동 만료)</td><td>브라우저 설정 → 사이트 데이터 삭제</td></tr>
+      <tr><td>Sentry 오류 로그</td><td>앱 크래시 추적 (개인식별 정보 자동 스크러빙)</td><td>30일</td><td>자동 폐기</td></tr>
+    </table>
+    <p>
+      사용자는 브라우저(또는 OS)의 저장소 삭제 기능을 통해 언제든 전부 지울 수 있으며,
+      삭제 시 재로그인 필요 외 서비스 이용에 영향은 없습니다.
+    </p>
+
+    <h2>6-의2. 자동화된 의사결정 (AI 처리 고지)</h2>
+    <p>
+      본 서비스는 다음 기능에서 인공지능(Google Gemini API)을 활용한 자동화된 처리를 수행합니다.
+      이는 <strong>단순 보조·추천</strong>이며, 법률적·재정적 효과를 직접 발생시키는 결정(예: 자동 결제, 자동 해지)은 하지 않습니다.
+    </p>
+    <ul>
+      <li><strong>AI 캡션/해시태그 생성:</strong> 사용자가 입력한 시술 정보를 바탕으로 소셜미디어 문구 제안 (최종 게시 여부는 사용자가 결정)</li>
+      <li><strong>AI 비서(챗봇):</strong> 예약·매출 데이터 기반 조회·초안 생성 (실제 DB 변경은 사용자 확인 후 실행)</li>
+      <li><strong>이탈 위험 고객 추정:</strong> 방문 간격 통계 기반 점수 계산 (알림 발송 결정은 사용자 몫)</li>
+      <li><strong>가명처리(Pseudonymization):</strong> 모든 AI 호출 전 고객 이름은 "고객#1" 등으로 치환되어 외부 전송 시 식별 불가</li>
+    </ul>
+    <p>
+      이용자는 <strong>언제든 AI 기능 사용을 거부</strong>할 수 있으며(앱 내 설정 → 국외이전 동의 철회),
+      거부 시 AI 기능은 제한되나 <strong>핵심 서비스(고객·예약·매출 관리)는 정상 이용 가능</strong>합니다.
+      AI 결과가 부정확·부적절하다고 판단될 경우 앱 내 🚩 <strong>신고 버튼</strong>으로 접수 시 24시간 내 검토·처리합니다.
     </p>
 
     <h2>7. 개인정보 보호책임자</h2>
     <ul>
       <li>책임자: 강연준 (대표)</li>
-      <li>이메일: contact@itdasy.com</li>
+      <li>이메일: <a href="mailto:contact@itdasy.com">contact@itdasy.com</a></li>
       <li>전화: 문의는 이메일로 부탁드립니다.</li>
-      <li>분쟁 조정: 개인정보분쟁조정위원회 (1833-6972, <a href="https://www.kopico.go.kr" target="_blank" rel="noopener">kopico.go.kr</a>)</li>
+    </ul>
+    <p>
+      개인정보 침해 신고·상담이 필요하신 경우 아래 기관에 문의하실 수 있습니다:
+    </p>
+    <ul>
+      <li><strong>개인정보분쟁조정위원회</strong> (1833-6972, <a href="https://www.kopico.go.kr" target="_blank" rel="noopener">kopico.go.kr</a>)</li>
+      <li><strong>개인정보침해신고센터</strong> (국번없이 118, <a href="https://privacy.kisa.or.kr" target="_blank" rel="noopener">privacy.kisa.or.kr</a>)</li>
+      <li><strong>대검찰청 사이버수사과</strong> (국번없이 1301, <a href="https://www.spo.go.kr" target="_blank" rel="noopener">spo.go.kr</a>)</li>
+      <li><strong>경찰청 사이버수사국</strong> (국번없이 182, <a href="https://ecrm.police.go.kr" target="_blank" rel="noopener">ecrm.police.go.kr</a>)</li>
     </ul>
 
     <h2>8. 아동 개인정보 보호</h2>
     <p>
-      본 서비스는 만 14세 미만 아동을 대상으로 하지 않습니다. 만 14세 미만 아동이 가입한 사실이 확인되면 즉시 계정 및 정보를 삭제합니다.
+      본 서비스는 만 14세 미만 아동을 대상으로 하지 않으며, 가입 시 만 14세 이상 확인 절차를 거칩니다.
+      만 14세 미만 아동이 가입한 사실이 확인되면 <strong>지체 없이 계정과 모든 개인정보를 삭제</strong>합니다.
+      만 14세 미만 아동의 가입이 필요한 경우 법정대리인의 동의가 있어야 하며, 이 경우 서면 또는 전자적 방법으로 고지합니다.
     </p>
 
-    <h2>9. 개정 고지</h2>
+    <h2>9. 개인정보 유출 통지 및 피해구제</h2>
     <p>
-      본 방침이 개정될 경우 시행 7일 전까지 서비스 내 공지사항에 게시합니다.
-      중요한 변경(위탁·국외이전 추가, 수집 항목 확대 등)은 별도 재동의를 요청합니다.
+      「개인정보 보호법」 제34조에 따라 개인정보 유출 사고가 발생할 경우:
     </p>
+    <ul>
+      <li>유출을 인지한 시점으로부터 <strong>72시간 이내</strong> 정보주체에게 이메일·앱 내 공지로 통지</li>
+      <li>통지 내용: 유출된 항목·시점·경위, 피해 최소화 방법, 회사의 대응 조치, 신고 접수 기관 연락처</li>
+      <li>1,000명 이상 유출 시 개인정보보호위원회·한국인터넷진흥원(KISA)에 신고</li>
+      <li>피해 발생 시 이용자는 <strong>민사소송·손해배상 청구</strong>가 가능하며, 회사는 고의·중과실이 없음을 입증하지 못할 경우 손해를 배상합니다(보호법 제39조).</li>
+    </ul>
+
+    <h2>10. 개정 고지 및 개정 이력</h2>
+    <p>
+      본 방침이 개정될 경우 <strong>시행 7일 전</strong>까지 앱 내 공지사항 및 이메일로 사전 고지합니다.
+      중요한 변경(위탁사 추가, 국외이전 추가, 수집 항목 확대, 보유 기간 연장 등)은 <strong>시행 30일 전</strong>에 고지하며,
+      이용자의 권리에 불리한 변경은 별도 재동의를 요청합니다.
+      이용자가 개정된 내용에 동의하지 않을 경우 회원 탈퇴가 가능합니다.
+    </p>
+    <table>
+      <tr><th>버전</th><th>시행일</th><th>주요 변경 내용</th></tr>
+      <tr><td>v1.0</td><td>2026-04-22</td><td>최초 시행 — PIPA 준수 전면 방침 수립, AI 처리·국외이전·가명처리 고지, 자동화된 의사결정 조항 신설, 쿠키 최소화, 유출 통지 절차 명문화, 앱 내 탈퇴·데이터 이동권 보장</td></tr>
+    </table>
 
     <div class="meta" style="margin-top:48px;">
-      본 방침의 영문본은 준비 중이며, 한국어본과 해석이 다를 경우 한국어본이 우선합니다.
+      <strong>언어 우선 순위:</strong> 본 방침의 원문은 한국어이며, 영문 및 기타 번역본은 참고용입니다.
+      해석에 차이가 있을 경우 한국어본이 우선합니다.<br>
+      <strong>English version:</strong> <a href="/privacy-en.html">English Privacy Policy</a> (available upon App Store submission)
     </div>
   </div>
 </body>
