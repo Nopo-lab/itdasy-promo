@@ -134,10 +134,143 @@
     <table>
       <tr><th>Version</th><th>Effective</th><th>Changes</th></tr>
       <tr><td>v1.0</td><td>2026-04-22</td><td>Initial publication — full PIPA compliance framework</td></tr>
+      <tr><td>v1.1</td><td>2026-04-22</td><td>Added GDPR (EU/UK), CCPA/CPRA (California), LGPD (Brazil), APPI (Japan), PIPEDA (Canada), Australia Privacy Act regional notices</td></tr>
     </table>
 
+    <h2>11. Notice to EU/EEA and UK Residents (GDPR / UK GDPR)</h2>
+
+    <h3>11-1. Controller and Contact</h3>
+    <ul>
+      <li><strong>Controller:</strong> Y2do (Business Registration No. 179-36-01681), Republic of Korea</li>
+      <li><strong>Contact / DPO-equivalent:</strong> <a href="mailto:contact@itdasy.com">contact@itdasy.com</a></li>
+      <li><strong>EU Representative (Art. 27):</strong> We process personal data on a limited scale targeting professional beauty salon operators. If our EU data subject volume exceeds the Art. 27 threshold, we will formally designate a representative and update this Policy. Until then, EU/EEA residents may contact us directly at the email above for any GDPR matter.</li>
+    </ul>
+
+    <h3>11-2. Legal Bases for Processing (Art. 6)</h3>
+    <table>
+      <tr><th>Purpose</th><th>Legal Basis</th></tr>
+      <tr><td>Account creation, authentication, service delivery</td><td>Art. 6(1)(b) — Contract performance</td></tr>
+      <tr><td>Billing (IAP transaction records)</td><td>Art. 6(1)(b) Contract; Art. 6(1)(c) Legal obligation (tax)</td></tr>
+      <tr><td>AI processing via Google Gemini (captions, assistant)</td><td>Art. 6(1)(a) — Explicit opt-in consent at signup</td></tr>
+      <tr><td>Cross-border data transfer to US providers</td><td>Art. 6(1)(a) Consent + Art. 46 SCCs</td></tr>
+      <tr><td>Security, fraud prevention, error monitoring</td><td>Art. 6(1)(f) — Legitimate interest (service integrity)</td></tr>
+      <tr><td>End-customer data entered by salon owners</td><td>Processor role under Art. 28 — owner as controller, Y2do as processor</td></tr>
+    </table>
+
+    <h3>11-3. Your Rights under GDPR / UK GDPR</h3>
+    <ul>
+      <li><strong>Access (Art. 15):</strong> confirmation of processing and a copy of your data.</li>
+      <li><strong>Rectification (Art. 16):</strong> correct inaccurate data.</li>
+      <li><strong>Erasure / "right to be forgotten" (Art. 17):</strong> in-app one-tap Delete Account in Settings.</li>
+      <li><strong>Restriction of processing (Art. 18).</strong></li>
+      <li><strong>Data portability (Art. 20):</strong> download your data in CSV/JSON via in-app Export Data.</li>
+      <li><strong>Object (Art. 21):</strong> object to processing based on legitimate interest, including profiling (retention risk scoring).</li>
+      <li><strong>Automated decision-making (Art. 22):</strong> AI output is advisory only; no solely-automated decision producing legal effect is made. You can disable AI features at any time.</li>
+      <li><strong>Withdraw consent (Art. 7(3))</strong> without affecting lawfulness of prior processing.</li>
+      <li><strong>Lodge a complaint</strong> with your local Data Protection Authority (see 11-6).</li>
+    </ul>
+    <p>We respond to all verified requests free of charge within 30 days.</p>
+
+    <h3>11-4. International Data Transfers (Chapter V)</h3>
+    <ul>
+      <li><strong>South Korea adequacy decision:</strong> the European Commission issued an adequacy decision for the Republic of Korea on 17 December 2021. Transfers from the EU to our Korean operations do not require additional safeguards.</li>
+      <li><strong>US processors (Google, Meta, Railway, Supabase, Cloudflare, Replicate, Sentry):</strong> we rely on the 2021 EU Standard Contractual Clauses (SCCs) and supplementary measures — TLS in transit, encryption at rest, pseudonymization of customer identifiers before AI calls, least-privilege access.</li>
+      <li>A copy of the SCCs is available upon request at contact@itdasy.com.</li>
+    </ul>
+
+    <h3>11-5. Supervisory Authorities (non-exhaustive)</h3>
+    <ul>
+      <li>Germany — BfDI (bfdi.bund.de)</li>
+      <li>France — CNIL (cnil.fr)</li>
+      <li>Spain — AEPD (aepd.es)</li>
+      <li>Italy — Garante (garanteprivacy.it)</li>
+      <li>Netherlands — AP (autoriteitpersoonsgegevens.nl)</li>
+      <li>Ireland — DPC (dataprotection.ie)</li>
+      <li>United Kingdom — ICO (ico.org.uk)</li>
+      <li>Other EU/EEA member states — see <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener">EDPB members list</a>.</li>
+    </ul>
+
+    <h2>12. Notice to California Residents (CCPA / CPRA)</h2>
+
+    <h3>12-1. Categories of Personal Information Collected (last 12 months)</h3>
+    <table>
+      <tr><th>Category (§1798.140)</th><th>Collected?</th><th>Source</th><th>Purpose</th><th>Disclosed to</th></tr>
+      <tr><td>A. Identifiers (name, email, user ID)</td><td>Yes</td><td>You</td><td>Account, service</td><td>Processors (Supabase, Railway)</td></tr>
+      <tr><td>B. §1798.80 customer records</td><td>Yes</td><td>You</td><td>Billing, support</td><td>Apple/Google (IAP); processors</td></tr>
+      <tr><td>D. Commercial info (purchase history)</td><td>Yes</td><td>Apple/Google stores</td><td>Billing, subscription</td><td>Apple, Google</td></tr>
+      <tr><td>F. Internet/network activity (error logs)</td><td>Limited</td><td>Device</td><td>Security/debug</td><td>Sentry</td></tr>
+      <tr><td>G. Geolocation</td><td><strong>No</strong></td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>I. Professional/employment</td><td>Yes (shop info)</td><td>You</td><td>Personalization</td><td>Processors</td></tr>
+      <tr><td>K. Inferences (retention risk)</td><td>Limited</td><td>Your usage</td><td>Churn alerts</td><td>Not shared</td></tr>
+      <tr><td>L. Sensitive Personal Info (SSN, precise geo, biometric, health, genetic, religion, union, sex life)</td><td><strong>No</strong></td><td>—</td><td>—</td><td>—</td></tr>
+    </table>
+
+    <h3>12-2. "Do Not Sell or Share My Personal Information"</h3>
+    <p><strong>We do not sell personal information for money, and we do not share personal information for cross-context behavioral advertising.</strong> A "Do Not Sell or Share" link is therefore not required under §1798.135. If our practices change, we will update this Policy and provide an opt-out in the app.</p>
+
+    <h3>12-3. Your CCPA / CPRA Rights</h3>
+    <ul>
+      <li><strong>Right to know</strong> (§1798.110) — categories and specific pieces of PI collected.</li>
+      <li><strong>Right to delete</strong> (§1798.105) — in-app Delete Account.</li>
+      <li><strong>Right to correct</strong> (§1798.106).</li>
+      <li><strong>Opt-out of sale/sharing</strong> — N/A (we don't sell/share).</li>
+      <li><strong>Limit use of sensitive PI</strong> — N/A (we don't collect sensitive PI).</li>
+      <li><strong>Non-discrimination</strong> (§1798.125) — exercising rights will not affect service quality or price.</li>
+    </ul>
+    <p>Exercise rights: email <a href="mailto:contact@itdasy.com">contact@itdasy.com</a> with subject "CCPA Request — [right]". We verify identity by email confirmation and respond within 45 days.</p>
+
+    <h3>12-4. Shine the Light (Cal. Civ. Code §1798.83)</h3>
+    <p>We do not disclose PI to third parties for their direct marketing, so no such disclosure is required.</p>
+
+    <h3>12-5. Minors</h3>
+    <p>We do not knowingly collect PI from users under 16 without affirmative consent (CPRA). Users under 14 are prohibited from registering (see Section 8).</p>
+
+    <h2>13. Notice to Brazilian Residents (LGPD — Law 13.709/2018)</h2>
+    <p>You have rights analogous to GDPR — confirmation, access, correction, anonymization, portability, deletion, information on sharing, and revocation of consent. Exercise via <a href="mailto:contact@itdasy.com">contact@itdasy.com</a>. Complaints: Autoridade Nacional de Proteção de Dados (ANPD) — <a href="https://www.gov.br/anpd/" target="_blank" rel="noopener">gov.br/anpd</a>.</p>
+
+    <h2>14. Notice to Japanese Residents (APPI — 個人情報の保護に関する法律)</h2>
+    <ul>
+      <li>Purposes of use are specified in Section 1 of this Policy.</li>
+      <li>Cross-border transfers to the US: we provide equivalent protection through SCC-style contractual measures with US processors, consistent with APPI Art. 24.</li>
+      <li>Rights: disclosure, correction, cessation of use, deletion — contact@itdasy.com.</li>
+      <li>Complaints: Personal Information Protection Commission (PPC) — <a href="https://www.ppc.go.jp/en/" target="_blank" rel="noopener">ppc.go.jp/en</a>.</li>
+    </ul>
+
+    <h2>15. Notice to Canadian Residents (PIPEDA)</h2>
+    <p>We process in accordance with PIPEDA and applicable provincial laws (Quebec Law 25, Alberta PIPA, BC PIPA). Rights of access, correction, and withdrawal of consent. Complaints: Office of the Privacy Commissioner of Canada — <a href="https://www.priv.gc.ca" target="_blank" rel="noopener">priv.gc.ca</a>.</p>
+
+    <h2>16. Notice to Australian Residents (Privacy Act 1988)</h2>
+    <p>Handled per the 13 Australian Privacy Principles (APPs). Complaints: OAIC — <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">oaic.gov.au</a>.</p>
+
+    <h2>17. Children's Privacy — Multi-jurisdictional</h2>
+    <ul>
+      <li><strong>Republic of Korea (PIPA):</strong> minimum age 14; under 14 requires verifiable guardian consent.</li>
+      <li><strong>United States (COPPA):</strong> we do not knowingly collect PI from children under 13.</li>
+      <li><strong>EU/EEA and UK (GDPR Art. 8):</strong> the age of digital consent varies by state (13–16); for users under the applicable age, verifiable parental consent is required.</li>
+      <li><strong>California (CPRA):</strong> additional opt-in for users under 16.</li>
+      <li>Upon learning of non-compliant registration, we will promptly delete the account.</li>
+    </ul>
+
+    <h2>18. Cookies, Tracking, and Consent</h2>
+    <p>
+      We use only strictly necessary first-party storage to operate the service (session JWT, preference settings, offline cache). We do not use cross-site tracking cookies, advertising identifiers, or third-party analytics for profiling.
+      For EU/EEA/UK users, we present a consent banner at first launch for optional items such as crash-reporting telemetry (Sentry). Declining does not affect core functionality.
+    </p>
+
+    <h2>19. Security — International Standards</h2>
+    <ul>
+      <li>Encryption in transit: TLS 1.2+/HTTPS everywhere.</li>
+      <li>Encryption at rest: Supabase/Postgres native; Cloudflare R2 server-side.</li>
+      <li>Password hashing: bcrypt.</li>
+      <li>Instagram OAuth tokens: Fernet (AES) application-layer encryption.</li>
+      <li>Access control: least privilege, MFA for admins, multi-tenant row-level isolation enforced by user_id filter.</li>
+      <li>Incident response: documented breach notification procedure (72 hours under GDPR Art. 33).</li>
+      <li>No sale of personal data, ever.</li>
+    </ul>
+
     <div class="meta" style="margin-top:48px;">
-      The original text of this policy is in Korean. This English translation is provided for convenience only. In case of any discrepancy, the Korean version shall prevail.
+      The original text of this policy is in Korean. This English translation is provided for convenience only. In case of any discrepancy, the Korean version shall prevail.<br><br>
+      <strong>Last updated:</strong> April 22, 2026 (v1.1).
     </div>
   </div>
 </body>
