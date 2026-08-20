@@ -64,7 +64,7 @@
     <h2>2. Third-Party Entrustment and International Transfer</h2>
     <table>
       <tr><th>Recipient</th><th>Country</th><th>Purpose</th><th>Data</th></tr>
-      <tr><td>Google LLC</td><td>United States</td><td>AI generation (Gemini API), analytics</td><td>Pseudonymized customer labels (e.g., "Customer#1"), booking times, revenue amounts, service names, caption text</td></tr>
+      <tr><td>Google LLC</td><td>United States</td><td>AI generation (Gemini API), Instagram DM auto-reply (intent classification and draft response generation), analytics</td><td>Customer name (pseudonymized as "Customer#1" for the AI assistant and analytics; the <strong>actual name</strong> is used for DM auto-reply to generate personalized forms of address), booking times, revenue amounts, service names, caption text, received Instagram DM message content and recent conversation context, service/booking inquiry information</td></tr>
       <tr><td>Meta Platforms, Inc.</td><td>United States / Ireland</td><td>Instagram OAuth, post publishing, tone analysis</td><td>Instagram user ID, public posts, access tokens</td></tr>
       <tr><td>Railway App, Inc.</td><td>United States</td><td>Server hosting (Docker)</td><td>All service data (encrypted at rest)</td></tr>
       <tr><td>Supabase, Inc.</td><td>United States</td><td>Managed Postgres database</td><td>All DB records (encrypted)</td></tr>
@@ -76,7 +76,7 @@
     <p>Explicit opt-in consent is collected at sign-up via a checkbox. Users may withdraw consent from the app settings; AI features will be disabled but core features remain available.</p>
 
     <h3>2-2. Pseudonymization</h3>
-    <p>Before any call to external AI services (e.g., Google Gemini), customer identifiers are replaced with pseudonyms (e.g., "Customer#1"). Per Google Gemini API terms, input data is <strong>not used to train models</strong>.</p>
+    <p>Before calls to external AI services for the AI assistant and analytics (e.g., Google Gemini), customer identifiers are replaced with pseudonyms (e.g., "Customer#1"). <strong>Instagram DM auto-reply is an exception</strong>: the customer's name, as provided by the customer in the DM, is used as-is so the drafted reply can address them by name. Even in that case, <strong>phone numbers are never sent to external AI services</strong> (only the fact that a contact number was received). Per Google Gemini API terms, input data is <strong>not used to train models</strong>.</p>
 
     <h2>3. Retention and Deletion</h2>
     <ul>
@@ -174,7 +174,7 @@
     <h3>11-4. International Data Transfers (Chapter V)</h3>
     <ul>
       <li><strong>South Korea adequacy decision:</strong> the European Commission issued an adequacy decision for the Republic of Korea on 17 December 2021. Transfers from the EU to our Korean operations do not require additional safeguards.</li>
-      <li><strong>US processors (Google, Meta, Railway, Supabase, Cloudflare, Replicate, Sentry):</strong> we rely on the 2021 EU Standard Contractual Clauses (SCCs) and supplementary measures — TLS in transit, encryption at rest, pseudonymization of customer identifiers before AI calls, least-privilege access.</li>
+      <li><strong>US processors (Google, Meta, Railway, Supabase, Cloudflare, Replicate, Sentry):</strong> we rely on the 2021 EU Standard Contractual Clauses (SCCs) and supplementary measures — TLS in transit, encryption at rest, pseudonymization of customer identifiers before AI assistant and analytics calls (DM auto-reply uses the customer name for personalized address; phone numbers are never sent), least-privilege access.</li>
       <li>A copy of the SCCs is available upon request at contact@itdasy.com.</li>
     </ul>
 

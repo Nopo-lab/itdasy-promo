@@ -150,8 +150,8 @@
       <tr><th>위탁받는 자</th><th>위탁 업무</th><th>위탁 정보</th></tr>
       <tr>
         <td>Google LLC (미국)</td>
-        <td>AI 캡션·AI 비서 응답 생성 (Gemini API), 데이터 분석,<br>푸시 알림 발송 (Firebase Cloud Messaging)</td>
-        <td>고객 이름(<strong>가명처리됨, "고객#1" 형태</strong>), 예약 시간, 매출 금액·시술명, 인스타 캡션 원문,<br>기기 푸시 토큰(FCM 등록 토큰·Firebase 설치 ID) — 알림 발송 용도로만 사용하며 광고·추적에 쓰지 않습니다</td>
+        <td>AI 캡션·AI 비서 응답 생성 (Gemini API), 인스타그램 DM 자동응답(문의 분류·답변 초안 생성), 데이터 분석,<br>푸시 알림 발송 (Firebase Cloud Messaging)</td>
+        <td>고객 이름(AI 비서·분석은 <strong>가명 "고객#1" 형태</strong>로 치환, DM 자동응답은 답장 호칭 생성을 위해 <strong>실제 이름</strong> 사용), 예약 시간, 매출 금액·시술명, 인스타 캡션 원문,<br>받은 DM 메시지 본문 및 최근 대화 내용, 시술·예약 관련 문의 내용,<br>기기 푸시 토큰(FCM 등록 토큰·Firebase 설치 ID) — 알림 발송 용도로만 사용하며 광고·추적에 쓰지 않습니다</td>
       </tr>
       <tr>
         <td>Meta Platforms, Inc. (미국/아일랜드)</td>
@@ -189,8 +189,11 @@
 
     <h3>2-3. 가명처리(Pseudonymization)</h3>
     <p>
-      AI 분석 시 고객 개인정보는 서버에서 <strong>가명(예: "고객#1", "고객#2")으로 치환</strong>된 후 외부 AI 서비스에 전달됩니다.
-      실제 이름·전화번호 등 식별 정보는 Google 등 외부 서버에 저장되지 않습니다.
+      AI 비서·데이터 분석 시 고객 개인정보는 서버에서 <strong>가명(예: "고객#1", "고객#2")으로 치환</strong>된 후 외부 AI 서비스에 전달됩니다.
+      다만 <strong>인스타그램 DM 자동응답</strong>은 손님에게 보낼 답장에 호칭("○○님")을 쓰기 위해
+      손님이 DM 으로 직접 알려준 <strong>이름을 그대로 사용</strong>합니다. 이 경우에도
+      <strong>전화번호는 외부 AI 서비스로 전달하지 않습니다</strong>(연락처를 받았다는 사실만 전달).
+      가명 또는 이름 외의 식별 정보는 Google 등 외부 서버에 저장되지 않습니다.
       Google Gemini API 정책상 입력 데이터는 <strong>모델 학습에 사용되지 않습니다.</strong>
     </p>
 
@@ -264,7 +267,7 @@
       <li><strong>AI 캡션/해시태그 생성:</strong> 사용자가 입력한 시술 정보를 바탕으로 소셜미디어 문구 제안 (최종 게시 여부는 사용자가 결정)</li>
       <li><strong>AI 비서(챗봇):</strong> 예약·매출 데이터 기반 조회·초안 생성 (실제 DB 변경은 사용자 확인 후 실행)</li>
       <li><strong>이탈 위험 고객 추정:</strong> 방문 간격 통계 기반 점수 계산 (알림 발송 결정은 사용자 몫)</li>
-      <li><strong>가명처리(Pseudonymization):</strong> 모든 AI 호출 전 고객 이름은 "고객#1" 등으로 치환되어 외부 전송 시 식별 불가</li>
+      <li><strong>가명처리(Pseudonymization):</strong> AI 비서·분석 호출 전 고객 이름은 "고객#1" 등으로 치환. DM 자동응답은 답장 호칭에 이름을 쓰지만, 전화번호는 어떤 AI 호출에도 전달하지 않습니다</li>
     </ul>
     <p>
       이용자는 <strong>언제든 AI 기능 사용을 거부</strong>할 수 있으며(앱 내 설정 → 국외이전 동의 철회),
