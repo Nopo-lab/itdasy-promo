@@ -34,7 +34,7 @@
 
     <div class="meta">
       <strong>Effective Date:</strong> April 22, 2026<br>
-      <strong>Last Updated:</strong> April 22, 2026<br>
+      <strong>Last Updated:</strong> September 15, 2026<br>
       <strong>Operator:</strong> Y2do · Business Registration No. 179-36-01681 · Representative: Yeonjun Kang<br>
       <strong>Contact:</strong> contact@itdasy.com<br>
       <strong>Original Language:</strong> Korean (see <a href="/privacy.html">Korean version</a>). This English version is for reference; the Korean original prevails in case of discrepancy.
@@ -64,23 +64,22 @@
     <h2>2. Third-Party Entrustment and International Transfer</h2>
     <table>
       <tr><th>Recipient</th><th>Country</th><th>Purpose</th><th>Data</th></tr>
-      <tr><td>Google LLC</td><td>United States</td><td>AI generation (Gemini API), Instagram DM auto-reply (intent classification and draft response generation), analytics</td><td>Customer name (pseudonymized as "Customer#1" for the AI assistant and analytics; the <strong>actual name</strong> is used for DM auto-reply to generate personalized forms of address), booking times, revenue amounts, service names, caption text, received Instagram DM message content and recent conversation context, service/booking inquiry information</td></tr>
+      <tr><td>Google LLC / Google Cloud</td><td>United States / Republic of Korea</td><td>AI generation, Instagram DM reply generation, analytics, server operations, and push delivery</td><td>Text or images submitted to AI features, booking/revenue/service data needed for the requested feature, received DM content and recent context, service-request data, and device push tokens</td></tr>
       <tr><td>Meta Platforms, Inc.</td><td>United States / Ireland</td><td>Instagram OAuth, post publishing, tone analysis</td><td>Instagram user ID, public posts, access tokens</td></tr>
-      <tr><td>Railway App, Inc.</td><td>United States</td><td>Server hosting (Docker)</td><td>All service data (encrypted at rest)</td></tr>
-      <tr><td>Supabase, Inc.</td><td>United States</td><td>Managed Postgres database</td><td>All DB records (encrypted)</td></tr>
-      <tr><td>Cloudflare, Inc.</td><td>United States</td><td>Image CDN and R2 storage</td><td>Uploaded photos/videos</td></tr>
-      <tr><td>Replicate, Inc. / Remove.bg</td><td>United States / Germany</td><td>AI image processing (background removal)</td><td>Uploaded photos (discarded immediately after processing)</td></tr>
+      <tr><td>Supabase, Inc. / Amazon Web Services</td><td>Republic of Korea</td><td>Managed Postgres database and object storage</td><td>Account, customer, booking, revenue, and uploaded/generated image data</td></tr>
+      <tr><td>Cloudflare, Inc.</td><td>Republic of Korea / United States</td><td>Protection and transport for Supabase traffic</td><td>Connection data and service requests in transit</td></tr>
+      <tr><td>Replicate, Inc. / Remove.bg</td><td>United States / Germany</td><td>AI image processing</td><td>Photos submitted to the feature; provider retention requires contract and configuration verification</td></tr>
     </table>
 
     <h3>2-1. Consent for cross-border transfer</h3>
-    <p>Explicit opt-in consent is collected at sign-up via a checkbox. Users may withdraw consent from the app settings; AI features will be disabled but core features remain available.</p>
+    <p>AI international-transfer consent is not bundled into the required signup checkbox. Before a feature sends text or an image to an external AI processor, the app provides a feature-specific notice and consent step. Where an in-app withdrawal control is not available, users may request withdrawal at contact@itdasy.com.</p>
 
     <h3>2-2. Pseudonymization</h3>
-    <p>Before calls to external AI services for the AI assistant and analytics (e.g., Google Gemini), customer identifiers are replaced with pseudonyms (e.g., "Customer#1"). <strong>Instagram DM auto-reply is an exception</strong>: the customer's name, as provided by the customer in the DM, is used as-is so the drafted reply can address them by name. Even in that case, <strong>phone numbers are never sent to external AI services</strong> (only the fact that a contact number was received). Per Google Gemini API terms, input data is <strong>not used to train models</strong>.</p>
+    <p>Some structured AI features remove or replace customer identifiers. Instagram DM auto-reply may use a name supplied in the DM to address the customer, but phone numbers are not sent to the external AI service. Free-form text and photos can contain identifying information and may be transferred as submitted after feature-specific consent. Provider training and retention depend on the applicable contract and project configuration.</p>
 
     <h2>3. Retention and Deletion</h2>
     <ul>
-      <li>Upon account deletion request, all personal data is deleted immediately, except records required by law.</li>
+      <li>Account access ends and deletion begins immediately. Completion is not claimed while object-storage or external-provider deletion remains unverified.</li>
       <li>Minimum retention by law: contracts/refunds 5 years, payment records 5 years, complaint records 3 years, login logs 3 months.</li>
       <li>Deletion method: electronic files are overwritten/purged beyond recovery; physical records are shredded.</li>
     </ul>
@@ -89,7 +88,7 @@
     <ul>
       <li><strong>Access, rectification, erasure, restriction of processing</strong> under PIPA Articles 35–37.</li>
       <li><strong>Data portability:</strong> CSV export via app settings → Account → Export Data.</li>
-      <li><strong>Account deletion in-app:</strong> Settings → 🗑 Delete Account → type "탈퇴" (withdraw) → confirmation → permanent deletion (Apple 5.1.1(ix) and Google Play compliant).</li>
+      <li><strong>Account deletion:</strong> Settings → Delete Account → type "탈퇴" → final confirmation. A web request guide is available at <a href="/delete-account.html">Account Deletion Request</a>.</li>
       <li><strong>Right to object to automated decision-making</strong> (see Section 6-bis).</li>
       <li>Requests: <a href="mailto:contact@itdasy.com">contact@itdasy.com</a> — processed within 10 days.</li>
     </ul>
@@ -97,10 +96,10 @@
     <h2>5. Security Measures</h2>
     <ul>
       <li>Passwords: bcrypt hash. Instagram tokens: Fernet (AES) encryption.</li>
-      <li>Access control: 2FA for admins, DB restricted to allowed IPs.</li>
+      <li>Access control: authenticated server requests, administrator authorization checks, and least-privilege operational accounts.</li>
       <li>Transport: HTTPS/TLS 1.2+ for all API traffic.</li>
-      <li>Multi-tenancy isolation enforced by user_id filter on every query.</li>
-      <li>Audit logs for personal data access/changes retained for 90 days.</li>
+      <li>Tenant checks compare the authenticated user with the data owner and reject cross-shop requests.</li>
+      <li>Operational logs are configured to omit passwords, login tokens, and customer phone numbers.</li>
     </ul>
 
     <h2>6. Cookies and Tracking</h2>
@@ -111,7 +110,7 @@
 
     <h2>6-bis. Automated Decision-Making (AI Disclosure)</h2>
     <p>
-      The Service uses AI (Google Gemini API) for: caption suggestions, chat assistant drafts, retention risk scoring. These are <strong>advisory only</strong> and do not produce legal or financial effects without user confirmation.
+      The Service uses Google AI, Replicate, Remove.bg, and related processors for caption suggestions, assistant drafts, image processing, and other optional features. These are <strong>advisory only</strong> and do not produce legal or financial effects without user confirmation.
       Users may disable AI features at any time. Inappropriate AI output can be reported via the in-app 🚩 button; we review within 24 hours.
     </p>
 
@@ -135,6 +134,7 @@
       <tr><th>Version</th><th>Effective</th><th>Changes</th></tr>
       <tr><td>v1.0</td><td>2026-04-22</td><td>Initial publication — full PIPA compliance framework</td></tr>
       <tr><td>v1.1</td><td>2026-04-22</td><td>Added GDPR (EU/UK), CCPA/CPRA (California), LGPD (Brazil), APPI (Japan), PIPEDA (Canada), Australia Privacy Act regional notices</td></tr>
+      <tr><td>v1.2</td><td>2026-09-15</td><td>Corrected processors, AI consent, deletion status, and security descriptions to match the current system</td></tr>
     </table>
 
     <h2>11. Notice to EU/EEA and UK Residents (GDPR / UK GDPR)</h2>
@@ -174,7 +174,7 @@
     <h3>11-4. International Data Transfers (Chapter V)</h3>
     <ul>
       <li><strong>South Korea adequacy decision:</strong> the European Commission issued an adequacy decision for the Republic of Korea on 17 December 2021. Transfers from the EU to our Korean operations do not require additional safeguards.</li>
-      <li><strong>US processors (Google, Meta, Railway, Supabase, Cloudflare, Replicate, Sentry):</strong> we rely on the 2021 EU Standard Contractual Clauses (SCCs) and supplementary measures — TLS in transit, encryption at rest, pseudonymization of customer identifiers before AI assistant and analytics calls (DM auto-reply uses the customer name for personalized address; phone numbers are never sent), least-privilege access.</li>
+      <li><strong>International processors (Google, Meta, Supabase, Cloudflare, Replicate, Remove.bg, Sentry):</strong> applicable transfer safeguards and contracts require legal review before service is offered in each region.</li>
       <li>A copy of the SCCs is available upon request at contact@itdasy.com.</li>
     </ul>
 
@@ -195,7 +195,7 @@
     <h3>12-1. Categories of Personal Information Collected (last 12 months)</h3>
     <table>
       <tr><th>Category (§1798.140)</th><th>Collected?</th><th>Source</th><th>Purpose</th><th>Disclosed to</th></tr>
-      <tr><td>A. Identifiers (name, email, user ID)</td><td>Yes</td><td>You</td><td>Account, service</td><td>Processors (Supabase, Railway)</td></tr>
+      <tr><td>A. Identifiers (name, email, user ID)</td><td>Yes</td><td>You</td><td>Account, service</td><td>Processors (Supabase, Google Cloud)</td></tr>
       <tr><td>B. §1798.80 customer records</td><td>Yes</td><td>You</td><td>Billing, support</td><td>Apple/Google (IAP); processors</td></tr>
       <tr><td>D. Commercial info (purchase history)</td><td>Yes</td><td>Apple/Google stores</td><td>Billing, subscription</td><td>Apple, Google</td></tr>
       <tr><td>F. Internet/network activity (error logs)</td><td>Limited</td><td>Device</td><td>Security/debug</td><td>Sentry</td></tr>
@@ -260,7 +260,7 @@
     <h2>19. Security — International Standards</h2>
     <ul>
       <li>Encryption in transit: TLS 1.2+/HTTPS everywhere.</li>
-      <li>Encryption at rest: Supabase/Postgres native; Cloudflare R2 server-side.</li>
+      <li>Encryption at rest: Supabase/Postgres and object-storage controls supplied by the hosting providers.</li>
       <li>Password hashing: bcrypt.</li>
       <li>Instagram OAuth tokens: Fernet (AES) application-layer encryption.</li>
       <li>Access control: least privilege, MFA for admins, multi-tenant row-level isolation enforced by user_id filter.</li>
