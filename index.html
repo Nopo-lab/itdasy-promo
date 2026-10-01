@@ -208,28 +208,7 @@
       background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); color: #fbbf24;
     }
 
-    /* Phone Mockup */
-    .hero-mockup { flex: 0 0 240px; display: flex; justify-content: center; }
-    .phone-frame {
-      width: 220px; height: 420px; background: #1a0c0f;
-      border-radius: 36px; border: 2px solid rgba(241,128,145,0.25);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
-      padding: 20px 14px 14px; display: flex; flex-direction: column; gap: 10px;
-      animation: pfloat 3.5s ease-in-out infinite;
-    }
-    @keyframes pfloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-    .phone-notch { width: 60px; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; margin: 0 auto 6px; }
-    .phone-header { background: rgba(241,128,145,0.1); border-radius: 12px; padding: 10px 12px; display: flex; align-items: center; gap: 8px; }
-    .phone-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--grad); display: flex; align-items: center; justify-content: center; font-size: 14px; }
-    .phone-name { font-size: 10px; font-weight: 700; color: #fff; }
-    .phone-handle { font-size: 9px; color: rgba(255,255,255,0.4); }
-    .phone-connected { font-size: 9px; color: #3DAA72; font-weight: 700; }
-    .phone-caption { background: rgba(255,255,255,0.04); border: 1px solid rgba(241,128,145,0.15); border-radius: 12px; padding: 10px 12px; }
-    .phone-caption-label { font-size: 8px; color: var(--accent); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px; }
-    .phone-caption-text { font-size: 9px; color: rgba(255,255,255,0.65); line-height: 1.6; }
-    .phone-tags { display: flex; flex-wrap: wrap; gap: 4px; }
-    .phone-tag { background: rgba(241,128,145,0.12); border-radius: 8px; padding: 3px 7px; font-size: 8px; color: var(--accent); font-weight: 600; }
-    .phone-btn { margin-top: auto; background: var(--grad); border-radius: 12px; height: 36px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; }
+    .hero-mockup { flex: 1; }
 
     /* ── Trust Metrics ── */
     #trust { background: var(--dark); padding: 40px 0; border-top: 1px solid rgba(241,128,145,0.1); }
@@ -485,117 +464,6 @@
     .preview-modal-body { padding: 22px; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
 
     /* Demo: AI Caption */
-    .demo-caption .demo-input {
-      background: var(--bg3); border: 1px solid var(--border);
-      border-radius: 12px; padding: 12px 14px;
-      font-size: 13px; color: var(--text2); margin-bottom: 14px;
-    }
-    .demo-caption .demo-input span { color: var(--text); font-weight: 600; }
-    .demo-caption .demo-output {
-      background: linear-gradient(135deg, #fffcfd, #fff5f7);
-      border: 1px solid rgba(241,128,145,0.2);
-      border-radius: 14px; padding: 14px 16px;
-    }
-    .demo-caption .demo-label {
-      font-size: 10px; font-weight: 700; color: var(--accent);
-      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;
-    }
-    .demo-caption .demo-text {
-      font-size: 14px; color: var(--text); line-height: 1.7;
-      border-right: 2px solid var(--accent);
-      white-space: pre-wrap; min-height: 80px;
-    }
-    .demo-caption .demo-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
-    .demo-caption .demo-tag {
-      background: rgba(241,128,145,0.1); border-radius: 10px;
-      padding: 3px 9px; font-size: 11px; color: var(--accent); font-weight: 600;
-    }
-
-    /* Demo: BG Remove */
-    .demo-bg { display: flex; flex-direction: column; gap: 14px; align-items: center; }
-    .demo-bg-row { display: flex; gap: 12px; width: 100%; justify-content: center; }
-    .demo-bg-card {
-      flex: 1; border-radius: 16px; overflow: hidden;
-      position: relative; max-width: 180px;
-      aspect-ratio: 3/4;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 36px;
-    }
-    .demo-bg-before { background: linear-gradient(135deg, #e8ddd5, #d4c4b8); }
-    .demo-bg-after  { background: var(--grad); }
-    .demo-bg-after .demo-bg-checkerboard {
-      position: absolute; inset: 0; opacity: 0.15;
-      background-image:
-        linear-gradient(45deg, #ccc 25%, transparent 25%),
-        linear-gradient(-45deg, #ccc 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, #ccc 75%),
-        linear-gradient(-45deg, transparent 75%, #ccc 75%);
-      background-size: 12px 12px;
-      background-position: 0 0, 0 6px, 6px -6px, -6px 0px;
-    }
-    .demo-bg-label {
-      font-size: 11px; font-weight: 700; color: var(--text2);
-      text-align: center; position: absolute; bottom: 8px; left: 0; right: 0;
-    }
-    .demo-bg-arrow { font-size: 22px; color: var(--accent); align-self: center; }
-    .demo-bg-styles { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-    .demo-bg-style-btn {
-      padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700;
-      border: 1.5px solid var(--border); cursor: pointer; transition: all .2s;
-      background: #fff; color: var(--text2); font-family: inherit;
-    }
-    .demo-bg-style-btn.active, .demo-bg-style-btn:hover {
-      background: var(--accent); color: #fff; border-color: var(--accent);
-    }
-
-    /* Demo: Publish */
-    .demo-publish { display: flex; flex-direction: column; gap: 10px; }
-    .demo-publish-step {
-      display: flex; align-items: center; gap: 12px;
-      padding: 12px 14px; border-radius: 14px;
-      background: var(--bg3); border: 1px solid var(--border);
-      transition: background .4s, border-color .4s;
-    }
-    .demo-publish-step.active {
-      background: rgba(241,128,145,0.08);
-      border-color: rgba(241,128,145,0.3);
-    }
-    .demo-publish-step.done {
-      background: rgba(61,170,114,0.07);
-      border-color: rgba(61,170,114,0.25);
-    }
-    .demo-step-icon { font-size: 20px; width: 32px; text-align: center; flex-shrink: 0; }
-    .demo-step-text { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; }
-    .demo-step-status { font-size: 11px; font-weight: 700; }
-    .demo-step-status.waiting { color: var(--text3); }
-    .demo-step-status.processing { color: var(--accent); }
-    .demo-step-status.done { color: #3DAA72; }
-
-    /* Demo: Portfolio */
-    .demo-portfolio { display: flex; flex-direction: column; gap: 12px; }
-    .demo-port-tags { display: flex; gap: 7px; flex-wrap: wrap; }
-    .demo-port-tag {
-      padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700;
-      border: 1.5px solid var(--border); cursor: pointer;
-      background: #fff; color: var(--text2); transition: all .2s; font-family: inherit;
-    }
-    .demo-port-tag.active, .demo-port-tag:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
-    .demo-port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .demo-port-item {
-      aspect-ratio: 1; border-radius: 12px; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 24px; position: relative;
-      background: var(--bg3);
-      transition: opacity .3s;
-    }
-    .demo-port-item.hidden { opacity: 0; pointer-events: none; }
-    .demo-port-item-tag {
-      position: absolute; bottom: 4px; left: 4px; right: 4px;
-      background: rgba(0,0,0,0.5); border-radius: 6px;
-      font-size: 9px; font-weight: 700; color: #fff;
-      text-align: center; padding: 2px 0;
-    }
-
     /* ── CTA ── */
     #cta { background: var(--dark); padding: 90px 0; text-align: center; position: relative; overflow: hidden; }
     #cta::before {
@@ -747,7 +615,7 @@
       .btn-hero { height: 48px; font-size: 14px; padding: 0 22px; }
     }
   </style>
-  <link rel="stylesheet" href="design.css">
+  <link rel="stylesheet" href="design.css?v=20261002-brand-screens">
 </head>
 <body>
   <a class="skip-link" href="#hero">본문 바로가기</a>
@@ -758,7 +626,7 @@
   <!-- Navbar -->
   <nav class="navbar" id="navbar">
     <div class="navbar-inner">
-      <a class="navbar-logo" href="./" aria-label="잇데이 홈"><i class="brand-symbol" aria-hidden="true"></i>잇데이 <span>STUDIO</span></a>
+      <a class="navbar-logo" href="./" aria-label="잇데이 홈">잇데이 <span class="brand-wordmark">Itda<span style="color:inherit;font-size:inherit;letter-spacing:inherit">sy</span></span></a>
       <div class="nav-links"><a href="#services" id="navFeatures">기능</a><a href="#pricing" id="navPricing">요금</a><a href="#faq" id="navFaq">자주 묻는 질문</a></div>
       <div class="lang-switcher" id="langSwitcher">
         <button class="lang-btn" onclick="toggleLang()" aria-expanded="false" aria-controls="languageOptions">
@@ -796,27 +664,15 @@
           <p class="hero-note">회원가입 무료 · 월간 앱 구독은 자격 충족 시 14일 체험</p>
         </div>
         <div class="hero-mockup reveal reveal-delay-2">
-          <div class="studio-scene">
-            <div class="scene-heading"><i class="brand-symbol" aria-hidden="true"></i>ITBI · YOUR STUDIO ASSISTANT<span id="phoneConnected">화면 예시</span></div>
-            <div class="orb-wrap" aria-hidden="true"><div class="orb"></div><div class="orb-orbit"></div></div>
-            <div class="scene-hint" id="sceneHint">사장님의 작은 도우미</div>
-            <div class="scene-request" id="sceneRequest">“오로라 젤 소개 글 써줘”</div>
-            <div class="scene-result">
-              <div class="phone-caption-label" id="phoneCaptionLabel">✨ AI 캡션 초안 예시</div>
-              <div class="phone-caption-text" id="phoneCaptionText">오늘 들어온 오로라 젤을 소개해요 🥹<br>빛에 따라 색이 달라 보여요.<br>예약 가능 시간은 문의해 주세요.</div>
-              <div class="phone-btn" id="phoneBtn">📲 확인 후 발행</div>
-            </div>
-            <div class="scene-foot"><span id="sceneTag1">고객 기록</span><span id="sceneTag2">예약 정리</span><span id="sceneTag3">홍보 글 초안</span></div>
+          <div class="app-hero">
+            <figure><img class="app-screen" src="assets/screens/home.webp" width="780" height="1688" alt="잇데이 앱 홈 화면" fetchpriority="high"><figcaption id="heroScreenHome">매장의 하루를 한눈에</figcaption></figure>
+            <figure><img class="app-screen" src="assets/screens/editor.webp" width="780" height="1688" alt="잇데이 앱 사진 편집 화면" fetchpriority="high"><figcaption id="heroScreenEditor">시술 사진을 홍보 콘텐츠로</figcaption></figure>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 법적 엔티티 배너 (Meta Business Verification 명확 표기) -->
-  <div class="entity-note" style="text-align:center;font-size:12px;color:rgba(255,255,255,0.55);padding:10px 16px;background:#1a0c10;">
-    잇데이는 <strong style="color:rgba(255,255,255,0.9);">와이투두(Y2do)</strong>가 운영합니다 · 사업자등록번호 179-36-01681 · 대표 강연준
-  </div>
 
   <!-- ═════════════════════════════════════════════════════════ -->
   <!-- 핵심 기능 쇼케이스 (Phase 5 신기능) -->
@@ -891,20 +747,27 @@
         <h2 class="section-title">관리부터 SNS까지, 한 앱에서</h2>
         <p class="section-sub">고객·예약·매출을 기록하고, 사진과 홍보 글을 준비하세요. 외부 연동 기능은 계정 유형·권한과 제공 상태에 따라 달라집니다.</p>
       </div>
+      <p class="capture-note" id="captureNote">실제 앱 화면입니다. 고객·기록·사진은 소개를 위한 샘플이며, 화면과 제공 기능은 버전에 따라 달라질 수 있어요.</p>
       <div class="services-grid">
         <div class="service-card reveal reveal-delay-1">
+          <button type="button" class="service-shot" onclick="openPreview('customer')" aria-label="고객 관리 실제 앱 화면 크게 보기"><img src="assets/screens/customers.webp" width="780" height="1688" alt="잇데이 앱 고객 관리 화면" loading="lazy" decoding="async"></button>
           <div class="service-icon"><svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m20 0v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/><path d="M16 3a4 4 0 0 1 0 8"/></svg></div>
           <div class="service-title">고객·예약·매출 통합 관리</div>
           <p class="service-desc">고객 카드, 시술 이력, 예약 달력, 매출 장부를 한 곳에서 관리해요. 입력한 결제수단과 수수료를 바탕으로 실 수령액을 확인할 수 있어요.</p>
+          <div class="service-related">
+            <button type="button" class="related-shot" onclick="openPreview('customer')"><img src="assets/screens/booking.webp" width="780" height="1688" alt="잇데이 예약 관리 화면" loading="lazy"><span id="relatedBooking">예약 관리</span></button>
+            <button type="button" class="related-shot" onclick="openPreview('customer')"><img src="assets/screens/revenue.webp" width="780" height="1688" alt="잇데이 매출 관리 화면" loading="lazy"><span id="relatedRevenue">매출 관리</span></button>
+          </div>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
             <span class="service-badge">기록을 한 곳에서</span>
             <button class="service-preview-btn" onclick="openPreview('customer')">
               <svg viewBox="0 0 16 16"><path d="M8 3C4.5 3 1.5 5.5 1.5 8s3 5 6.5 5 6.5-2.5 6.5-5-3-5-6.5-5zm0 9c-2.8 0-5-1.8-5-4s2.2-4 5-4 5 1.8 5 4-2.2 4-5 4zm-1-6.5v5l4-2.5-4-2.5z"/></svg>
-              미리보기
+              앱 화면 크게 보기
             </button>
           </div>
         </div>
         <div class="service-card reveal reveal-delay-2">
+          <button type="button" class="service-shot" onclick="openPreview('assistant')" aria-label="AI 비서 잇비 실제 앱 화면 크게 보기"><img src="assets/screens/assistant.webp" width="780" height="1688" alt="잇데이 앱 AI 비서 잇비 화면" loading="lazy" decoding="async"></button>
           <div class="service-icon"><svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="4"/><path d="M12 2v4M8 11v2m8-2v2M8 17h8M1 11v5m22-5v5"/></svg></div>
           <div class="service-title">확인 후 실행하는 AI 비서</div>
           <p class="service-desc">“김서연 내일 2시 예약 추가”처럼 말하거나 입력하세요. 예약·매출 기록안을 확인한 뒤 실행하고, 궁금한 매장 정보는 대화로 조회해요.</p>
@@ -912,11 +775,12 @@
             <span class="service-badge">저장 전 확인</span>
             <button class="service-preview-btn" onclick="openPreview('assistant')">
               <svg viewBox="0 0 16 16"><path d="M8 3C4.5 3 1.5 5.5 1.5 8s3 5 6.5 5 6.5-2.5 6.5-5-3-5-6.5-5zm0 9c-2.8 0-5-1.8-5-4s2.2-4 5-4 5 1.8 5 4-2.2 4-5 4zm-1-6.5v5l4-2.5-4-2.5z"/></svg>
-              미리보기
+              앱 화면 크게 보기
             </button>
           </div>
         </div>
         <div class="service-card reveal reveal-delay-3">
+          <button type="button" class="service-shot" onclick="openPreview('caption')" aria-label="홍보 글 작성 실제 앱 화면 크게 보기"><img src="assets/screens/caption.webp" width="780" height="1688" alt="잇데이 앱 홍보 글 작성 화면" loading="lazy" decoding="async"></button>
           <div class="service-icon"><svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3l5 5L9 20l-6 1 1-6L16 3zm-2 2 5 5M4 15l5 5"/></svg></div>
           <div class="service-title">사장님 스타일의 홍보 글 초안</div>
           <p class="service-desc">시술 설명과 샵 정보를 바탕으로 캡션·해시태그를 제안해요. 동의하고 연결한 인스타그램 게시글의 말투를 참고할 수 있어요. 게시 전 사실과 표현을 확인해 주세요.</p>
@@ -924,11 +788,12 @@
             <span class="service-badge">게시 전 검토</span>
             <button class="service-preview-btn" onclick="openPreview('caption')">
               <svg viewBox="0 0 16 16"><path d="M8 3C4.5 3 1.5 5.5 1.5 8s3 5 6.5 5 6.5-2.5 6.5-5-3-5-6.5-5zm0 9c-2.8 0-5-1.8-5-4s2.2-4 5-4 5 1.8 5 4-2.2 4-5 4zm-1-6.5v5l4-2.5-4-2.5z"/></svg>
-              미리보기
+              앱 화면 크게 보기
             </button>
           </div>
         </div>
         <div class="service-card reveal reveal-delay-4">
+          <button type="button" class="service-shot" onclick="openPreview('bg')" aria-label="사진 편집 실제 앱 화면 크게 보기"><img src="assets/screens/editor.webp" width="780" height="1688" alt="잇데이 앱 사진 편집 화면" loading="lazy" decoding="async"></button>
           <div class="service-icon"><svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 4-6 5 7"/></svg></div>
           <div class="service-title">사진 편집과 비포·애프터</div>
           <p class="service-desc">사진의 밝기·색감·배경을 조정하고 모자이크와 비교 구성을 만들어요. 외부 AI 배경 제거는 해당 기능의 전송 안내에 동의한 뒤 사용해요.</p>
@@ -936,11 +801,12 @@
             <span class="service-badge">AI 전송 전 동의</span>
             <button class="service-preview-btn" onclick="openPreview('bg')">
               <svg viewBox="0 0 16 16"><path d="M8 3C4.5 3 1.5 5.5 1.5 8s3 5 6.5 5 6.5-2.5 6.5-5-3-5-6.5-5zm0 9c-2.8 0-5-1.8-5-4s2.2-4 5-4 5 1.8 5 4-2.2 4-5 4zm-1-6.5v5l4-2.5-4-2.5z"/></svg>
-              미리보기
+              앱 화면 크게 보기
             </button>
           </div>
         </div>
         <div class="service-card reveal reveal-delay-5">
+          <button type="button" class="service-shot" onclick="openPreview('publish')" aria-label="게시물 발행 준비 실제 앱 화면 크게 보기"><img src="assets/screens/publish.webp" width="780" height="1688" alt="잇데이 앱 게시물 발행 준비 화면" loading="lazy" decoding="async"></button>
           <div class="service-icon"><svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V3m-5 5 5-5 5 5M4 14v6h16v-6"/></svg></div>
           <div class="service-title">확인하고 인스타그램 발행</div>
           <p class="service-desc">사진과 문구를 확인한 뒤 원하는 게시 형식으로 발행해요. 지원 계정과 Meta 권한이 필요하며, 피드·스토리·릴스의 제공 범위와 한도는 앱에서 확인해 주세요.</p>
@@ -948,11 +814,12 @@
             <span class="service-badge">연동·권한 필요</span>
             <button class="service-preview-btn" onclick="openPreview('publish')">
               <svg viewBox="0 0 16 16"><path d="M8 3C4.5 3 1.5 5.5 1.5 8s3 5 6.5 5 6.5-2.5 6.5-5-3-5-6.5-5zm0 9c-2.8 0-5-1.8-5-4s2.2-4 5-4 5 1.8 5 4-2.2 4-5 4zm-1-6.5v5l4-2.5-4-2.5z"/></svg>
-              미리보기
+              앱 화면 크게 보기
             </button>
           </div>
         </div>
         <div class="service-card reveal reveal-delay-6">
+          <button type="button" class="service-shot" onclick="openPreview('portfolio')" aria-label="시술 사진 포트폴리오 실제 앱 화면 크게 보기"><img src="assets/screens/portfolio.webp" width="780" height="1688" alt="잇데이 앱 시술 사진 포트폴리오 화면" loading="lazy" decoding="async"></button>
           <div class="service-icon"><svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h7l2 2h9v11H3zM3 7V4h7l2 3"/></svg></div>
           <div class="service-title">시술 사진 포트폴리오</div>
           <p class="service-desc">시술 사진을 저장하고 태그로 정리해요. 필요한 사진을 다시 찾아 편집·캡션 작성에 활용할 수 있어요. 저장 용량과 기능별 사용량은 앱 안내를 따릅니다.</p>
@@ -960,7 +827,7 @@
             <span class="service-badge">태그로 사진 정리</span>
             <button class="service-preview-btn" onclick="openPreview('portfolio')">
               <svg viewBox="0 0 16 16"><path d="M8 3C4.5 3 1.5 5.5 1.5 8s3 5 6.5 5 6.5-2.5 6.5-5-3-5-6.5-5zm0 9c-2.8 0-5-1.8-5-4s2.2-4 5-4 5 1.8 5 4-2.2 4-5 4zm-1-6.5v5l4-2.5-4-2.5z"/></svg>
-              미리보기
+              앱 화면 크게 보기
             </button>
           </div>
         </div>
@@ -1092,7 +959,6 @@
       <div class="footer-biz-row"><b>사업장 소재지:</b>경기도 화성시 효행로 1068, 6층 603-J257호 (병점동, 리더스프라자), 18405</div>
       <div class="footer-biz-row"><b>사업자등록번호:</b><span id="bizRegNo">179-36-01681</span></div>
       <div class="footer-biz-row"><b>고객문의:</b><a href="mailto:contact@itdasy.com">contact@itdasy.com</a></div>
-      <div class="footer-biz-row" style="margin-top:6px;font-size:10px;color:rgba(255,255,255,0.2);">본 서비스 "잇데이(itdasy)"는 <b>와이투두(Y2do)</b>가 제공하는 뷰티샵 AI 인스타 자동화 솔루션입니다.</div>
     </div>
 
     <div class="footer-copy">© 2026 와이투두(Y2do). All rights reserved.</div>
@@ -1161,470 +1027,40 @@
       });
     });
 
-    // ── Preview i18n ──
-    const PREVIEW_LANGS = {
-      ko: {
-        caption: {
-          title: '✍️ AI 캡션 자동 생성',
-          input_label: '입력:', input_text: '"오늘 오로라 젤 새로 들어왔어요, 빛에 따라 색이 바뀌어요"',
-          output_label: '✨ AI 생성 결과 (사장님 말투 반영)',
-          typed_text: "오늘 오로라 젤이 들어왔어요 🥹\n빛에 따라 색이 바뀌는 게 진짜 신기하죠?\n예약 가능 시간은 문의해 주세요.\n예약은 DM이나 카카오로 주세요 💌",
-          tags: ['#젤네일','#네일아트','#오로라네일','#네일스타그램','#네일맛집','#홍대네일'],
-        },
-        bg: {
-          title: '🖼️ 사진 편집 자동화',
-          before: '원본', after: '누끼 완료', style_label: '배경 스타일 선택',
-          styles: ['그라데이션','모자이크','단색 핑크','단색 다크'],
-        },
-        publish: {
-          title: '📲 인스타그램 1탭 발행',
-          steps: ['사진 편집 결과 확인','AI 캡션 초안 검토','발행 형식 선택·승인','선택한 게시물 발행','발행 결과 확인'],
-          wait: '대기', proc: '처리 중...', done: '완료 ✓',
-          preview_label: '📱 게시물 미리보기', location: '서울 홍대',
-          likes_pre: '좋아요 ', likes_suf: '개',
-          caption: "오늘 오로라 젤이 들어왔어요 🥹 빛에 따라 색이 바뀌는 게 진짜 신기하죠? 예약 가능 시간은 문의해 주세요.",
-          tags: '#젤네일 #네일아트 #오로라네일 #네일스타그램 #네일맛집 #홍대네일', time: '방금 전',
-        },
-        portfolio: {
-          title: '🗂️ 스마트 포트폴리오',
-          filter_tags: ['전체','네일','붙임머리','헤어컷','속눈썹'],
-          filter_icons: ['','💅 ','💇 ','✂️ ','🌸 '],
-          items: [{e:'💇',t:'붙임머리'},{e:'💅',t:'네일'},{e:'💇',t:'붙임머리'},{e:'✂️',t:'헤어컷'},{e:'💅',t:'네일'},{e:'🌸',t:'속눈썹'},{e:'💆',t:'피부'},{e:'💅',t:'네일'},{e:'💇',t:'붙임머리'}],
-        },
-      },
-      en: {
-        caption: {
-          title: '✍️ AI Caption Generator',
-          input_label: 'Input:', input_text: '"New aurora gel just arrived — color shifts in light"',
-          output_label: '✨ AI Result (in your voice)',
-          typed_text: "Our new aurora gel just arrived 🥹\nThe way the color shifts in light is actually wild!\nContact us for available bookings.\nDM or email to book 💌",
-          tags: ['#gelnails','#nailart','#auroranails','#nailstagram','#nailsofinstagram','#hongdaenails'],
-        },
-        bg: {
-          title: '🖼️ Auto Photo Editing',
-          before: 'Original', after: 'BG Removed', style_label: 'Choose Background Style',
-          styles: ['Gradient','Mosaic','Solid Pink','Solid Dark'],
-        },
-        publish: {
-          title: '📲 1-Tap Instagram Post',
-          steps: ['Photo edited','AI caption generated','Image uploaded','Instagram feed posted','Story auto-posted'],
-          wait: 'Waiting', proc: 'Processing...', done: 'Done ✓',
-          preview_label: '📱 Post Preview', location: 'Seoul, Hongdae',
-          likes_pre: '', likes_suf: ' likes',
-          caption: "Our new aurora gel just arrived 🥹 The color shifts in light — so stunning! Contact us for available bookings.",
-          tags: '#gelnails #nailart #auroranails #nailstagram #nailsofinstagram', time: 'Just now',
-        },
-        portfolio: {
-          title: '🗂️ Smart Portfolio',
-          filter_tags: ['All','Nail','Extensions','Haircut','Lash'],
-          filter_icons: ['','💅 ','💇 ','✂️ ','🌸 '],
-          items: [{e:'💇',t:'Extensions'},{e:'💅',t:'Nail'},{e:'💇',t:'Extensions'},{e:'✂️',t:'Haircut'},{e:'💅',t:'Nail'},{e:'🌸',t:'Lash'},{e:'💆',t:'Skin'},{e:'💅',t:'Nail'},{e:'💇',t:'Extensions'}],
-        },
-      },
-      ja: {
-        caption: {
-          title: '✍️ AIキャプション自動生成',
-          input_label: '入力:', input_text: '「新しいオーロラジェルが入荷、光で色が変わります」',
-          output_label: '✨ AI生成結果（オーナー様の口調）',
-          typed_text: "新しいオーロラジェルが入荷しました🥹\n光で色が変わるのが不思議ですよね？\n今週あと3枠しか残ってないです~\nご予約はDMかLINEで💌",
-          tags: ['#ジェルネイル','#ネイルアート','#オーロラネイル','#ネイルスタグラム','#ネイルデザイン','#弘大ネイル'],
-        },
-        bg: {
-          title: '🖼️ 写真編集自動化',
-          before: '元画像', after: '背景除去済み', style_label: '背景スタイルを選択',
-          styles: ['グラデーション','モザイク','ソリッドピンク','ソリッドダーク'],
-        },
-        publish: {
-          title: '📲 Instagram 1タップ投稿',
-          steps: ['写真編集完了','AIキャプション生成','画像サーバー送信','Instagramフィード投稿','ストーリー自動投稿'],
-          wait: '待機中', proc: '処理中...', done: '完了 ✓',
-          preview_label: '📱 投稿プレビュー', location: '東京 新宿',
-          likes_pre: '', likes_suf: '件のいいね',
-          caption: "新しいオーロラジェルが入荷しました🥹 光で色が変わるのが不思議ですよね？ 今週あと3枠です~",
-          tags: '#ジェルネイル #ネイルアート #オーロラネイル #ネイルスタグラム #ネイルデザイン', time: 'たった今',
-        },
-        portfolio: {
-          title: '🗂️ スマートポートフォリオ',
-          filter_tags: ['すべて','ネイル','エクステ','ヘアカット','まつ毛'],
-          filter_icons: ['','💅 ','💇 ','✂️ ','🌸 '],
-          items: [{e:'💇',t:'エクステ'},{e:'💅',t:'ネイル'},{e:'💇',t:'エクステ'},{e:'✂️',t:'ヘアカット'},{e:'💅',t:'ネイル'},{e:'🌸',t:'まつ毛'},{e:'💆',t:'スキン'},{e:'💅',t:'ネイル'},{e:'💇',t:'エクステ'}],
-        },
-      },
-      zh: {
-        caption: {
-          title: '✍️ AI文案自动生成',
-          input_label: '输入:', input_text: '"新到了欧若拉凝胶，在光下颜色会变"',
-          output_label: '✨ AI生成结果（您的语气）',
-          typed_text: "新到了欧若拉凝胶🥹\n在光线下颜色变化真的好神奇！\n本周只剩3个位置了~\n预约请DM或微信💌",
-          tags: ['#美甲','#光疗甲','#欧若拉美甲','#美甲打卡','#ins美甲','#弘大美甲'],
-        },
-        bg: {
-          title: '🖼️ 照片编辑自动化',
-          before: '原图', after: '抠图完成', style_label: '选择背景风格',
-          styles: ['渐变色','马赛克','纯色粉','纯色深'],
-        },
-        publish: {
-          title: '📲 一键Instagram发布',
-          steps: ['照片编辑完成','AI文案生成','图片上传服务器','Instagram动态发布','故事自动发布'],
-          wait: '等待中', proc: '处理中...', done: '完成 ✓',
-          preview_label: '📱 帖子预览', location: '上海 徐汇',
-          likes_pre: '', likes_suf: '个赞',
-          caption: "新到了欧若拉凝胶🥹 在光线下颜色变化真的好神奇！本周只剩3个位置了~",
-          tags: '#美甲 #光疗甲 #欧若拉美甲 #美甲打卡 #ins美甲', time: '刚刚',
-        },
-        portfolio: {
-          title: '🗂️ 智能作品集管理',
-          filter_tags: ['全部','美甲','接发','发型','睫毛'],
-          filter_icons: ['','💅 ','💇 ','✂️ ','🌸 '],
-          items: [{e:'💇',t:'接发'},{e:'💅',t:'美甲'},{e:'💇',t:'接发'},{e:'✂️',t:'发型'},{e:'💅',t:'美甲'},{e:'🌸',t:'睫毛'},{e:'💆',t:'皮肤'},{e:'💅',t:'美甲'},{e:'💇',t:'接发'}],
-        },
-      },
-    };
-
-    // Keep demo callbacks scoped to the active modal.
-    let previewTimers = [];
-    let previewFrames = [];
     let previewOpener = null;
-    function demoTimeout(callback, delay) {
-      const id = setTimeout(callback, delay);
-      previewTimers.push(id);
-      return id;
-    }
-    function demoInterval(callback, delay) {
-      const id = setInterval(callback, delay);
-      previewTimers.push(id);
-      return id;
-    }
-    function demoFrame(callback) {
-      const id = requestAnimationFrame(callback);
-      previewFrames.push(id);
-      return id;
-    }
-    function clearPreviewTimers() {
-      previewTimers.forEach(id => { clearTimeout(id); clearInterval(id); });
-      previewFrames.forEach(cancelAnimationFrame);
-      previewTimers = [];
-      previewFrames = [];
-    }
-    // ── Preview Modal ──
-    const PREVIEWS = {
-      caption: {
-        get title() { return PREVIEW_LANGS[currentLang].caption.title; },
-        render() {
-          const PL = PREVIEW_LANGS[currentLang].caption;
-          return `<div class="demo-caption">
-            <div class="demo-input">${PL.input_label} <span>${PL.input_text}</span></div>
-            <div class="demo-output">
-              <div class="demo-label">${PL.output_label}</div>
-              <div class="demo-text" id="captionTyping"></div>
-              <div class="demo-tags" id="captionTags" style="opacity:0;transition:opacity .5s"></div>
-            </div>
-          </div>`;
-        },
-        init() {
-          const PL = PREVIEW_LANGS[currentLang].caption;
-          const el = document.getElementById('captionTyping');
-          const tagsEl = document.getElementById('captionTags');
-          let i = 0;
-          const iv = demoInterval(() => {
-            if (i >= PL.typed_text.length) {
-              clearInterval(iv);
-              tagsEl.style.opacity = '1';
-              tagsEl.innerHTML = PL.tags.map(t => `<span class="demo-tag">${t}</span>`).join('');
-              return;
-            }
-            el.textContent += PL.typed_text[i++];
-          }, 28);
-        }
-      },
-      bg: {
-        get title() { return PREVIEW_LANGS[currentLang].bg.title; },
-        render() {
-          const PL = PREVIEW_LANGS[currentLang].bg;
-          const styleKeys = ['grad','mosaic','pink','dark'];
-          return `<div class="demo-bg">
-            <div class="demo-bg-row">
-              <div class="demo-bg-card demo-bg-before">👩‍🦱<div class="demo-bg-label">${PL.before}</div></div>
-              <div class="demo-bg-arrow">→</div>
-              <div class="demo-bg-card demo-bg-after" id="bgAfterCard">
-                <div class="demo-bg-checkerboard"></div>
-                <span style="position:relative;z-index:1">👩‍🦱</span>
-                <div class="demo-bg-label" style="color:#fff">${PL.after}</div>
-              </div>
-            </div>
-            <div style="font-size:13px;color:var(--text2);text-align:center;font-weight:600">${PL.style_label}</div>
-            <div class="demo-bg-styles">
-              ${PL.styles.map((s,i) => `<button class="demo-bg-style-btn${i===0?' active':''}" onclick="setBgStyle(this,'${styleKeys[i]}')">${s}</button>`).join('')}
-            </div>
-          </div>`;
-        },
-        init() {}
-      },
-      publish: {
-        get title() { return PREVIEW_LANGS[currentLang].publish.title; },
-        render() {
-          const PL = PREVIEW_LANGS[currentLang].publish;
-          const icons = ['🖼️','✍️','☁️','📸','🎬'];
-          const steps = PL.steps.map((s,i) => `
-            <div class="demo-publish-step" id="step${i+1}">
-              <div class="demo-step-icon">${icons[i]}</div>
-              <div class="demo-step-text">${s}</div>
-              <div class="demo-step-status waiting" id="s${i+1}">${PL.wait}</div>
-            </div>`).join('');
-          return `<div class="demo-publish">
-            ${steps}
-            <div id="igPreview" style="opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease;margin-top:4px;">
-              <div style="font-size:11px;font-weight:700;color:var(--text3);letter-spacing:0.06em;text-transform:uppercase;text-align:center;margin-bottom:10px;">${PL.preview_label}</div>
-              <div style="background:#fff;border:1px solid #dbdbdb;border-radius:12px;overflow:hidden;max-width:320px;margin:0 auto;font-family:-apple-system,sans-serif;">
-                <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;">
-                  <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);display:flex;align-items:center;justify-content:center;font-size:15px;">💅</div>
-                  <div>
-                    <div style="font-size:12px;font-weight:700;color:#000;">mininail_studio</div>
-                    <div style="font-size:10px;color:#8e8e8e;">${PL.location}</div>
-                  </div>
-                  <div style="margin-left:auto;font-size:18px;color:#000;">···</div>
-                </div>
-                <div style="aspect-ratio:1;background:linear-gradient(135deg,#fce4ec,#f8bbd9,#e1bee7);display:flex;align-items:center;justify-content:center;font-size:56px;position:relative;">
-                  💅
-                  <div style="position:absolute;bottom:10px;right:10px;display:flex;gap:4px;">
-                    <div style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.9);"></div>
-                    <div style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.4);"></div>
-                    <div style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.4);"></div>
-                  </div>
-                </div>
-                <div style="display:flex;align-items:center;padding:8px 12px;gap:12px;">
-                  <span style="font-size:22px;">🤍</span><span style="font-size:22px;">💬</span>
-                  <span style="font-size:22px;">📤</span><span style="font-size:22px;margin-left:auto;">🔖</span>
-                </div>
-                <div style="padding:0 12px 6px;font-size:12px;font-weight:700;color:#000;">${PL.likes_pre}<span id="igLikes">0</span>${PL.likes_suf}</div>
-                <div style="padding:0 12px 10px;font-size:12px;color:#000;line-height:1.55;">
-                  <span style="font-weight:700;">mininail_studio</span>
-                  <span id="igCaption" style="margin-left:4px;"></span>
-                </div>
-                <div style="padding:0 12px 12px;font-size:11px;color:#00376b;line-height:1.7;" id="igTags"></div>
-                <div style="padding:0 12px 10px;font-size:10px;color:#8e8e8e;">${PL.time}</div>
-              </div>
-            </div>
-          </div>`;
-        },
-        init() {
-          const PL = PREVIEW_LANGS[currentLang].publish;
-          const steps = [
-            {id:'step1',sid:'s1',delay:400},{id:'step2',sid:'s2',delay:1000},
-            {id:'step3',sid:'s3',delay:1800},{id:'step4',sid:'s4',delay:2600},{id:'step5',sid:'s5',delay:3400},
-          ];
-          steps.forEach(({id, sid, delay}, i) => {
-            demoTimeout(() => {
-              const el = document.getElementById(id);
-              const s = document.getElementById(sid);
-              if (!el) return;
-              el.classList.add('active');
-              s.textContent = PL.proc; s.className = 'demo-step-status processing';
-              demoTimeout(() => {
-                el.classList.remove('active'); el.classList.add('done');
-                s.textContent = PL.done; s.className = 'demo-step-status done';
-                if (i === steps.length - 1) {
-                  demoTimeout(() => {
-                    const ig = document.getElementById('igPreview');
-                    if (!ig) return;
-                    ig.style.opacity = '1'; ig.style.transform = 'translateY(0)';
-                    let likes = 0;
-                    const likeEl = document.getElementById('igLikes');
-                    const likeIv = demoInterval(() => {
-                      likes += Math.floor(Math.random() * 3) + 1;
-                      if (likeEl) likeEl.textContent = likes;
-                      if (likes >= 24) clearInterval(likeIv);
-                    }, 120);
-                    const capEl = document.getElementById('igCaption');
-                    let ci = 0;
-                    const capIv = demoInterval(() => {
-                      if (!capEl) { clearInterval(capIv); return; }
-                      capEl.textContent += PL.caption[ci++];
-                      if (ci >= PL.caption.length) {
-                        clearInterval(capIv);
-                        const tagsEl = document.getElementById('igTags');
-                        if (tagsEl) tagsEl.textContent = PL.tags;
-                      }
-                    }, 22);
-                  }, 300);
-                }
-              }, 550);
-            }, delay);
-          });
-        }
-      },
-      portfolio: {
-        get title() { return PREVIEW_LANGS[currentLang].portfolio.title; },
-        render() {
-          const PL = PREVIEW_LANGS[currentLang].portfolio;
-          const tagBtns = PL.filter_tags.map((t, i) => {
-            const key = i === 0 ? 'ALL' : t;
-            return `<button class="demo-port-tag${i===0?' active':''}" onclick="filterPort(this,'${key}')">${PL.filter_icons[i]}${t}</button>`;
-          }).join('');
-          const grid = PL.items.map(item => `
-            <div class="demo-port-item" data-tag="${item.t}">
-              ${item.e}<div class="demo-port-item-tag">${item.t}</div>
-            </div>`).join('');
-          return `<div class="demo-portfolio">
-            <div class="demo-port-tags">${tagBtns}</div>
-            <div class="demo-port-grid">${grid}</div>
-          </div>`;
-        },
-        init() {}
-      },
-      customer: {
-        get title() { return currentLang === 'en' ? 'Customers and revenue' : '고객·매출 통합 대시보드'; },
-        render() {
-          if (currentLang === 'en') return `<div style="padding:18px;line-height:1.8;background:#fff5f7;border-radius:16px"><strong>Example shop records</strong><p>Today's bookings: 4 · Birthday customers: 1</p><p>Customer A · 6 visits · Average interval: 14 days</p><p>Monthly recorded revenue: ₩4,850,000<br>Recorded fees: ₩102,000<br>Net receipts: ₩4,748,000</p></div>`;
-          return `<div style="padding:14px 8px;max-width:440px;margin:0 auto;">
-            <div style="background:linear-gradient(135deg,#F18091,#D95F70);color:#fff;padding:18px;border-radius:16px;margin-bottom:16px;">
-              <div style="font-size:11px;opacity:0.8;margin-bottom:4px;letter-spacing:1px;">오늘의 브리핑 · 2026.04.21</div>
-              <div style="font-size:20px;font-weight:900;line-height:1.4;">
-                📅 예약 <span id="custBookCount">0</span>건<br>
-                🎂 생일 고객 <span id="custBirthCount">0</span>명<br>
-                💝 재방문 놓칠 뻔한 단골 <span id="custRiskCount">0</span>명
-              </div>
-            </div>
-            <div style="background:#fff;border:1px solid #eee;border-radius:14px;padding:14px;margin-bottom:10px;">
-              <div style="display:flex;align-items:center;margin-bottom:8px;">
-                <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#FFB347,#FF8A5C);display:flex;align-items:center;justify-content:center;font-size:18px;margin-right:10px;">💇‍♀️</div>
-                <div style="flex:1;">
-                  <div style="font-weight:700;font-size:14px;color:#222;">김서연</div>
-                  <div style="font-size:11px;color:#888;">010-****-**** · 단골 VIP</div>
-                </div>
-                <div style="font-size:10px;padding:3px 8px;background:#FFF4E6;color:#E68A00;border-radius:100px;font-weight:700;">VIP</div>
-              </div>
-              <div style="font-size:12px;color:#555;line-height:1.65;border-top:1px dashed #eee;padding-top:8px;">
-                방문 6회 · 평균 14일 간격<br>
-                마지막: <strong>오늘 14:00 펌</strong> · 다음 예약 예상: <strong>5/5 경</strong>
-              </div>
-            </div>
-            <div style="background:linear-gradient(180deg,#fafafa,#fff);border:1px solid #eee;border-radius:14px;padding:14px;">
-              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;">
-                <div style="font-size:12px;color:#888;font-weight:700;">이번 달 매출</div>
-                <div style="font-size:10px;color:#aaa;">4월 1일 ~ 오늘</div>
-              </div>
-              <div style="font-size:26px;font-weight:900;color:#222;" id="custTotal">0원</div>
-              <div style="display:flex;gap:8px;margin-top:8px;font-size:11px;">
-                <div style="flex:1;padding:8px;background:#FBEAED;border-radius:8px;">
-                  <div style="color:#888;">카드 수수료</div>
-                  <div style="font-weight:700;color:#D95F70;margin-top:2px;" id="custFee">−0원</div>
-                </div>
-                <div style="flex:1;padding:8px;background:#E8F4F1;border-radius:8px;">
-                  <div style="color:#888;">실 수령액</div>
-                  <div style="font-weight:700;color:#2B8C7E;margin-top:2px;" id="custNet">0원</div>
-                </div>
-              </div>
-            </div>
-          </div>`;
-        },
-        init() {
-          const animate = (id, target, prefix='', suffix='원') => {
-            const el = document.getElementById(id);
-            if (!el) return;
-            let cur = 0;
-            const step = Math.max(1, Math.floor(target / 40));
-            const iv = demoInterval(() => {
-              cur += step;
-              if (cur >= target) { cur = target; clearInterval(iv); }
-              el.textContent = prefix + cur.toLocaleString() + suffix;
-            }, 30);
-          };
-          demoTimeout(() => animate('custBookCount', 4, '', ''), 100);
-          demoTimeout(() => animate('custBirthCount', 1, '', ''), 400);
-          demoTimeout(() => animate('custRiskCount', 2, '', ''), 700);
-          demoTimeout(() => animate('custTotal', 4850000), 1000);
-          demoTimeout(() => animate('custFee', 102000, '−'), 1400);
-          demoTimeout(() => animate('custNet', 4748000), 1700);
-        }
-      },
-      assistant: {
-        get title() { return currentLang === 'en' ? 'AI assistant — review before saving' : 'AI 비서 — 확인 후 실행'; },
-        render() {
-          if (currentLang === 'en') return `<div style="padding:18px;line-height:1.8;background:#fff5f7;border-radius:16px"><p><strong>You:</strong> Add a perm booking for Customer A tomorrow at 2pm.</p><p><strong>Assistant:</strong> Please review: Customer A, perm, 2pm tomorrow, 120 minutes.</p><p><strong>You:</strong> Confirm and save.</p><p><strong>Assistant:</strong> Booking saved. Check the calendar.</p><p style="color:#6f6464">Illustration only. An actual entry requires your confirmation.</p></div>`;
-          return `<div style="padding:14px 8px;max-width:440px;margin:0 auto;">
-            <div id="asstThread" style="display:flex;flex-direction:column;gap:10px;min-height:380px;"></div>
-          </div>`;
-        },
-        init() {
-          if (currentLang === 'en') return;
-          const thread = document.getElementById('asstThread');
-          if (!thread) return;
-          const userMsg = (text) => `
-            <div style="align-self:flex-end;max-width:78%;padding:11px 14px;background:linear-gradient(135deg,#F18091,#D95F70);color:#fff;border-radius:16px 16px 4px 16px;font-size:13px;line-height:1.5;box-shadow:0 2px 8px rgba(241,128,145,0.25);">
-              ${text}
-            </div>`;
-          const botMsg = (html, extra='') => `
-            <div style="align-self:flex-start;max-width:82%;padding:11px 14px;background:#f5f5f5;color:#222;border-radius:16px 16px 16px 4px;font-size:13px;line-height:1.5;">
-              <div style="font-size:10px;color:#888;font-weight:700;margin-bottom:4px;">🤖 잇데이 AI 비서</div>
-              ${html}
-              ${extra}
-            </div>`;
-          const actionCard = (icon, title, subtitle, done=false) => `
-            <div style="margin-top:10px;padding:12px;border:1.5px ${done?'solid':'dashed'} ${done?'#4ECDC4':'#F18091'};border-radius:12px;background:${done?'#E8F4F1':'#FEF4F5'};">
-              <div style="display:flex;align-items:center;gap:10px;">
-                <div style="font-size:22px;">${icon}</div>
-                <div style="flex:1;">
-                  <div style="font-weight:700;font-size:12px;color:#222;">${title}</div>
-                  <div style="font-size:11px;color:#666;margin-top:2px;">${subtitle}</div>
-                </div>
-                ${done
-                  ? `<div style="font-size:10px;padding:4px 9px;background:#4ECDC4;color:#fff;border-radius:100px;font-weight:800;">✓ 완료</div>`
-                  : `<button style="font-size:11px;padding:6px 10px;background:linear-gradient(135deg,#F18091,#D95F70);color:#fff;border:none;border-radius:8px;font-weight:700;">집행</button>`}
-              </div>
-            </div>`;
-          const steps = [
-            { delay: 200, html: userMsg('김서연 내일 2시에 펌 예약 추가해줘') },
-            { delay: 1200, html: botMsg(
-              '김서연님 <strong>내일(4/22) 14:00 펌(120분) 예약</strong> 추가할까요?',
-              actionCard('📅', '예약 추가', '고객: 김서연 · 서비스: 펌 · 시간: 내일 14:00')) },
-            { delay: 2500, html: userMsg('확인했어요. 예약 저장해 주세요.') },
-            { delay: 3000, html: botMsg(
-              '✅ 예약이 추가되었어요. 캘린더에서 확인하실 수 있어요.',
-              actionCard('📅', '예약 추가됨', '김서연 · 펌 · 2026-04-22 14:00', true)) },
-            { delay: 4500, html: userMsg('오늘 속눈썹 5만원 카드 기록') },
-            { delay: 5700, html: botMsg(
-              '이수아님(최근 속눈썹 고객) <strong>5만원 카드 매출</strong> 기록할까요? 카드 수수료 1,700원 자동 차감.',
-              actionCard('💰', '매출 기록', '이수아 · 속눈썹 · 50,000원 · 실 수령 48,300원')) },
-            { delay: 7000, html: userMsg('확인했어요. 매출 저장해 주세요.') },
-            { delay: 7500, html: botMsg(
-              '✅ 기록 완료. 이번 달 매출 442만원 → 실 수령 430만원.',
-              actionCard('💰', '매출 기록됨', '이수아 · 50,000원 · net 48,300원', true)) },
-          ];
-          steps.forEach(({delay, html}) => {
-            demoTimeout(() => {
-              const wrap = document.createElement('div');
-              wrap.innerHTML = html;
-              wrap.style.opacity = '0';
-              wrap.style.transition = 'opacity .35s ease, transform .35s ease';
-              wrap.style.transform = 'translateY(8px)';
-              thread.appendChild(wrap.firstElementChild);
-              demoFrame(() => {
-                const el = thread.lastElementChild;
-                if (el) { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }
-              });
-              thread.scrollTop = thread.scrollHeight;
-            }, delay);
-          });
-        }
-      }
+    // Actual app screenshots. Captured locally with fictional records and no production writes.
+    const APP_SCREENS = {
+      customer: ['customers', 'booking', 'revenue'],
+      assistant: ['assistant'], caption: ['caption'], bg: ['editor'],
+      publish: ['publish'], portfolio: ['portfolio']
     };
-
     function openPreview(type) {
-      clearPreviewTimers();
       previewOpener = document.activeElement;
-      const p = PREVIEWS[type];
-      document.getElementById('previewTitle').textContent = p.title;
-      document.getElementById('previewBody').innerHTML = '<p style="padding:12px 16px;color:#6f6464;font-size:13px">' + (currentLang === 'en' ? 'Illustrative demo with fictional data. No AI request, saving or publishing occurs.' : '가상 데이터로 구성한 기능 예시입니다. 실제 AI 요청·저장·발행은 실행되지 않습니다.') + '</p>' + p.render();
+      const index = ['customer','assistant','caption','bg','publish','portfolio'].indexOf(type);
+      const title = document.querySelectorAll('.service-title')[index].textContent;
+      document.getElementById('previewTitle').textContent = title;
+      const body = document.getElementById('previewBody');
+      body.replaceChildren();
+      const description = document.createElement('p');
+      description.className = 'preview-description';
+      description.textContent = currentLang === 'en'
+        ? 'Actual app screens with sample records and photos. Screen labels are in Korean. Availability may vary by version.'
+        : '실제 앱 화면입니다. 고객·기록·사진은 소개를 위한 샘플 데이터입니다. 화면과 제공 기능은 버전에 따라 달라질 수 있어요.';
+      body.appendChild(description);
+      APP_SCREENS[type].forEach(file => {
+        const image = document.createElement('img');
+        image.src = 'assets/screens/' + file + '.webp';
+        image.alt = title; image.className = 'preview-capture';
+        image.style.marginBottom = '20px';
+        body.appendChild(image);
+      });
       document.getElementById('previewOverlay').classList.add('open');
       document.body.style.overflow = 'hidden';
-      document.querySelector('.preview-modal-body').scrollTop = 0;
+      body.scrollTop = 0;
       document.querySelector('.preview-modal-close').focus();
-      demoFrame(() => p.init());
     }
 
     function closePreview() {
-      clearPreviewTimers();
       document.getElementById('previewOverlay').classList.remove('open');
       document.body.style.overflow = '';
       if (previewOpener) previewOpener.focus();
@@ -1650,30 +1086,6 @@
       }
     });
     // BG Style switcher
-    function setBgStyle(btn, style) {
-      document.querySelectorAll('.demo-bg-style-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const card = document.getElementById('bgAfterCard');
-      if (!card) return;
-      const styles = {
-        grad: 'linear-gradient(135deg, #F18091, #D95F70)',
-        mosaic: 'repeating-linear-gradient(45deg, #e8ddd5 0, #e8ddd5 10px, #d4c4b8 10px, #d4c4b8 20px)',
-        pink: '#FBD0D6',
-        dark: '#0f0608',
-      };
-      card.style.background = styles[style];
-    }
-
-    // Portfolio filter
-    function filterPort(btn, tag) {
-      document.querySelectorAll('.demo-port-tag').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('.demo-port-item').forEach(item => {
-        item.classList.toggle('hidden', tag !== 'ALL' && item.dataset.tag !== tag);
-      });
-    }
-
-    // ── i18n ──
     const LANGS = {
   "ko": {
     "flag": "🇰🇷",
@@ -1817,17 +1229,6 @@
     "ec_chip1": "회원가입 무료",
     "ec_chip2": "월간 체험은 조건부 14일",
     "ec_chip3": "구독 별도 관리",
-    "phone_name": "미니네일 원장님",
-    "phone_connected": "화면 예시",
-    "phone_caption_label": "✨ AI 캡션 초안 예시",
-    "phone_caption": "오늘 들어온 오로라 젤을 소개해요 🥹<br>빛에 따라 색이 달라 보여요.<br>예약 가능 시간은 문의해 주세요.",
-    "phone_tags": [
-      "#젤네일",
-      "#네일아트",
-      "#오로라네일",
-      "#네일스타그램"
-    ],
-    "phone_btn": "📲 확인 후 발행",
     "footer_privacy": "개인정보처리방침",
     "footer_guide": "이용약관",
     "footer_app": "앱 바로가기",
@@ -1860,11 +1261,6 @@
     "nav_pricing": "요금",
     "nav_faq": "자주 묻는 질문",
     "hero_features": "기능 둘러보기",
-    "scene_hint": "사장님의 작은 도우미",
-    "scene_request": "“오로라 젤 소개 글 써줘”",
-    "scene_tag1": "고객 기록",
-    "scene_tag2": "예약 정리",
-    "scene_tag3": "홍보 글 초안",
     "skip": "본문 바로가기"
   },
   "en": {
@@ -2009,17 +1405,6 @@
     "ec_chip1": "Free registration",
     "ec_chip2": "Eligible monthly trial: 14 days",
     "ec_chip3": "Manage subscription separately",
-    "phone_name": "Mini Nail Studio",
-    "phone_connected": "Illustration",
-    "phone_caption_label": "✨ Example caption draft",
-    "phone_caption": "Meet our new aurora gel 🥹<br>It looks different as the light changes.<br>Contact us for available bookings.",
-    "phone_tags": [
-      "#gelnails",
-      "#nailart",
-      "#auroranails",
-      "#nailstagram"
-    ],
-    "phone_btn": "📲 Review before posting",
     "footer_privacy": "Privacy Policy",
     "footer_guide": "Terms of Service",
     "footer_app": "Open App",
@@ -2052,11 +1437,6 @@
     "nav_pricing": "Pricing",
     "nav_faq": "FAQ",
     "hero_features": "Explore features",
-    "scene_hint": "Your little shop assistant",
-    "scene_request": "“Write a caption for our aurora gel”",
-    "scene_tag1": "Customer records",
-    "scene_tag2": "Bookings",
-    "scene_tag3": "Caption drafts",
     "skip": "Skip to content"
   }
 };
@@ -2092,8 +1472,14 @@
         if (el) el[attr] = html;
       };
 
-      [['#navFeatures','nav_features'],['#navPricing','nav_pricing'],['#navFaq','nav_faq'],['#heroFeatures','hero_features'],['#sceneHint','scene_hint'],['#sceneRequest','scene_request'],['#sceneTag1','scene_tag1'],['#sceneTag2','scene_tag2'],['#sceneTag3','scene_tag3'],['.skip-link','skip']].forEach(([selector,key]) => set(selector,L[key],'textContent'));
+      [['#navFeatures','nav_features'],['#navPricing','nav_pricing'],['#navFaq','nav_faq'],['#heroFeatures','hero_features'],['.skip-link','skip']].forEach(([selector,key]) => set(selector,L[key],'textContent'));
       document.querySelector('.lang-btn').setAttribute('aria-expanded', 'false');
+      set('#relatedBooking', lang === 'en' ? 'Bookings' : '예약 관리', 'textContent');
+      set('#relatedRevenue', lang === 'en' ? 'Revenue' : '매출 관리', 'textContent');
+      set('#heroScreenHome', lang === 'en' ? 'Your shop at a glance' : '매장의 하루를 한눈에', 'textContent');
+      set('#heroScreenEditor', lang === 'en' ? 'Photos into shop content' : '시술 사진을 홍보 콘텐츠로', 'textContent');
+      set('#captureNote', lang === 'en' ? 'Actual app screens with sample records and photos. Screen labels are in Korean; availability may vary by version.' : '실제 앱 화면입니다. 고객·기록·사진은 소개를 위한 샘플이며, 화면과 제공 기능은 버전에 따라 달라질 수 있어요.', 'textContent');
+      document.querySelectorAll('.service-shot').forEach((shot,i) => shot.setAttribute('aria-label', lang === 'en' ? 'Enlarge app screen: ' + document.querySelectorAll('.service-title')[i].textContent : document.querySelectorAll('.service-title')[i].textContent + ' 실제 앱 화면 크게 보기'));
       // Navbar & preorder bar
       set('[data-i18n="nav_cta"]', L.nav_cta);
       set('.preorder-bar-badge', L.preorder_badge);
@@ -2159,7 +1545,7 @@
         card.querySelector('.service-title').textContent = sd[0];
         card.querySelector('.service-desc').textContent = sd[1];
         const pb = card.querySelector('.service-preview-btn');
-        if (pb) pb.childNodes[pb.childNodes.length - 1].textContent = ' ' + L.preview_btn;
+        if (pb) pb.childNodes[pb.childNodes.length - 1].textContent = ' ' + (lang === 'en' ? 'Enlarge app screen' : '앱 화면 크게 보기');
         const badge = card.querySelector('.service-badge');
         if (badge && L['badge' + (i + 1)]) badge.textContent = L['badge' + (i + 1)];
       });
@@ -2236,15 +1622,6 @@
       const ecChipEls = document.querySelectorAll('.email-capture-chip');
       const ecAll = [L.ec_chip1, '·', L.ec_chip2, '·', L.ec_chip3];
       ecChipEls.forEach((el, i) => { if (ecAll[i]) el.textContent = ecAll[i]; });
-
-      // Phone mockup
-      const pn = document.getElementById('phoneName'); if (pn && L.phone_name) pn.textContent = L.phone_name;
-      const pc = document.getElementById('phoneConnected'); if (pc && L.phone_connected) pc.textContent = L.phone_connected;
-      const pcl = document.getElementById('phoneCaptionLabel'); if (pcl && L.phone_caption_label) pcl.textContent = L.phone_caption_label;
-      const pct = document.getElementById('phoneCaptionText'); if (pct && L.phone_caption) pct.innerHTML = L.phone_caption;
-      const ptags = document.getElementById('phoneTags');
-      if (ptags && L.phone_tags) ptags.innerHTML = L.phone_tags.map(t => `<div class="phone-tag">${t}</div>`).join('');
-      const pb = document.getElementById('phoneBtn'); if (pb && L.phone_btn) pb.textContent = L.phone_btn;
 
       // Trust number suffixes
       if (L.trust_suffix) {
