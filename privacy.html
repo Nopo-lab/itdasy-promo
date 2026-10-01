@@ -130,7 +130,7 @@
       <tr><th>구분</th><th>항목</th><th>수집 목적</th><th>보유 기간</th></tr>
       <tr><td>필수</td><td>이메일, 비밀번호(암호화), 이름</td><td>회원 식별·로그인·고객센터 응대</td><td>회원 탈퇴 시까지</td></tr>
       <tr><td>선택</td><td>샵 이름, 주소, 연락처, 인스타그램 핸들, 업종</td><td>AI 캡션·해시태그 개인화, 검색 노출</td><td>회원 탈퇴 시까지</td></tr>
-      <tr><td>자동 수집</td><td>접속 IP, 디바이스 정보(모델·OS), 사용 로그, 쿠키</td><td>보안 (로그인 시도 제한), 서비스 품질 개선</td><td>로그인 기록 3개월. 그 외 사용·오류 기록은 목적 달성 시 파기하며 법령상 보존 의무가 있는 기록은 해당 기간에 따릅니다.</td></tr>
+      <tr><td>자동 수집</td><td>접속 IP, 디바이스 정보(모델·OS), 사용 로그, 쿠키</td><td>보안 (로그인 시도 제한), 서비스 품질 개선</td><td>로그인 기록 3개월. 회원별 사용량·실행·생성 기록은 한도 계산·통계·중복 실행 방지·작업 이력 제공을 위해 삭제 요청 또는 탈퇴 시까지 보관하며, 법정 의무가 있는 기록은 해당 기간에 따릅니다. 기간 경과만으로 모든 기록이 자동 삭제되지는 않습니다.</td></tr>
       <tr><td>결제</td><td>앱 스토어 거래 ID (Apple/Google)</td><td>구독 상태 확인·환불 처리</td><td>5년 (전자상거래법)</td></tr>
     </table></div>
 
@@ -144,63 +144,68 @@
       <tr><td>필수</td><td>고객 이름</td><td>예약·매출·CRM 식별</td><td>원장님이 삭제할 때까지</td></tr>
       <tr><td>선택</td><td>전화번호, 생일(MM-DD), 메모, 방문 이력</td><td>예약 리마인드, 재방문 예측</td><td>원장님이 삭제할 때까지</td></tr>
       <tr><td>특이</td><td>회원이 입력한 리뷰 인용 텍스트</td><td>리뷰 관리, 회원이 요청한 AI 홍보 글 초안 생성</td><td>원장님이 삭제할 때까지</td></tr>
-      <tr><td><strong>민감</strong></td><td><strong>시술 관련 건강정보</strong> — 알러지·시술 부작용 등 원장님이 메모에 적는 내용</td><td>시술 안전(재시술 전 주의 환기), AI 비서가 경고로 안내</td><td><strong>기록일로부터 30일 후 자동 만료</strong>(그 전에도 원장님이 삭제 가능)</td></tr>
+      <tr><td><strong>민감</strong></td><td><strong>시술 관련 건강정보</strong> — 알러지·시술 부작용 등 원장님이 메모에 적는 내용</td><td>시술 안전(재시술 전 주의 환기), AI 비서가 경고로 안내</td><td><strong>의료 메모로 분류된 내용은 기록일로부터 30일 후 정리 대상</strong>이 되며 정기 작업에서 의료 내용을 지웁니다. 고객 연결·작성 시각 등 기록 자체가 모두 없어지는 것은 아닙니다. 자동 분류가 놓친 내용은 원장님이 삭제하거나 회사에 요청해야 합니다.</td></tr>
     </table></div>
     <div class="hl">
       <strong>⚠️ 원장님의 의무:</strong> 고객 정보를 잇데이에 입력하기 전, 해당 고객에게
-      (1) 위탁 처리 사실 및 수탁자(와이투두), (2) AI 분석에 사용됨, (3) Google LLC(미국) 국외 이전, <strong>(4) 알러지 등 건강정보를 적는 경우 개인정보보호법 제23조에 따른 <u>민감정보 별도 동의</u></strong>
+      (1) 위탁 처리 사실 및 수탁자(와이투두), (2) AI 분석에 사용됨, (3) 위 외부 AI별 처리 조건과 국외 이전, <strong>(4) 알러지 등 건강정보를 적는 경우 개인정보보호법 제23조에 따른 <u>민감정보 별도 동의</u></strong>
       에 대해 고지·동의를 받아야 합니다. 동의·고지 절차에 관한 문의는 고객센터로 접수할 수 있습니다.
     </div>
 
-    <h2>2. 개인정보의 처리 위탁 및 국외 이전</h2>
-
-    <h3>2-1. 처리 위탁</h3>
+    <h2 id="processors">2. 개인정보의 처리 위탁 및 국외 이전</h2>
+    <p>아래 내용은 2026년 10월 1일 운영 설정과 공급자 공식 안내를 대조한 설명입니다. 회사가 보관하는 기록과 외부 공급자의 처리 자료는 보관·삭제 기준이 서로 다릅니다. 공급자가 운영·보안·법적 의무를 위해 별도로 보관하는 계정·결제·접속 기록까지 아래의 이미지 삭제 시간에 모두 삭제되는 것은 아닙니다.</p>
+    <h3>2-1. 서비스 운영과 연동</h3>
     <p class="policy-table-hint">표는 가로로 밀어 전체 내용을 볼 수 있어요.</p>
-    <div class="policy-table" role="region" tabindex="0" aria-label="개인정보 처리 안내 표 3"><table>
-      <tr><th>위탁받는 자</th><th>위탁 업무</th><th>위탁 정보</th></tr>
-      <tr>
-        <td>Google LLC / Google Cloud (미국·대한민국)</td>
-        <td>AI 캡션·AI 비서·인스타그램 DM 자동응답 생성, 데이터 분석, 서버 운영, 푸시 알림 발송</td>
-        <td>사용자가 AI 기능에 입력한 글·사진, 기능 수행에 필요한 예약·매출·시술 정보, 받은 DM 내용과 최근 대화, 서비스 요청 정보, 기기 푸시 토큰</td>
-      </tr>
-      <tr>
-        <td>Meta Platforms, Inc. (미국/아일랜드)</td>
-        <td>인스타그램 OAuth 로그인·게시물 발행·말투 분석용 기존 게시글 수집</td>
-        <td>인스타 사용자 ID·이름, 공개 게시글, 액세스 토큰</td>
-      </tr>
-      <tr>
-        <td>Supabase, Inc. / Amazon Web Services (대한민국)</td>
-        <td>Postgres 데이터베이스 및 사진 저장소 운영</td>
-        <td>회원·고객·매출·예약 기록과 업로드·생성 사진</td>
-      </tr>
-      <tr>
-        <td>Cloudflare, Inc. (대한민국·미국)</td>
-        <td>Supabase 통신 보호·전송</td>
-        <td>접속 정보와 전송되는 서비스 요청</td>
-      </tr>
-      <tr>
-        <td>Replicate, Inc. / Remove.bg (미국/독일)</td>
-        <td>AI 이미지 처리(배경 제거)</td>
-        <td>사용자가 해당 기능에 제출한 사진. 공급자 보유 기간은 계약·설정 확인 후 본 방침에 확정 고지합니다.</td>
-      </tr>
+    <div class="policy-table" role="region" tabindex="0" aria-label="서비스 운영 수탁자"><table>
+      <tr><th>업체·국가</th><th>업무</th><th>처리 항목</th></tr>
+      <tr><td>Google LLC / Google Cloud · 대한민국·미국</td><td>서버 운영·AI 처리·푸시 알림</td><td>서비스 요청, AI 입력·응답, 기기 푸시 토큰. AI별 조건은 아래 참조</td></tr>
+      <tr><td>Meta Platforms, Inc. · 미국·아일랜드</td><td>인스타그램 연결·게시물 발행·말투 분석용 게시글 수집</td><td>인스타그램 사용자 ID·이름·게시글·액세스 토큰, 사용자가 발행하는 사진·문구</td></tr>
+      <tr><td>Supabase, Inc. / Amazon Web Services · 대한민국</td><td>데이터베이스·사진 저장소</td><td>회원·고객·예약·매출 기록, 업로드·생성 사진</td></tr>
+      <tr><td>Cloudflare, Inc. · 대한민국·미국</td><td>저장소 통신 보호·전송</td><td>접속 정보와 서비스 요청</td></tr>
     </table></div>
+    <p>회원·고객·사진 기록은 제3조의 기간과 삭제 절차를 적용합니다. 인스타그램 연결을 해제하면 이후 수집·발행 요청을 중단하며, 이미 인스타그램에 게시한 콘텐츠는 해당 서비스에서 관리·삭제할 수 있습니다. 각 연동 서비스의 계정·보안 기록은 해당 업체 정책을 따릅니다.</p>
 
-    <h3>2-2. 국외 이전 동의</h3>
-    <p>
-      회원가입의 필수 약관 동의에는 AI 국외 이전 동의를 묶지 않습니다.
-      글·사진이 외부 AI 처리업체로 전송되는 기능을 처음 사용할 때 이전 항목·국가·받는 자·목적·기간과
-      거부 방법을 안내하고 기능별 동의를 받습니다. 동의하지 않으면 해당 AI 기능만 사용할 수 없습니다.
-      현재 앱에 동의 철회 화면이 없는 기능은 contact@itdasy.com 으로 철회를 요청할 수 있습니다.
-    </p>
-
-    <h3>2-3. 가명처리(Pseudonymization)</h3>
-    <p>
-      일부 구조화된 AI 기능은 고객 이름·전화번호를 제외하거나 가명으로 바꿉니다.
-      인스타그램 DM 자동응답은 답장 호칭을 위해 손님이 DM으로 알려준 이름을 사용할 수 있지만 전화번호는 외부 AI로 보내지 않습니다.
-      사용자가 직접 입력한 글이나 사진에는 이름·얼굴 등 식별 정보가 포함될 수 있으며,
-      기능별 동의 후 해당 처리업체에 그대로 전송될 수 있습니다. 전송 전 내용을 확인하고 필요한 경우 가려야 합니다.
-      공급자의 학습 사용 여부와 보유 기간은 적용 계약·프로젝트 설정에 따라 달라질 수 있습니다.
-    </p>
+    <h3 id="ai-providers">2-2. 외부 AI별 전송·보관·학습 조건</h3>
+    <div class="card">
+      <h3>Google Cloud Vertex AI (Gemini)</h3>
+      <p><strong>항목·목적:</strong> 캡션·AI 비서·사진 설명·음성·자료 인식·DM 답장 등 사용자가 선택한 기능에 필요한 글·사진·대화·예약·매출 정보와 생성 응답.</p>
+      <p><strong>위치·기간:</strong> 기본 운영 요청 지역은 대한민국(서울)입니다. Google의 현재 공식 안내에 따르면 남용 감시 대상 프롬프트는 선택 지역에서 최대 90일 보관될 수 있습니다. 검색 기반 응답을 사용하는 경우 입력·문맥·응답의 별도 보관 기간은 30일입니다. 회사는 모든 요청의 무보관(Zero Data Retention)이나 남용 감시 면제를 보장하지 않습니다.</p>
+      <p><strong>학습:</strong> Google Cloud 약관은 사전 허락·지시 없이 고객 데이터를 AI 모델 학습·미세조정에 사용하지 않는다고 정합니다. 남용 감시 자료는 권한 있는 직원이 검토할 수 있습니다.</p>
+      <p><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/learn/abuse-monitoring">Google 남용 감시·보관 안내</a> · <a href="https://cloud.google.com/vertex-ai/generative-ai/docs/vertex-ai-zero-data-retention">Google 데이터 처리 안내</a></p>
+    </div>
+    <div class="card" id="gemini-fallback">
+      <h3>Google Gemini API — 장애 시 대체 경로</h3>
+      <p><strong>현재 처리:</strong> 기본 Vertex AI 요청이 할당량 오류 등으로 실패하면 Gemini API로 전환하는 운영 경로가 있습니다. 대체 프로젝트의 유료 결제가 비활성화되어 있어 무료 서비스 조건을 유료 Vertex AI 조건과 구분해야 합니다.</p>
+      <p><strong>학습·검토:</strong> 무료 서비스 약관은 입력·응답의 Google 제품·머신러닝 기술 개선 사용과 인력 검토를 허용합니다. 따라서 회사는 이 대체 경로에 대해 “학습에 사용하지 않음”을 보장하지 않습니다. Google은 무료 서비스에 개인정보·민감정보·기밀정보를 제출하지 말라고 안내합니다.</p>
+      <p><strong>위치·기간:</strong> 대한민국 내 처리로 한정되지 않으며 미국 등 Google 또는 그 대리인의 시설이 있는 국가에서 처리될 수 있습니다. 남용 감시용 입력·문맥·응답은 55일 보관됩니다. 이 기간을 무료 서비스의 제품 개선용 자료 전체의 삭제 기한으로 해석해서는 안 됩니다.</p>
+      <p>이 조건에 동의하지 않는 경우 AI 기능 사용을 중지하고 contact@itdasy.com 으로 AI 처리 정지·동의 철회를 요청할 수 있습니다. 고객 이름·연락처·건강정보·얼굴 등 식별 자료를 이 경로에 제출하지 마세요.</p>
+      <p><a href="https://ai.google.dev/gemini-api/terms">Gemini API 무료·유료 약관</a> · <a href="https://ai.google.dev/gemini-api/docs/usage-policies">55일 남용 감시 안내</a></p>
+    </div>
+    <div class="card">
+      <h3>Replicate, LLC · 미국</h3>
+      <p><strong>항목·목적:</strong> 배경 제거·화질 보정·부분 제거를 요청한 사진, 편집 마스크, 처리 설정과 결과. API를 통한 이미지 추론을 요청하며 회사는 고객 사진으로 모델 훈련·미세조정을 요청하지 않습니다.</p>
+      <p><strong>기간:</strong> 공식 API 안내의 기본값은 처리 완료 후 1시간 내 입력·출력·파일·처리 로그 삭제입니다. 잇데이에 저장한 결과 사진·캐시는 이 시간과 별개로 제3조에 따라 관리됩니다. 회사는 공급자의 모든 계정·보안 기록이나 백업까지 1시간 내 삭제된다고 보장하지 않습니다.</p>
+      <p><a href="https://replicate.com/docs/topics/predictions/data-retention/">API 자료 보관 안내</a> · <a href="https://replicate.com/privacy">개인정보·연락처(privacy@replicate.com)</a> · <a href="https://replicate.com/terms">이용약관</a></p>
+    </div>
+    <div class="card">
+      <h3>remove.bg / Canva Austria GmbH · 오스트리아(EU)</h3>
+      <p><strong>항목·목적:</strong> 배경 제거용 사진과 결과. Replicate 처리 실패 시 대체 업체로 전송될 수 있습니다. 공식 안내는 EU 내 호스팅을 명시하며 개별 처리 데이터센터의 국가는 공개 안내만으로 확정하지 않습니다.</p>
+      <p><strong>기간·학습:</strong> API 이미지는 요청 처리 직후 삭제한다고 안내합니다. 일반 업로드는 약 1시간 이내 삭제입니다. 이미지의 AI 학습 사용은 별도의 선택적 개선 프로그램 참여에 따라 달라지며, 잇데이의 배경 제거 API 호출은 해당 프로그램에 사진을 기부하는 요청을 하지 않습니다.</p>
+      <p><a href="https://www.remove.bg/help/a/are-my-images-safe">API 이미지 삭제 안내</a> · <a href="https://www.remove.bg/help/a/do-you-use-my-images-to-train-the-ai">학습 사용 안내</a> · <a href="https://www.remove.bg/privacy">개인정보·운영사 연락처</a></p>
+    </div>
+    <div class="card">
+      <h3>fal.ai / Features &amp; Labels, Inc. · 미국</h3>
+      <p><strong>항목·목적:</strong> 배경 생성 설명 문구·이미지 크기·생성 결과. 현재 배경 생성 경로는 원본 시술 사진을 fal.ai에 보내지 않고, 생성된 배경을 잇데이 서버에서 원본 사진과 합성합니다. 설명 문구에 개인정보를 입력하면 그 문구는 전송됩니다.</p>
+      <p><strong>기간:</strong> 공개 데이터 처리 부속약정(DPA)의 기본 보관 기준은 계약 종료까지이며 별도 합의가 있으면 달라집니다. CDN 파일 자동 만료는 계정·요청 설정에 따라 별도로 적용됩니다. 현재 계정의 만료 설정을 확인할 권한이 없어 몇 시간 또는 며칠 후 자동 삭제된다고 보장하지 않습니다. 삭제·처리 정지 요청은 회사가 공급자에 전달하고 처리 상태를 안내합니다.</p>
+      <p><strong>학습:</strong> API 서비스 약관은 고객 콘텐츠로 회사 제품·서비스를 개발·학습하지 않는다고 정하지만, Enterprise Ready 제외 표시가 있는 모델은 예외입니다. 모든 모델에 같은 보호가 적용된다고 보장하지 않습니다.</p>
+      <p><a href="https://fal.ai/legal/data-processing-addendum">DPA·보관 조건</a> · <a href="https://fal.ai/legal/api-services">API·학습 조건</a> · <a href="https://fal.ai/docs/platform-apis/v1/storage/settings/get">파일 만료 설정 안내</a> · support@fal.ai</p>
+    </div>
+    <h3>2-3. 전송 시점·방법·거부 및 철회</h3>
+    <p>외부 AI 전송은 해당 기능 실행 또는 사용자가 켠 자동응답 처리 시점에 서버의 암호화된 HTTPS API로 이루어집니다. 전송 항목·받는 업체·목적·보관 조건은 위 설명과 기능 안내를 함께 확인하세요. AI 동의는 회원가입 필수 약관과 별도로 관리하며, 앱 홈·설정의 AI 사용 설정에서 선택할 수 있습니다. 사진 편집의 기능별 안내도 확인해야 합니다.</p>
+    <p>AI 전송을 거부해도 고객·예약·매출 관리 등 기본 기능은 이용할 수 있습니다. 앱에서 철회할 수 없는 항목은 contact@itdasy.com 으로 요청하세요. 이미 전송된 자료는 업체별 위 보관·삭제 절차와 법정 의무를 따르며, 철회 즉시 모든 외부 자료가 삭제된다고 보장하지 않습니다.</p>
+    <h3>2-4. 식별정보와 공급자 계약의 범위</h3>
+    <p>일부 구조화된 AI 기능은 고객 이름·전화번호를 제외하거나 가명으로 바꿉니다. DM 답장에는 호칭용 이름이 포함될 수 있고, 사용자가 직접 입력한 글·사진·메모에는 이름·얼굴·건강정보 등이 포함될 수 있습니다. 가명처리된 일부 기능을 근거로 모든 AI 입력이 익명이라고 주장하지 않습니다.</p>
+    <p>위 공개 약관·DPA 설명은 별도 기업 계약 체결, 모든 국외이전 동의의 적법성, 공급자 계정별 무보관 승인 또는 해외 서비스 제공 요건의 충족을 확인했다는 뜻이 아닙니다. 특정 이전 국가·계약 보호조치가 필요한 경우 전송 전에 contact@itdasy.com 으로 문의해 주세요. 이 방침의 설명 보완만으로 새로운 수집·전송에 대한 동의를 받은 것으로 취급하지 않습니다.</p>
 
     <h2>3. 개인정보의 보유·이용 기간 및 파기</h2>
     <ul>
@@ -269,7 +274,7 @@
 
     <h2 id="ai-processing">6-의2. 자동화된 의사결정 (AI 처리 고지)</h2>
     <p>
-      본 서비스는 다음 기능에서 Google AI, Replicate, Remove.bg 등 외부 인공지능·이미지 처리 서비스를 활용합니다.
+      본 서비스는 다음 기능에서 Google AI, Replicate, remove.bg, fal.ai 등 외부 인공지능·이미지 처리 서비스를 활용합니다. 공급자별 전송·학습·보관 조건은 <a href="#ai-providers">제2조</a>를 확인하세요.
       이는 <strong>단순 보조·추천</strong>이며, 법률적·재정적 효과를 직접 발생시키는 결정(예: 자동 결제, 자동 해지)은 하지 않습니다.
     </p>
     <ul>
@@ -314,7 +319,7 @@
     <ul>
       <li>유출을 인지한 시점으로부터 <strong>72시간 이내</strong> 정보주체에게 이메일·앱 내 공지로 통지</li>
       <li>통지 내용: 유출된 항목·시점·경위, 피해 최소화 방법, 회사의 대응 조치, 신고 접수 기관 연락처</li>
-      <li>1,000명 이상 유출 시 개인정보보호위원회·한국인터넷진흥원(KISA)에 신고</li>
+      <li>1,000명 이상 유출, 민감정보·고유식별정보 유출 또는 외부 불법 접근에 의한 유출 등 법정 신고 대상은 72시간 이내 개인정보보호위원회·한국인터넷진흥원(KISA)에 신고. 법령상 예외와 추가 확인 사항은 해당 절차에 따라 처리</li>
       <li>피해 발생 시 이용자는 <strong>민사소송·손해배상 청구</strong>가 가능하며, 회사는 고의·중과실이 없음을 입증하지 못할 경우 손해를 배상합니다(보호법 제39조).</li>
     </ul>
 
@@ -328,6 +333,7 @@
     <p class="policy-table-hint">표는 가로로 밀어 전체 내용을 볼 수 있어요.</p>
     <div class="policy-table" role="region" tabindex="0" aria-label="개인정보 처리 안내 표 5"><table>
       <tr><th>버전</th><th>시행일</th><th>주요 변경 내용</th></tr>
+      <tr><td>v1.4</td><td>2026-10-01</td><td>실제 AI 대체 경로, 공급자별 보관·학습 조건, fal.ai 전송 범위, 사용 기록과 유출 신고 기준을 정정. 새로운 수집·이전에 대한 동의로 취급하지 않음</td></tr>
       <tr><td>v1.0</td><td>2026-04-22</td><td>최초 시행 — PIPA 준수 전면 방침 수립, AI 처리·국외이전·가명처리 고지, 자동화된 의사결정 조항 신설, 쿠키 최소화, 유출 통지 절차 명문화, 앱 내 탈퇴·데이터 이동권 보장</td></tr>
       <tr><td>v1.3</td><td>2026-10-01</td><td>홍보 사이트 접속 처리, 동의·권리 행사·기기 자료 삭제 안내와 보유 기간 설명 정정. 새로운 수집 목적·항목을 추가하지 않음</td></tr>
       <tr><td>v1.2</td><td>2026-09-15</td><td>실제 운영 환경·AI 처리·동의·삭제 상태에 맞춰 위탁사와 설명을 정정</td></tr>
@@ -336,7 +342,7 @@
     <h2>11. 해외 거주 이용자 고지 (International Notices)</h2>
     <p>
       잇데이는 해외 사용자도 이용 가능하며, 다음 국가·지역 거주자는 해당 법령에 따른 추가 권리를 가집니다.
-      상세 조항은 <strong><a href="privacy-en.html">English Privacy Policy (v1.3)</a></strong> 의 Section 11~19 에 명시되어 있습니다.
+      상세 조항은 <strong><a href="privacy-en.html">English Privacy Policy (v1.4)</a></strong> 의 Section 11~19 에 명시되어 있습니다.
     </p>
 
     <h3>11-1. EU/EEA·UK 거주자 (GDPR / UK GDPR)</h3>
@@ -377,14 +383,14 @@
     <h3>11-5. 쿠키·추적 (ePrivacy)</h3>
     <p>
       제3자 광고·추적 쿠키·광고 식별자 일체 사용하지 않음. 크래시 리포팅(Sentry) 등 선택적 텔레메트리는
-      EU/EEA/UK 사용자에 한해 최초 실행 시 동의 배너로 선택권 제공하며, 거부해도 핵심 기능 이용 가능.
+      앱의 오류 진단·개인정보 설정에서 선택권을 제공하며, 거부해도 핵심 기능 이용 가능. 서버 보안·서비스 운영 기록은 선택적 기기 진단과 구분합니다.
     </p>
 
     <div class="meta" style="margin-top:48px;">
       <strong>언어 우선 순위:</strong> 본 방침의 원문은 한국어이며, 영문 및 기타 번역본은 참고용입니다.
       해석에 차이가 있을 경우 한국어본이 우선합니다. 단, GDPR/CCPA 등 해외 법령 해석에 필요한 경우
       해당 관할 법령의 원어 텍스트가 우선합니다.<br>
-      <strong>English version:</strong> <a href="privacy-en.html">English Privacy Policy (v1.3)</a> — international privacy notices, subject to applicable law and verified transfer safeguards.
+      <strong>English version:</strong> <a href="privacy-en.html">English Privacy Policy (v1.4)</a> — international privacy notices, subject to applicable law and verified transfer safeguards.
     </div>
   </div>
 </body>
