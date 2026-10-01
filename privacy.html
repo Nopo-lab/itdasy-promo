@@ -101,6 +101,7 @@
     th, td { overflow-wrap: anywhere; }
     :focus-visible { outline: 3px solid #a52f42; outline-offset: 4px; }
   </style>
+<link rel="stylesheet" href="policy-design.css">
 </head>
 <body>
   <div class="wrap">
@@ -124,25 +125,27 @@
     <h2>1. 처리하는 개인정보 항목 및 목적</h2>
 
     <h3>1-1. 회원(뷰티샵 원장님) 개인정보</h3>
-    <table>
+    <p class="policy-table-hint">표는 가로로 밀어 전체 내용을 볼 수 있어요.</p>
+    <div class="policy-table" role="region" tabindex="0" aria-label="개인정보 처리 안내 표 1"><table>
       <tr><th>구분</th><th>항목</th><th>수집 목적</th><th>보유 기간</th></tr>
       <tr><td>필수</td><td>이메일, 비밀번호(암호화), 이름</td><td>회원 식별·로그인·고객센터 응대</td><td>회원 탈퇴 시까지</td></tr>
       <tr><td>선택</td><td>샵 이름, 주소, 연락처, 인스타그램 핸들, 업종</td><td>AI 캡션·해시태그 개인화, 검색 노출</td><td>회원 탈퇴 시까지</td></tr>
       <tr><td>자동 수집</td><td>접속 IP, 디바이스 정보(모델·OS), 사용 로그, 쿠키</td><td>보안 (로그인 시도 제한), 서비스 품질 개선</td><td>로그인 기록 3개월. 그 외 사용·오류 기록은 목적 달성 시 파기하며 법령상 보존 의무가 있는 기록은 해당 기간에 따릅니다.</td></tr>
       <tr><td>결제</td><td>앱 스토어 거래 ID (Apple/Google)</td><td>구독 상태 확인·환불 처리</td><td>5년 (전자상거래법)</td></tr>
-    </table>
+    </table></div>
 
     <h3>1-2. 원장님의 "고객" 개인정보 (회원이 입력한 제3자 정보)</h3>
     <p>
       원장님이 자신의 뷰티샵 고객 관리를 위해 입력하는 정보로, 회사는 이를 <strong>원장님 개인정보처리자의 위탁 처리</strong>로 취급합니다.
     </p>
-    <table>
+    <p class="policy-table-hint">표는 가로로 밀어 전체 내용을 볼 수 있어요.</p>
+    <div class="policy-table" role="region" tabindex="0" aria-label="개인정보 처리 안내 표 2"><table>
       <tr><th>구분</th><th>항목</th><th>목적</th><th>보유 기간</th></tr>
       <tr><td>필수</td><td>고객 이름</td><td>예약·매출·CRM 식별</td><td>원장님이 삭제할 때까지</td></tr>
       <tr><td>선택</td><td>전화번호, 생일(MM-DD), 메모, 방문 이력</td><td>예약 리마인드, 재방문 예측</td><td>원장님이 삭제할 때까지</td></tr>
       <tr><td>특이</td><td>회원이 입력한 리뷰 인용 텍스트</td><td>리뷰 관리, 회원이 요청한 AI 홍보 글 초안 생성</td><td>원장님이 삭제할 때까지</td></tr>
       <tr><td><strong>민감</strong></td><td><strong>시술 관련 건강정보</strong> — 알러지·시술 부작용 등 원장님이 메모에 적는 내용</td><td>시술 안전(재시술 전 주의 환기), AI 비서가 경고로 안내</td><td><strong>기록일로부터 30일 후 자동 만료</strong>(그 전에도 원장님이 삭제 가능)</td></tr>
-    </table>
+    </table></div>
     <div class="hl">
       <strong>⚠️ 원장님의 의무:</strong> 고객 정보를 잇데이에 입력하기 전, 해당 고객에게
       (1) 위탁 처리 사실 및 수탁자(와이투두), (2) AI 분석에 사용됨, (3) Google LLC(미국) 국외 이전, <strong>(4) 알러지 등 건강정보를 적는 경우 개인정보보호법 제23조에 따른 <u>민감정보 별도 동의</u></strong>
@@ -152,7 +155,8 @@
     <h2>2. 개인정보의 처리 위탁 및 국외 이전</h2>
 
     <h3>2-1. 처리 위탁</h3>
-    <table>
+    <p class="policy-table-hint">표는 가로로 밀어 전체 내용을 볼 수 있어요.</p>
+    <div class="policy-table" role="region" tabindex="0" aria-label="개인정보 처리 안내 표 3"><table>
       <tr><th>위탁받는 자</th><th>위탁 업무</th><th>위탁 정보</th></tr>
       <tr>
         <td>Google LLC / Google Cloud (미국·대한민국)</td>
@@ -179,7 +183,7 @@
         <td>AI 이미지 처리(배경 제거)</td>
         <td>사용자가 해당 기능에 제출한 사진. 공급자 보유 기간은 계약·설정 확인 후 본 방침에 확정 고지합니다.</td>
       </tr>
-    </table>
+    </table></div>
 
     <h3>2-2. 국외 이전 동의</h3>
     <p>
@@ -249,14 +253,15 @@
       서비스는 <strong>제3자 광고·추적 쿠키·크로스 사이트 추적을 일체 사용하지 않습니다.</strong>
       다음의 자체 저장소만 사용합니다:
     </p>
-    <table>
+    <p class="policy-table-hint">표는 가로로 밀어 전체 내용을 볼 수 있어요.</p>
+    <div class="policy-table" role="region" tabindex="0" aria-label="개인정보 처리 안내 표 4"><table>
       <tr><th>저장소</th><th>용도</th><th>보관 기간</th><th>삭제 방법</th></tr>
       <tr><td>환경별 로그인 저장값</td><td>로그인 세션 유지</td><td>서버 로그인 표 최대 24시간</td><td>로그아웃·탈퇴 또는 앱 초기화</td></tr>
       <tr><td>localStorage: itdasy_consented*</td><td>약관·국외이전 동의 기록</td><td>회원 탈퇴 시</td><td>앱 초기화</td></tr>
       <tr><td>localStorage: theme, fontSize</td><td>다크모드·글씨크기 설정</td><td>영구 (기기 한정)</td><td>앱 초기화</td></tr>
       <tr><td>IndexedDB / Cache API</td><td>작성 중 작업과 오프라인 접속용 자료</td><td>항목별 설정 기간 또는 사용자가 삭제할 때까지</td><td>로그아웃·탈퇴·앱 초기화 또는 브라우저 설정</td></tr>
       <tr><td>Sentry 오류 로그</td><td>앱 오류 추적</td><td>운영 설정에 따른 기간</td><td>자동 폐기 또는 이메일 삭제 요청</td></tr>
-    </table>
+    </table></div>
     <p>
       사용자는 브라우저(또는 OS)의 저장소 삭제 기능을 통해 언제든 전부 지울 수 있으며,
       삭제 시 재로그인이 필요할 수 있고, 기기에만 저장된 작업·설정·오프라인 자료는 복구되지 않을 수 있습니다. 필요한 자료를 먼저 저장해 주세요.
@@ -320,12 +325,13 @@
       이용자의 권리에 불리한 변경은 별도 재동의를 요청합니다.
       이용자가 개정된 내용에 동의하지 않을 경우 회원 탈퇴가 가능합니다.
     </p>
-    <table>
+    <p class="policy-table-hint">표는 가로로 밀어 전체 내용을 볼 수 있어요.</p>
+    <div class="policy-table" role="region" tabindex="0" aria-label="개인정보 처리 안내 표 5"><table>
       <tr><th>버전</th><th>시행일</th><th>주요 변경 내용</th></tr>
       <tr><td>v1.0</td><td>2026-04-22</td><td>최초 시행 — PIPA 준수 전면 방침 수립, AI 처리·국외이전·가명처리 고지, 자동화된 의사결정 조항 신설, 쿠키 최소화, 유출 통지 절차 명문화, 앱 내 탈퇴·데이터 이동권 보장</td></tr>
       <tr><td>v1.3</td><td>2026-10-01</td><td>홍보 사이트 접속 처리, 동의·권리 행사·기기 자료 삭제 안내와 보유 기간 설명 정정. 새로운 수집 목적·항목을 추가하지 않음</td></tr>
       <tr><td>v1.2</td><td>2026-09-15</td><td>실제 운영 환경·AI 처리·동의·삭제 상태에 맞춰 위탁사와 설명을 정정</td></tr>
-    </table>
+    </table></div>
 
     <h2>11. 해외 거주 이용자 고지 (International Notices)</h2>
     <p>
@@ -350,14 +356,15 @@
     </ul>
 
     <h3>11-3. 기타 국가</h3>
-    <table>
+    <p class="policy-table-hint">표는 가로로 밀어 전체 내용을 볼 수 있어요.</p>
+    <div class="policy-table" role="region" tabindex="0" aria-label="개인정보 처리 안내 표 6"><table>
       <tr><th>국가/지역</th><th>근거 법령</th><th>감독기관</th></tr>
       <tr><td>브라질</td><td>LGPD (Law 13.709/2018)</td><td>ANPD</td></tr>
       <tr><td>일본</td><td>APPI (個人情報保護法)</td><td>PPC</td></tr>
       <tr><td>캐나다</td><td>PIPEDA + 지방법(Quebec Law 25, Alberta/BC PIPA)</td><td>OPC</td></tr>
       <tr><td>호주</td><td>Privacy Act 1988 (APPs)</td><td>OAIC</td></tr>
       <tr><td>미국 기타 州</td><td>Virginia VCDPA, Colorado CPA, Connecticut CTDPA, Utah UCPA 등</td><td>각 州 검찰청</td></tr>
-    </table>
+    </table></div>
 
     <h3>11-4. 아동 개인정보 (국제 기준)</h3>
     <ul>
