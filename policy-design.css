@@ -1,0 +1,25 @@
+/* Shared reading layout for the public policies. */
+body { background: #f7f5f9; color: #393040; font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; line-height: 1.9; letter-spacing: -.015em; }
+.wrap, main { max-width: 900px; margin: 32px auto; padding: 38px 44px 72px; background: #fff; border: 1px solid #e9e1ed; border-radius: 24px; }
+h1 { font-size: clamp(25px, 4vw, 32px); font-weight: 750; line-height: 1.5; color: #44324d; margin-top: 24px; }
+h2 { font-size: 19px; color: #655070; border-bottom: 1px solid #e6d8eb; padding-bottom: 10px; margin-top: 38px; }
+h3 { color: #806187; font-size: 15px; }
+.sub, .muted { color: #8b7992; }
+.meta { background: #f5f0f8; color: #88728f; border-radius: 14px; line-height: 1.9; padding: 18px 20px; }
+a { color: #996080; text-underline-offset: 4px; }
+nav { display: flex; gap: 8px 14px; flex-wrap: wrap; font-size: 12px; line-height: 1.8; color: #c8b7ce; margin-bottom: 28px; }
+nav a { padding: 4px 0; }
+.back { color: #92769a; font-size: 12px; margin-bottom: 12px; }
+th, td { border-color: #ece5f0; padding: 13px 12px; font-size: 12px; line-height: 1.9; }
+th { background: #f6f1f9; color: #806187; }
+.policy-table { overflow-x: auto; border-radius: 12px; margin-block: 16px; border: 1px solid #ece5f0; }
+.policy-table table { margin: 0; min-width: 620px; border: 0; }
+.policy-table-hint { display: none; }
+.hl { background: #faf2f7; border-color: #c791b0; color: #886781; border-radius: 10px; }
+.card { border-color: #e9deee; border-radius: 18px; background: #fdfbfd; padding: 22px; }
+.card h2, .card h3 { margin-top: 0; }
+.notice { border-left-color: #b27ca5; background: #f7f0f9; }
+.button { background: #8e6499; color: #fff; border-radius: 12px; font-size: 13px; }
+:focus-visible { outline: 3px solid #98689b; outline-offset: 4px; }
+@media (max-width: 700px) { .wrap, main { margin: 0; border: 0; border-radius: 0; padding: 28px 20px 60px; font-size: 13px; } h2 { font-size: 17px; } .meta { font-size: 12px; padding: 16px; } th, td { padding: 11px 10px; font-size: 12px; } .policy-table-hint { display: block; color: #86728f; font-size: 11px; margin: 18px 0 6px; } nav { font-size: 11px; } .card { padding: 18px; } }
+@media print { body { background: #fff; } .wrap, main { border: 0; margin: 0; padding: 0; } nav, .back, .policy-table-hint { display: none; } .card, tr { break-inside: avoid; } .policy-table { overflow: visible; } .policy-table table { min-width: 0; } a { color: #444; } }
