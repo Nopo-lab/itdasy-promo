@@ -58,7 +58,7 @@
       <tr><th>Type</th><th>Items</th><th>Purpose</th><th>Retention</th></tr>
       <tr><td>Required</td><td>Email, hashed password, name</td><td>Authentication, support</td><td>Until account deletion</td></tr>
       <tr><td>Optional</td><td>Shop name, address, phone, Instagram handle, industry</td><td>AI caption personalization</td><td>Until account deletion</td></tr>
-      <tr><td>Auto-collected</td><td>IP, device info (model/OS), usage logs, cookies</td><td>Security, quality improvement</td><td>Login logs: 3 months. Other usage and error records are deleted when their purpose is fulfilled, subject to statutory retention.</td></tr>
+      <tr><td>Auto-collected</td><td>IP, device info (model/OS), usage logs, cookies</td><td>Security, quality improvement</td><td>Login logs: 3 months. Member usage, action and generation records support limits, statistics, deduplication and work history until deletion request or account deletion, subject to statutory retention. Not every record automatically expires by age.</td></tr>
       <tr><td>Billing</td><td>App Store/Play transaction IDs</td><td>Subscription status, refunds</td><td>5 years (e-commerce law)</td></tr>
     </table></div>
 
@@ -68,24 +68,59 @@
       Salon owners are responsible for obtaining valid consent from their end-customers before entering data into Itdasy.
     </p>
 
-    <p>Customer names identify bookings and records. Optional customer phone numbers, birthdays, notes and visit history support customer management. Review text entered by an owner is used for review management and requested caption drafts. Health notes such as allergies and treatment reactions require separate explicit consent from the customer and expire automatically 30 days after recording. Other customer records remain until owner deletion or account deletion, subject to statutory retention.</p>
+    <p>Customer names identify bookings and records. Optional customer phone numbers, birthdays, notes and visit history support customer management. Review text entered by an owner is used for review management and requested caption drafts. Health notes such as allergies and treatment reactions require separate explicit consent from the customer and are eligible for scheduled content removal after 30 days when classified as medical notes. Customer linkage and record timestamps can remain. Automated classification may miss a note; owners can delete it or request removal. Other customer records remain until owner deletion or account deletion, subject to statutory retention.</p>
 
-    <h2>2. Third-Party Entrustment and International Transfer</h2>
+    <h2 id="processors">2. Processors and International Transfers</h2>
+    <p>This disclosure compares the operating configuration with official provider information as of October 1, 2026. Data retained by Itdasy and data processed by providers have separate deletion rules. Image-deletion periods below do not apply to every provider account, billing, security or backup record.</p>
     <p class="policy-table-hint">Swipe horizontally to read the full table.</p>
-    <div class="policy-table" role="region" tabindex="0" aria-label="Privacy information table 2"><table>
-      <tr><th>Recipient</th><th>Country</th><th>Purpose</th><th>Data</th></tr>
-      <tr><td>Google LLC / Google Cloud</td><td>United States / Republic of Korea</td><td>AI generation, Instagram DM reply generation, analytics, server operations, and push delivery</td><td>Text or images submitted to AI features, booking/revenue/service data needed for the requested feature, received DM content and recent context, service-request data, and device push tokens</td></tr>
-      <tr><td>Meta Platforms, Inc.</td><td>United States / Ireland</td><td>Instagram OAuth, post publishing, tone analysis</td><td>Instagram user ID, public posts, access tokens</td></tr>
-      <tr><td>Supabase, Inc. / Amazon Web Services</td><td>Republic of Korea</td><td>Managed Postgres database and object storage</td><td>Account, customer, booking, revenue, and uploaded/generated image data</td></tr>
-      <tr><td>Cloudflare, Inc.</td><td>Republic of Korea / United States</td><td>Protection and transport for Supabase traffic</td><td>Connection data and service requests in transit</td></tr>
-      <tr><td>Replicate, Inc. / Remove.bg</td><td>United States / Germany</td><td>AI image processing</td><td>Photos submitted to the feature; provider retention requires contract and configuration verification</td></tr>
+    <div class="policy-table" role="region" tabindex="0" aria-label="Service processors"><table>
+      <tr><th>Provider / location</th><th>Purpose</th><th>Data</th></tr>
+      <tr><td>Google LLC / Google Cloud · Korea / US</td><td>Hosting, AI, push delivery</td><td>Service requests, AI inputs/responses, device push tokens; AI-specific terms below</td></tr>
+      <tr><td>Meta Platforms, Inc. · US / Ireland</td><td>Instagram connection, publishing, style analysis</td><td>User ID/name, posts, access tokens, photos and captions submitted for publication</td></tr>
+      <tr><td>Supabase, Inc. / Amazon Web Services · Korea</td><td>Database and photo storage</td><td>Account, customer, booking, revenue and photo records</td></tr>
+      <tr><td>Cloudflare, Inc. · Korea / US</td><td>Storage traffic protection and transport</td><td>Connection data and service requests</td></tr>
     </table></div>
-
-    <h3>2-1. Consent for cross-border transfer</h3>
-    <p>AI international-transfer consent is not bundled into the required signup checkbox. Before a feature sends text or an image to an external AI processor, the app provides a feature-specific notice and consent step. Where an in-app withdrawal control is not available, users may request withdrawal at contact@itdasy.com.</p>
-
-    <h3>2-2. Pseudonymization</h3>
-    <p>Some structured AI features remove or replace customer identifiers. Instagram DM auto-reply may use a name supplied in the DM to address the customer, but phone numbers are not sent to the external AI service. Free-form text and photos can contain identifying information and may be transferred as submitted after feature-specific consent. Provider training and retention depend on the applicable contract and project configuration.</p>
+    <p>Stored records follow Section 3. Disconnecting Instagram stops subsequent collection and publishing requests. Already published content can be managed in Instagram. Providers apply their own policies to account and security records.</p>
+    <h3 id="ai-providers">2-1. AI-specific transfers, retention and training</h3>
+    <div class="card">
+      <h3>Google Cloud Vertex AI (Gemini)</h3>
+      <p><strong>Data / purpose:</strong> Text, photos, conversations, booking/revenue context and responses needed for selected caption, assistant, image-description, voice, recognition and DM features.</p>
+      <p><strong>Location / retention:</strong> The primary request region is Seoul, Korea. Current Google guidance permits abuse-monitoring prompt retention for up to 90 days in the selected region. Search grounding has a separate 30-day retention period. We do not guarantee zero retention or an abuse-monitoring exemption.</p>
+      <p><strong>Training:</strong> Google Cloud terms restrict model training or fine-tuning with customer data without prior permission or instruction. Authorized staff may review abuse-monitoring material.</p>
+      <p><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/learn/abuse-monitoring">Abuse monitoring</a> · <a href="https://cloud.google.com/vertex-ai/generative-ai/docs/vertex-ai-zero-data-retention">Data governance</a></p>
+    </div>
+    <div class="card" id="gemini-fallback">
+      <h3>Google Gemini API — failure fallback</h3>
+      <p><strong>Current route:</strong> Vertex AI quota or similar failures can switch requests to Gemini API. Billing is disabled for the fallback project, so unpaid-service terms must be distinguished from paid Vertex AI terms.</p>
+      <p><strong>Training / review:</strong> Unpaid-service terms permit use of inputs and responses to improve Google products and machine-learning technologies, and human review. We cannot promise no training use for this route. Google instructs users not to submit personal, sensitive or confidential information to unpaid services.</p>
+      <p><strong>Location / retention:</strong> Processing is not limited to Korea; it may take place in the US and other countries where Google or its agents operate. Abuse-monitoring prompts, context and responses are retained for 55 days. This is not a deletion deadline for all product-improvement data under unpaid terms.</p>
+      <p>If you do not accept these terms, stop using AI features and request AI processing suspension or consent withdrawal at contact@itdasy.com. Do not submit customer names, contact details, health information or identifying photos to this route.</p>
+      <p><a href="https://ai.google.dev/gemini-api/terms">Paid / unpaid API terms</a> · <a href="https://ai.google.dev/gemini-api/docs/usage-policies">55-day abuse monitoring</a></p>
+    </div>
+    <div class="card">
+      <h3>Replicate, LLC · US</h3>
+      <p><strong>Data / purpose:</strong> Photos, edit masks, settings and results for background removal, enhancement or inpainting. Itdasy requests inference, not training or fine-tuning on customer photos.</p>
+      <p><strong>Retention:</strong> The documented API default deletes prediction inputs, outputs, files and logs within one hour after completion. Results and caches saved by Itdasy follow Section 3. This is not a one-hour deletion guarantee for all provider account/security records or backups.</p>
+      <p><a href="https://replicate.com/docs/topics/predictions/data-retention/">API retention</a> · <a href="https://replicate.com/privacy">Privacy / privacy@replicate.com</a> · <a href="https://replicate.com/terms">Terms</a></p>
+    </div>
+    <div class="card">
+      <h3>remove.bg / Canva Austria GmbH · Austria (EU)</h3>
+      <p><strong>Data / purpose:</strong> Background-removal photos and results, including fallback after Replicate failure. The provider states EU hosting; the exact processing datacenter country is not established by that statement alone.</p>
+      <p><strong>Retention / training:</strong> The provider states API images are deleted immediately after processing; ordinary uploads within about one hour. Training contribution is a separate optional improvement program. Itdasy's removal API calls do not donate images to that program.</p>
+      <p><a href="https://www.remove.bg/help/a/are-my-images-safe">API deletion</a> · <a href="https://www.remove.bg/help/a/do-you-use-my-images-to-train-the-ai">Training</a> · <a href="https://www.remove.bg/privacy">Privacy / contact</a></p>
+    </div>
+    <div class="card">
+      <h3>fal.ai / Features &amp; Labels, Inc. · US</h3>
+      <p><strong>Data / purpose:</strong> Background-description prompt, image dimensions and generated results. The current route does not send the original treatment photo to fal.ai; Itdasy composites the generated background with that photo on its server. Personal information typed in the prompt is transmitted.</p>
+      <p><strong>Retention:</strong> The public DPA's baseline is retention until contract termination unless otherwise agreed. CDN file expiry also depends on account/request settings. Access to verify this account's expiry settings was unavailable; we do not promise automatic deletion after a fixed number of hours or days. We forward deletion/suspension requests and communicate their status.</p>
+      <p><strong>Training:</strong> API terms restrict use of client content to develop or train provider products, with exceptions for models designated as excluded from Enterprise Ready protection. We do not guarantee identical safeguards for every model.</p>
+      <p><a href="https://fal.ai/legal/data-processing-addendum">DPA / retention</a> · <a href="https://fal.ai/legal/api-services">API / training terms</a> · <a href="https://fal.ai/docs/platform-apis/v1/storage/settings/get">Expiry settings</a> · support@fal.ai</p>
+    </div>
+    <h3>2-2. Timing, method, refusal and withdrawal</h3>
+    <p>Transfers occur when a selected AI feature or enabled auto-reply runs, through encrypted server-side HTTPS APIs. Required signup terms and AI choices are separate. AI choices are available through app Home/Settings, with additional notices for photo features. Declining AI does not prevent core customer, booking or revenue management. Where withdrawal is unavailable in-app, email contact@itdasy.com. Previously transmitted data follows provider retention/deletion rules and legal obligations; withdrawal does not instantly erase every external copy.</p>
+    <h3>2-3. Identifiers and contractual scope</h3>
+    <p>Some structured features remove or replace identifiers. DM replies can use a supplied name, and free-form text, photos and notes may contain names, faces or health information. We do not claim every AI input is anonymous.</p>
+    <p>Descriptions of public terms and DPAs do not certify a separately executed enterprise contract, valid consent for every transfer, an account-specific zero-retention approval, or readiness to offer services in every jurisdiction. Contact us before transfer if a specific country or safeguard is required. Clarifying this notice does not establish consent for a new collection or transfer.</p>
 
     <h2>3. Retention and Deletion</h2>
     <ul>
@@ -122,7 +157,7 @@
 
     <h2 id="ai-processing">6-bis. Automated Decision-Making (AI Disclosure)</h2>
     <p>
-      The Service uses Google AI, Replicate, Remove.bg, and related processors for caption suggestions, assistant drafts, image processing, and other optional features. These are <strong>advisory only</strong> and do not produce legal or financial effects without user confirmation.
+      The Service uses Google AI, Replicate, remove.bg, fal.ai, and related processors for caption suggestions, assistant drafts, image processing, and other optional features. Provider-specific transfer, retention and training conditions are described in <a href="#ai-providers">Section 2</a>. These are <strong>advisory only</strong> and do not produce legal or financial effects without user confirmation.
       Users may decline feature-specific transfers or request consent withdrawal at contact@itdasy.com. Inappropriate AI output can be reported via the in-app 🚩 button; we review reports and communicate necessary follow-up.
     </p>
 
@@ -137,7 +172,7 @@
     <p>The Service is not intended for children under 14. If we learn that a child under 14 has registered, we will immediately delete the account and all related data. Registration by children under 14 is not permitted.</p>
 
     <h2>9. Data Breach Notification</h2>
-    <p>In the event of a data breach, affected users will be notified via email and in-app notice within 72 hours, including details of what was leaked, mitigation steps, and contact information for reporting. Breaches involving 1,000+ users are reported to the Personal Information Protection Commission and KISA.</p>
+    <p>In the event of a data breach, affected users will be notified via email and in-app notice within 72 hours, including details of what was leaked, mitigation steps, and contact information for reporting. Reportable incidents include 1,000+ affected individuals, sensitive or unique-identification data, and unlawful external access. Reports are made to the Personal Information Protection Commission/KISA within 72 hours, subject to statutory exceptions and supplementary reporting.</p>
 
     <h2>10. Changes to this Policy</h2>
     <p>Material changes (new entrustment, expanded collection, longer retention) will be notified at least 30 days before taking effect, and re-consent will be requested where applicable. Other changes will be notified at least 7 days in advance via in-app announcement and email.</p>
@@ -145,6 +180,7 @@
     <p class="policy-table-hint">Swipe horizontally to read the full table.</p>
     <div class="policy-table" role="region" tabindex="0" aria-label="Privacy information table 3"><table>
       <tr><th>Version</th><th>Effective</th><th>Changes</th></tr>
+      <tr><td>v1.4</td><td>2026-10-01</td><td>Corrected AI fallback, provider retention/training, fal.ai data scope, operational record retention and breach reporting. Does not establish new collection/transfer consent.</td></tr>
       <tr><td>v1.0</td><td>2026-04-22</td><td>Initial publication — full PIPA compliance framework</td></tr>
       <tr><td>v1.1</td><td>2026-04-22</td><td>Added GDPR (EU/UK), CCPA/CPRA (California), LGPD (Brazil), APPI (Japan), PIPEDA (Canada), Australia Privacy Act regional notices</td></tr>
       <tr><td>v1.2</td><td>2026-10-01</td><td>Corrected processors, AI consent, deletion status, and security descriptions to match the current system</td></tr>
@@ -156,7 +192,7 @@
     <ul>
       <li><strong>Controller:</strong> Y2do (Business Registration No. 179-36-01681), Republic of Korea</li>
       <li><strong>Contact / DPO-equivalent:</strong> <a href="mailto:contact@itdasy.com">contact@itdasy.com</a></li>
-      <li><strong>EU Representative (Art. 27):</strong> We process personal data on a limited scale targeting professional beauty salon operators. If our EU data subject volume exceeds the Art. 27 threshold, we will formally designate a representative and update this Policy. Until then, EU/EEA residents may contact us directly at the email above for any GDPR matter.</li>
+      <li><strong>EU Representative (Art. 27):</strong> Representative requirements depend on the scope, nature and risk of processing, not a single user-count threshold. This notice does not claim an exemption or that a representative has been appointed. Privacy enquiries may be sent to the contact above.</li>
     </ul>
 
     <h3>11-2. Legal Bases for Processing (Art. 6)</h3>
@@ -165,11 +201,11 @@
       <tr><th>Purpose</th><th>Legal Basis</th></tr>
       <tr><td>Account creation, authentication, service delivery</td><td>Art. 6(1)(b) — Contract performance</td></tr>
       <tr><td>Billing (IAP transaction records)</td><td>Art. 6(1)(b) Contract; Art. 6(1)(c) Legal obligation (tax)</td></tr>
-      <tr><td>AI processing via Google Gemini (captions, assistant)</td><td>Art. 6(1)(a) — Explicit opt-in consent at signup</td></tr>
-      <tr><td>Cross-border data transfer to US providers</td><td>Art. 6(1)(a) Consent + Art. 46 SCCs</td></tr>
+      <tr><td>AI processing via Google Gemini (captions, assistant)</td><td>Art. 6(1)(a) — Separate AI choice before use; not bundled into required signup terms</td></tr>
+      <tr><td>Cross-border data transfer to US providers</td><td>Applicable Chapter V transfer basis and safeguards, assessed for the provider and route; no blanket claim of executed SCCs</td></tr>
       <tr><td>Security, fraud prevention, error monitoring</td><td>Art. 6(1)(f) — Legitimate interest (service integrity)</td></tr>
       <tr><td>End-customer data entered by salon owners</td><td>Processor role under Art. 28 — owner as controller, Y2do as processor</td></tr>
-      <tr><td><strong>Health-related notes about end-customers</strong> (e.g. allergies, treatment reactions)</td><td>Special category data under Art. 9 — the salon owner must obtain the customer's <strong>explicit consent</strong> before entering it. Such notes expire automatically 30 days after they are recorded.</td></tr>
+      <tr><td><strong>Health-related notes about end-customers</strong> (e.g. allergies, treatment reactions)</td><td>Special category data under Art. 9 — the salon owner must obtain the customer's <strong>explicit consent</strong> before entering it. Medical-classified content is eligible for scheduled removal after 30 days; linkage and timestamps can remain, and missed classification requires owner deletion or a removal request.</td></tr>
     </table></div>
 
     <h3>11-3. Your Rights under GDPR / UK GDPR</h3>
@@ -182,14 +218,14 @@
       <li><strong>Object (Art. 21):</strong> object to processing based on legitimate interest, including profiling (retention risk scoring).</li>
       <li><strong>Automated decision-making (Art. 22):</strong> AI output is advisory only; no solely-automated decision producing legal effect is made. You can disable AI features at any time.</li>
       <li><strong>Withdraw consent (Art. 7(3))</strong> without affecting lawfulness of prior processing.</li>
-      <li><strong>Lodge a complaint</strong> with your local Data Protection Authority (see 11-6).</li>
+      <li><strong>Lodge a complaint</strong> with your local Data Protection Authority (see 11-5).</li>
     </ul>
     <p>We respond to all verified requests free of charge within 30 days.</p>
 
     <h3>11-4. International Data Transfers (Chapter V)</h3>
     <ul>
       <li><strong>South Korea adequacy decision:</strong> the European Commission issued an adequacy decision for the Republic of Korea on 17 December 2021. Transfers from the EU to our Korean operations do not require additional safeguards.</li>
-      <li><strong>International processors (Google, Meta, Supabase, Cloudflare, Replicate, Remove.bg, Sentry):</strong> applicable transfer safeguards and contracts require legal review before service is offered in each region.</li>
+      <li><strong>International processors (Google, Meta, Supabase, Cloudflare, Replicate, remove.bg, fal.ai, Sentry):</strong> applicable transfer safeguards and contracts require legal review before service is offered in each region.</li>
       <li>For information about the transfer safeguards applicable to your processing, contact contact@itdasy.com.</li>
     </ul>
 
@@ -218,11 +254,11 @@
       <tr><td>G. Geolocation</td><td><strong>No</strong></td><td>—</td><td>—</td><td>—</td></tr>
       <tr><td>I. Professional/employment</td><td>Yes (shop info)</td><td>You</td><td>Personalization</td><td>Processors</td></tr>
       <tr><td>K. Inferences (retention risk)</td><td>Limited</td><td>Your usage</td><td>Churn alerts</td><td>Not shared</td></tr>
-      <tr><td>L. Sensitive Personal Info (SSN, precise geo, biometric, health, genetic, religion, union, sex life)</td><td><strong>No</strong></td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>L. Sensitive Personal Info — health-related customer notes</td><td>May be entered with separate explicit consent</td><td>Salons entering customer notes</td><td>Treatment precautions and requested note processing</td><td>Storage and AI processors as described in Sections 1–2</td></tr>
     </table></div>
 
     <h3>12-2. "Do Not Sell or Share My Personal Information"</h3>
-    <p><strong>We do not sell personal information for money, and we do not share personal information for cross-context behavioral advertising.</strong> A "Do Not Sell or Share" link is therefore not required under §1798.135. If our practices change, we will update this Policy and provide an opt-out in the app.</p>
+    <p><strong>We do not sell personal information for money, and we do not share personal information for cross-context behavioral advertising.</strong> If our practices change, we will update this Policy and provide an opt-out in the app.</p>
 
     <h3>12-3. Your CCPA / CPRA Rights</h3>
     <ul>
@@ -230,7 +266,7 @@
       <li><strong>Right to delete</strong> (§1798.105) — in-app Delete Account.</li>
       <li><strong>Right to correct</strong> (§1798.106).</li>
       <li><strong>Opt-out of sale/sharing</strong> — N/A (we don't sell/share).</li>
-      <li><strong>Limit use of sensitive PI</strong> — N/A (we don't collect sensitive PI).</li>
+      <li><strong>Limit use of sensitive PI</strong> — request restriction of health-note processing where the applicable law provides this right.</li>
       <li><strong>Non-discrimination</strong> (§1798.125) — exercising rights will not affect service quality or price.</li>
     </ul>
     <p>Exercise rights: email <a href="mailto:contact@itdasy.com">contact@itdasy.com</a> with subject "CCPA Request — [right]". We verify identity by email confirmation and respond within 45 days.</p>
@@ -253,10 +289,10 @@
     </ul>
 
     <h2>15. Notice to Canadian Residents (PIPEDA)</h2>
-    <p>We process in accordance with PIPEDA and applicable provincial laws (Quebec Law 25, Alberta PIPA, BC PIPA). Rights of access, correction, and withdrawal of consent. Complaints: Office of the Privacy Commissioner of Canada — <a href="https://www.priv.gc.ca" target="_blank" rel="noopener">priv.gc.ca</a>.</p>
+    <p>Where PIPEDA or provincial privacy laws apply, residents may exercise access, correction and consent-withdrawal rights. Complaints: Office of the Privacy Commissioner of Canada — <a href="https://www.priv.gc.ca" target="_blank" rel="noopener">priv.gc.ca</a>.</p>
 
     <h2>16. Notice to Australian Residents (Privacy Act 1988)</h2>
-    <p>Handled per the 13 Australian Privacy Principles (APPs). Complaints: OAIC — <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">oaic.gov.au</a>.</p>
+    <p>Where Australian privacy law applies, residents may exercise rights under the Australian Privacy Principles (APPs). Complaints: OAIC — <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">oaic.gov.au</a>.</p>
 
     <h2>17. Children's Privacy — Multi-jurisdictional</h2>
     <ul>
@@ -270,7 +306,7 @@
     <h2>18. Cookies, Tracking, and Consent</h2>
     <p>
       We use only strictly necessary first-party storage to operate the service (session JWT, preference settings, offline cache). We do not use cross-site tracking cookies, advertising identifiers, or third-party analytics for profiling.
-      For EU/EEA/UK users, we present a consent banner at first launch for optional items such as crash-reporting telemetry (Sentry). Declining does not affect core functionality.
+      Optional device error diagnostics can be managed in the app privacy/diagnostics settings. Declining does not affect core functionality. Server security and operational logs are distinct from optional device diagnostics.
     </p>
 
     <h2>19. Security — International Standards</h2>
@@ -285,9 +321,9 @@
     </ul>
 
     <div class="meta" style="margin-top:48px;">
-      v1.3 — 2026-10-01: clarifications aligned with current app disclosures; no new collection purpose or subscription obligation.<br>
+      v1.4 — 2026-10-01: corrected provider and operational disclosures; no new collection purpose or subscription obligation.<br>
       The original text of this policy is in Korean. This English translation is provided for convenience only. In case of any discrepancy, the Korean version shall prevail.<br><br>
-      <strong>Last updated:</strong> October 1, 2026 (v1.3).
+      <strong>Last updated:</strong> October 1, 2026 (v1.4).
     </div>
   </div>
 </body>

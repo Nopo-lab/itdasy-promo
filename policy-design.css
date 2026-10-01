@@ -23,3 +23,5 @@ th { background: #f6f1f9; color: #806187; }
 :focus-visible { outline: 3px solid #98689b; outline-offset: 4px; }
 @media (max-width: 700px) { .wrap, main { margin: 0; border: 0; border-radius: 0; padding: 28px 20px 60px; font-size: 13px; } h2 { font-size: 17px; } .meta { font-size: 12px; padding: 16px; } th, td { padding: 11px 10px; font-size: 12px; } .policy-table-hint { display: block; color: #86728f; font-size: 11px; margin: 18px 0 6px; } nav { font-size: 11px; } .card { padding: 18px; } }
 @media print { body { background: #fff; } .wrap, main { border: 0; margin: 0; padding: 0; } nav, .back, .policy-table-hint { display: none; } .card, tr { break-inside: avoid; } .policy-table { overflow: visible; } .policy-table table { min-width: 0; } a { color: #444; } }
+/* Provider disclosures remain readable without a dense wide table. */
+.wrap > .card { margin: 20px 0; border: 1px solid #e9deee; }
