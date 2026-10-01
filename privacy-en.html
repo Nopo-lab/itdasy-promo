@@ -24,20 +24,25 @@
     .hl { padding: 12px 14px; background: #FEF4F5; border-left: 3px solid #F18091; border-radius: 6px; font-size: 13.5px; color: #5a2b30; margin: 10px 0 18px; }
     a { color: #D95F70; text-decoration: none; border-bottom: 1px dashed #D95F70; }
     .back { display: inline-block; margin-bottom: 18px; font-size: 13px; color: #888; }
+    body { overflow-wrap: anywhere; }
+    table { table-layout: fixed; }
+    th, td { overflow-wrap: anywhere; }
+    :focus-visible { outline: 3px solid #a52f42; outline-offset: 4px; }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <a href="/" class="back">← Home</a>
+    <a href="./" class="back">← Home</a>
+    <nav aria-label="Policies"><a href="refund-en.html">Cancellation &amp; refunds</a> · <a href="privacy-en.html">Privacy</a> · <a href="terms-en.html">Terms</a> · <a href="privacy.html" lang="ko">한국어</a></nav>
     <h1>Privacy Policy</h1>
     <div class="sub">Itdasy — operated by Y2do</div>
 
     <div class="meta">
       <strong>Effective Date:</strong> April 22, 2026<br>
-      <strong>Last Updated:</strong> September 15, 2026<br>
+      <strong>Last Updated:</strong> October 1, 2026<br>
       <strong>Operator:</strong> Y2do · Business Registration No. 179-36-01681 · Representative: Yeonjun Kang<br>
       <strong>Contact:</strong> contact@itdasy.com<br>
-      <strong>Original Language:</strong> Korean (see <a href="/privacy.html">Korean version</a>). This English version is for reference; the Korean original prevails in case of discrepancy.
+      <strong>Original Language:</strong> Korean (see <a href="privacy.html">Korean version</a>). This English version is for reference; the Korean original prevails in case of discrepancy.
     </div>
 
     <p>
@@ -51,7 +56,7 @@
       <tr><th>Type</th><th>Items</th><th>Purpose</th><th>Retention</th></tr>
       <tr><td>Required</td><td>Email, hashed password, name</td><td>Authentication, support</td><td>Until account deletion</td></tr>
       <tr><td>Optional</td><td>Shop name, address, phone, Instagram handle, industry</td><td>AI caption personalization</td><td>Until account deletion</td></tr>
-      <tr><td>Auto-collected</td><td>IP, device info (model/OS), usage logs, cookies</td><td>Security, quality improvement</td><td>1 year</td></tr>
+      <tr><td>Auto-collected</td><td>IP, device info (model/OS), usage logs, cookies</td><td>Security, quality improvement</td><td>Login logs: 3 months. Other usage and error records are deleted when their purpose is fulfilled, subject to statutory retention.</td></tr>
       <tr><td>Billing</td><td>App Store/Play transaction IDs</td><td>Subscription status, refunds</td><td>5 years (e-commerce law)</td></tr>
     </table>
 
@@ -60,6 +65,8 @@
       Information entered by salon owners about their own customers is treated as <strong>entrusted processing on behalf of the owner as controller</strong>.
       Salon owners are responsible for obtaining valid consent from their end-customers before entering data into Itdasy.
     </p>
+
+    <p>Customer names identify bookings and records. Optional customer phone numbers, birthdays, notes and visit history support customer management. Review text entered by an owner is used for review management and requested caption drafts. Health notes such as allergies and treatment reactions require separate explicit consent from the customer and expire automatically 30 days after recording. Other customer records remain until owner deletion or account deletion, subject to statutory retention.</p>
 
     <h2>2. Third-Party Entrustment and International Transfer</h2>
     <table>
@@ -88,7 +95,7 @@
     <ul>
       <li><strong>Access, rectification, erasure, restriction of processing</strong> under PIPA Articles 35–37.</li>
       <li><strong>Data portability:</strong> CSV export via app settings → Account → Export Data.</li>
-      <li><strong>Account deletion:</strong> Settings → Delete Account → type "탈퇴" → final confirmation. A web request guide is available at <a href="/delete-account.html">Account Deletion Request</a>.</li>
+      <li><strong>Account deletion:</strong> Settings → Delete Account → type "탈퇴" → final confirmation. A web request guide is available at <a href="delete-account.html">Account Deletion Request</a>.</li>
       <li><strong>Right to object to automated decision-making</strong> (see Section 6-bis).</li>
       <li>Requests: <a href="mailto:contact@itdasy.com">contact@itdasy.com</a> — processed within 10 days.</li>
     </ul>
@@ -102,16 +109,18 @@
       <li>Operational logs are configured to omit passwords, login tokens, and customer phone numbers.</li>
     </ul>
 
-    <h2>6. Cookies and Tracking</h2>
+    <h3>5-1. Marketing website</h3>
+    <p>itdasy.com is hosted on GitHub Pages (GitHub, Inc.). The hosting provider may process IP addresses and request information to deliver and secure pages. This marketing site has no separate registration, payment or email-collection form, and no advertising trackers. App and external-policy links take you to those services. <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">GitHub privacy statement</a></p>
+    <h2 id="cookies">6. Cookies and Tracking</h2>
     <p>
       We <strong>do not use third-party advertising or cross-site tracking cookies</strong>.
-      Only first-party session tokens (localStorage), preference settings, and offline cache are used. All can be cleared via OS/browser settings.
+      First-party session tokens, preferences, local drafts and offline cache are used, along with error reporting described in this policy. Clearing OS/browser storage may require login again and permanently remove device-only drafts, settings and offline data. Save needed work first.
     </p>
 
     <h2 id="ai-processing">6-bis. Automated Decision-Making (AI Disclosure)</h2>
     <p>
       The Service uses Google AI, Replicate, Remove.bg, and related processors for caption suggestions, assistant drafts, image processing, and other optional features. These are <strong>advisory only</strong> and do not produce legal or financial effects without user confirmation.
-      Users may disable AI features at any time. Inappropriate AI output can be reported via the in-app 🚩 button; we review within 24 hours.
+      Users may decline feature-specific transfers or request consent withdrawal at contact@itdasy.com. Inappropriate AI output can be reported via the in-app 🚩 button; we review reports and communicate necessary follow-up.
     </p>
 
     <h2>7. Data Protection Officer</h2>
@@ -122,7 +131,7 @@
     <p>Users may also contact the Korean Personal Information Dispute Mediation Committee (+82-1833-6972, kopico.go.kr) or KISA Privacy Complaint Center (118, privacy.kisa.or.kr).</p>
 
     <h2>8. Children's Privacy</h2>
-    <p>The Service is not intended for children under 14. If we learn that a child under 14 has registered, we will immediately delete the account and all related data. For children under 14 requiring access, verifiable parental consent is required.</p>
+    <p>The Service is not intended for children under 14. If we learn that a child under 14 has registered, we will immediately delete the account and all related data. Registration by children under 14 is not permitted.</p>
 
     <h2>9. Data Breach Notification</h2>
     <p>In the event of a data breach, affected users will be notified via email and in-app notice within 72 hours, including details of what was leaked, mitigation steps, and contact information for reporting. Breaches involving 1,000+ users are reported to the Personal Information Protection Commission and KISA.</p>
@@ -134,7 +143,7 @@
       <tr><th>Version</th><th>Effective</th><th>Changes</th></tr>
       <tr><td>v1.0</td><td>2026-04-22</td><td>Initial publication — full PIPA compliance framework</td></tr>
       <tr><td>v1.1</td><td>2026-04-22</td><td>Added GDPR (EU/UK), CCPA/CPRA (California), LGPD (Brazil), APPI (Japan), PIPEDA (Canada), Australia Privacy Act regional notices</td></tr>
-      <tr><td>v1.2</td><td>2026-09-15</td><td>Corrected processors, AI consent, deletion status, and security descriptions to match the current system</td></tr>
+      <tr><td>v1.2</td><td>2026-10-01</td><td>Corrected processors, AI consent, deletion status, and security descriptions to match the current system</td></tr>
     </table>
 
     <h2>11. Notice to EU/EEA and UK Residents (GDPR / UK GDPR)</h2>
@@ -176,7 +185,7 @@
     <ul>
       <li><strong>South Korea adequacy decision:</strong> the European Commission issued an adequacy decision for the Republic of Korea on 17 December 2021. Transfers from the EU to our Korean operations do not require additional safeguards.</li>
       <li><strong>International processors (Google, Meta, Supabase, Cloudflare, Replicate, Remove.bg, Sentry):</strong> applicable transfer safeguards and contracts require legal review before service is offered in each region.</li>
-      <li>A copy of the SCCs is available upon request at contact@itdasy.com.</li>
+      <li>For information about the transfer safeguards applicable to your processing, contact contact@itdasy.com.</li>
     </ul>
 
     <h3>11-5. Supervisory Authorities (non-exhaustive)</h3>
@@ -232,7 +241,7 @@
     <h2>14. Notice to Japanese Residents (APPI — 個人情報の保護に関する法律)</h2>
     <ul>
       <li>Purposes of use are specified in Section 1 of this Policy.</li>
-      <li>Cross-border transfers to the US: we provide equivalent protection through SCC-style contractual measures with US processors, consistent with APPI Art. 24.</li>
+      <li>Cross-border transfers to the US: applicable transfer grounds and contractual safeguards must comply with APPI. Contact us for the safeguards applicable to your processing.</li>
       <li>Rights: disclosure, correction, cessation of use, deletion — contact@itdasy.com.</li>
       <li>Complaints: Personal Information Protection Commission (PPC) — <a href="https://www.ppc.go.jp/en/" target="_blank" rel="noopener">ppc.go.jp/en</a>.</li>
     </ul>
@@ -245,7 +254,7 @@
 
     <h2>17. Children's Privacy — Multi-jurisdictional</h2>
     <ul>
-      <li><strong>Republic of Korea (PIPA):</strong> minimum age 14; under 14 requires verifiable guardian consent.</li>
+      <li><strong>Republic of Korea (PIPA):</strong> minimum age 14; registration under 14 is not permitted.</li>
       <li><strong>United States (COPPA):</strong> we do not knowingly collect PI from children under 13.</li>
       <li><strong>EU/EEA and UK (GDPR Art. 8):</strong> the age of digital consent varies by state (13–16); for users under the applicable age, verifiable parental consent is required.</li>
       <li><strong>California (CPRA):</strong> additional opt-in for users under 16.</li>
@@ -270,8 +279,9 @@
     </ul>
 
     <div class="meta" style="margin-top:48px;">
+      v1.3 — 2026-10-01: clarifications aligned with current app disclosures; no new collection purpose or subscription obligation.<br>
       The original text of this policy is in Korean. This English translation is provided for convenience only. In case of any discrepancy, the Korean version shall prevail.<br><br>
-      <strong>Last updated:</strong> April 22, 2026 (v1.1).
+      <strong>Last updated:</strong> October 1, 2026 (v1.3).
     </div>
   </div>
 </body>

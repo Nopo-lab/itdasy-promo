@@ -2,11 +2,11 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
   <title>잇데이 — 사장님의 시간을 아끼고, 매출을 잇다</title>
-  <meta name="description" content="AI가 사장님 말투로 캡션을 써주고, 인스타에 바로 올려드려요. 뷰티샵 전용 SNS 자동화 솔루션.">
-  <meta property="og:title" content="잇데이 — 뷰티샵 AI 인스타그램 자동화">
-  <meta property="og:description" content="캡션 작성부터 피드·스토리 발행까지. 사장님 말투 그대로.">
+  <meta name="description" content="뷰티샵 고객·예약·매출 관리부터 사진 편집과 AI 홍보 글 초안까지. 확인 후 저장·발행하는 잇데이 스튜디오.">
+  <meta property="og:title" content="잇데이 — 뷰티샵 관리와 AI 홍보 도우미">
+  <meta property="og:description" content="고객·예약·매출, 사진과 홍보 글을 한 곳에서 준비하세요.">
   <meta name="theme-color" content="#0f0608">
   <meta name="author" content="와이투두(Y2do)">
   <meta name="publisher" content="와이투두(Y2do)">
@@ -32,9 +32,6 @@
     }
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -57,6 +54,8 @@
     }
 
     html { scroll-behavior: smooth; }
+    :focus-visible { outline: 3px solid #a52f42; outline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } .reveal { opacity: 1; transform: none; } }
     body {
       font-family: 'Noto Sans KR', -apple-system, sans-serif;
       color: var(--text);
@@ -85,7 +84,7 @@
     .section-sub { font-size: 15px; color: var(--text2); line-height: 1.7; margin-top: 10px; }
     .section-sub.light { color: rgba(255,255,255,0.6); }
 
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal { opacity: 1; transform: translateY(22px); transition: opacity .5s ease, transform .5s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: .1s; }
     .reveal-delay-2 { transition-delay: .2s; }
@@ -193,7 +192,7 @@
       position: relative; overflow: hidden;
     }
     .btn-hero:active { transform: scale(0.97); }
-    .hero-note { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 14px; }
+    .hero-note { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 14px; }
 
     /* 긴박감 카운터 */
     .hero-urgency {
@@ -462,7 +461,7 @@
     .preview-modal-overlay.open { opacity: 1; pointer-events: auto; }
     .preview-modal {
       background: #fff; border-radius: 28px;
-      width: 100%; max-width: 480px;
+      width: 100%; max-width: 480px; max-height: calc(100dvh - 40px); display: flex; flex-direction: column;
       box-shadow: 0 24px 60px rgba(0,0,0,0.3);
       overflow: hidden;
       transform: translateY(20px) scale(0.97);
@@ -470,6 +469,7 @@
     }
     .preview-modal-overlay.open .preview-modal { transform: translateY(0) scale(1); }
     .preview-modal-header {
+      flex-shrink: 0;
       display: flex; align-items: center; justify-content: space-between;
       padding: 18px 22px 14px;
       border-bottom: 1px solid var(--border);
@@ -482,7 +482,7 @@
       font-size: 16px; color: var(--text2); transition: background .2s;
     }
     .preview-modal-close:hover { background: var(--accent3); }
-    .preview-modal-body { padding: 22px; min-height: 280px; }
+    .preview-modal-body { padding: 22px; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
 
     /* Demo: AI Caption */
     .demo-caption .demo-input {
@@ -772,7 +772,7 @@
           <div class="lang-option" onclick="setLang('en')">🇺🇸 English</div>
         </div>
       </div>
-      <a href="https://nopo-lab.github.io/itdasy-frontend/#register" class="btn-nav" data-i18n="nav_cta">무료 회원가입</a>
+      <a href="https://nopo-lab.github.io/itdasy-frontend/#register" class="btn-nav" data-i18n="nav_cta">앱 시작하기</a>
     </div>
   </nav>
 
@@ -781,23 +781,13 @@
     <div class="container">
       <div class="hero-inner">
         <div class="hero-content reveal">
-          <div class="hero-badge">
-            <span class="hero-badge-dot"></span>
-            뷰티샵 사장님을 위한 AI 비서
-          </div>
-          <h1 class="hero-title">
-            말 한 줄이면 끝.<br>
-            <span class="accent">고객 · 매출 · 예약</span>을<br>
-            잇데이가 알아서 해요.
-          </h1>
-          <p class="hero-desc">
-            시술 중 "김지연 속눈썹 5만원" 이라고만 말하세요.<br>
-            고객 등록 · 매출 기록 · 다음 방문 예측까지 AI가 한 번에.
-          </p>
+          <div class="hero-badge">뷰티샵 사장님을 위한 AI 비서</div>
+          <h1 class="hero-title">시술에 집중하세요.<br><span class="accent">고객 · 예약 · 매출 · 홍보</span>는<br>잇데이에서 함께.</h1>
+          <p class="hero-desc">기록부터 사진 편집, 홍보 글 초안까지 한 곳에서.<br>AI가 제안한 내용을 확인하고 사장님이 저장·발행을 결정해요.</p>
           <div class="hero-actions">
-            <a href="https://nopo-lab.github.io/itdasy-frontend/#register" class="btn-hero" id="heroBtn">🚀 무료 회원가입 →</a>
+            <a href="https://nopo-lab.github.io/itdasy-frontend/#register" class="btn-hero" id="heroBtn">잇데이 시작하기 →</a>
           </div>
-          <p class="hero-note">카드 정보 불필요 · 10일 무료 체험</p>
+          <p class="hero-note">회원가입 무료 · 월간 앱 구독은 자격 충족 시 14일 체험</p>
         </div>
         <div class="hero-mockup reveal reveal-delay-2">
           <div class="phone-frame">
@@ -808,11 +798,11 @@
                 <div class="phone-name" id="phoneName">미니네일 원장님</div>
                 <div class="phone-handle">@mininail_studio</div>
               </div>
-              <div class="phone-connected" id="phoneConnected">● 연동됨</div>
+              <div class="phone-connected" id="phoneConnected">화면 예시</div>
             </div>
             <div class="phone-caption">
-              <div class="phone-caption-label" id="phoneCaptionLabel">✨ AI 생성 캡션</div>
-              <div class="phone-caption-text" id="phoneCaptionText">오늘 들어온 오로라 젤이 너무 예뻐서요 🥹<br>빛에 따라 색이 바뀌는 게 진짜 신기하죠?<br>이번 주 딱 3자리 남았어요~</div>
+              <div class="phone-caption-label" id="phoneCaptionLabel">✨ AI 캡션 초안 예시</div>
+              <div class="phone-caption-text" id="phoneCaptionText">오늘 들어온 오로라 젤을 소개해요 🥹<br>빛에 따라 색이 달라 보여요.<br>예약 가능 시간은 문의해 주세요.</div>
             </div>
             <div class="phone-tags" id="phoneTags">
               <div class="phone-tag">#젤네일</div>
@@ -820,7 +810,7 @@
               <div class="phone-tag">#오로라네일</div>
               <div class="phone-tag">#네일스타그램</div>
             </div>
-            <div class="phone-btn" id="phoneBtn">📲 피드 + 스토리 발행</div>
+            <div class="phone-btn" id="phoneBtn">📲 확인 후 발행</div>
           </div>
         </div>
       </div>
@@ -828,7 +818,7 @@
   </section>
 
   <!-- 법적 엔티티 배너 (Meta Business Verification 명확 표기) -->
-  <div style="text-align:center;font-size:12px;color:rgba(255,255,255,0.55);padding:10px 16px;background:rgba(0,0,0,0.3);">
+  <div style="text-align:center;font-size:12px;color:rgba(255,255,255,0.55);padding:10px 16px;background:#1a0c10;">
     잇데이는 <strong style="color:rgba(255,255,255,0.9);">와이투두(Y2do)</strong>가 운영합니다 · 사업자등록번호 179-36-01681 · 대표 강연준
   </div>
 
@@ -841,9 +831,9 @@
         <div style="display:inline-block;padding:6px 14px;background:rgba(241,128,145,0.15);border-radius:100px;font-size:12px;color:#F18091;font-weight:700;margin-bottom:16px;">✨ 잇데이만의 자동화</div>
         <h2 style="font-size:clamp(26px,5vw,40px);font-weight:900;line-height:1.3;margin-bottom:12px;">
           원장님 손이 아니라,<br>
-          <span style="background:linear-gradient(135deg,#F18091,#FFB347);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">AI가 일하게 하세요</span>
+          <span style="background:linear-gradient(135deg,#F18091,#FFB347);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">AI와 함께 준비하세요</span>
         </h2>
-        <p style="font-size:15px;color:rgba(255,255,255,0.6);line-height:1.6;">수동 입력·복잡한 화면 전환 끝. 말 한 줄·탭 한 번이면 충분해요.</p>
+        <p style="font-size:15px;color:rgba(255,255,255,0.6);line-height:1.6;">AI 제안과 인식 결과를 확인하고 다음 작업으로 이어가세요.</p>
       </div>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;max-width:1100px;margin:0 auto;">
@@ -851,7 +841,7 @@
         <!-- 1. 음성 빠른 기록 -->
         <div style="padding:26px;background:rgba(255,255,255,0.05);border:1px solid rgba(241,128,145,0.25);border-radius:20px;backdrop-filter:blur(10px);">
           <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#F18091,#D95F70);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px;">🎤</div>
-          <div style="font-size:18px;font-weight:800;margin-bottom:8px;">음성 한 줄로 전부 기록</div>
+          <div style="font-size:18px;font-weight:800;margin-bottom:8px;">음성으로 기록 초안 만들기</div>
           <p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.65;">"김지연 속눈썹 5만원 카드" 말하면<br>고객·매출·결제수단을 확인한 뒤 등록.<br><span style="color:#F18091;font-weight:700;">저장 전에 내용을 확인할 수 있어요.</span></p>
         </div>
 
@@ -859,14 +849,14 @@
         <div style="padding:26px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,179,71,0.25);border-radius:20px;backdrop-filter:blur(10px);">
           <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#FFB347,#FF8A5C);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px;">📸</div>
           <div style="font-size:18px;font-weight:800;margin-bottom:8px;">사진 한 장으로 이전 시작</div>
-          <p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.65;">이전에 쓰시던 앱 화면을<br>그대로 찍어 올리세요.<br><span style="color:#FFB347;font-weight:700;">AI Vision이 자동으로 읽어요.</span></p>
+          <p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.65;">이전에 쓰시던 앱 화면을<br>그대로 찍어 올리세요.<br><span style="color:#FFB347;font-weight:700;">읽어낸 내용을 확인한 뒤 저장해요.</span></p>
         </div>
 
         <!-- 3. 비포/애프터 영상 -->
         <div style="padding:26px;background:rgba(255,255,255,0.05);border:1px solid rgba(139,92,246,0.25);border-radius:20px;backdrop-filter:blur(10px);">
           <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#A78BFA,#8B5CF6);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px;">🎬</div>
-          <div style="font-size:18px;font-weight:800;margin-bottom:8px;">비포/애프터 영상 자동</div>
-          <p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.65;">사진 2장 올리면 릴스용 MP4 완성.<br>자막·전환·한글폰트까지.<br><span style="color:#A78BFA;font-weight:700;">편집 앱은 더 이상 필요 없어요.</span></p>
+          <div style="font-size:18px;font-weight:800;margin-bottom:8px;">비포·애프터 콘텐츠 구성</div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.65;">사진 2장을 함께 비교하고<br>시술 결과를 보여줄 구성을 준비해요.<br><span style="color:#A78BFA;font-weight:700;">결과를 확인하고 저장하세요.</span></p>
         </div>
 
         <!-- 4. AI 비서 -->
@@ -879,8 +869,8 @@
         <!-- 5. 재방문 예측 -->
         <div style="padding:26px;background:rgba(255,255,255,0.05);border:1px solid rgba(220,53,69,0.25);border-radius:20px;backdrop-filter:blur(10px);">
           <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#EF4444,#DC2626);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px;">💝</div>
-          <div style="font-size:18px;font-weight:800;margin-bottom:8px;">이탈 임박 고객 알림</div>
-          <p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.65;">평소 방문 주기보다 늦어지면<br>자동으로 알려드려요.<br><span style="color:#EF4444;font-weight:700;">쿠폰 타이밍 놓치지 마세요.</span></p>
+          <div style="font-size:18px;font-weight:800;margin-bottom:8px;">재방문 시점 참고</div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.65;">평소 방문 주기보다 늦어지면<br>자동으로 알려드려요.<br><span style="color:#EF4444;font-weight:700;">방문 기록에 따른 참고 정보예요.</span></p>
         </div>
 
         <!-- 6. 생일 자동 감지 -->
@@ -895,11 +885,11 @@
   </section>
 
   <!-- 이전 강조 배너 -->
-  <section style="padding:50px 0;background:linear-gradient(135deg,#F18091,#D95F70);color:#fff;text-align:center;">
+  <section id="data-import" style="padding:50px 0;background:linear-gradient(135deg,#F18091,#D95F70);color:#fff;text-align:center;">
     <div class="container">
       <div style="font-size:14px;font-weight:700;opacity:0.9;margin-bottom:10px;letter-spacing:2px;">📦 데이터 이전 도구</div>
       <h2 style="font-size:clamp(22px,4.5vw,34px);font-weight:900;line-height:1.35;margin-bottom:14px;">
-        쌓아두신 단골·매출,<br>잇데이가 모두 옮겨드려요
+        쌓아두신 단골·매출,<br>확인하면서 옮겨보세요
       </h2>
       <p style="font-size:14px;opacity:0.85;line-height:1.65;max-width:480px;margin:0 auto;">
         엑셀 파일 · 앱 화면 사진 · 카톡 대화<br>
@@ -913,16 +903,16 @@
     <div class="container">
       <div class="services-header reveal">
         <span class="section-label">Services</span>
-        <h2 class="section-title">관리부터 SNS까지, 한 앱에서 끝</h2>
-        <p class="section-sub">고객·예약·매출 관리 + AI 비서 + 인스타 발행까지 분리된 앱 없이 잇데이 하나로.</p>
+        <h2 class="section-title">관리부터 SNS까지, 한 앱에서</h2>
+        <p class="section-sub">고객·예약·매출을 기록하고, 사진과 홍보 글을 준비하세요. 외부 연동 기능은 계정 유형·권한과 제공 상태에 따라 달라집니다.</p>
       </div>
       <div class="services-grid">
         <div class="service-card reveal reveal-delay-1">
           <div class="service-icon">👥</div>
           <div class="service-title">고객·예약·매출 통합 관리</div>
-          <p class="service-desc">고객 카드, 방문 주기, 시술 이력, 예약 달력, 매출 장부를 한 곳에서 관리합니다. 결제수단과 수수료를 기록하면 <strong>실 수령액도</strong> 함께 볼 수 있습니다.</p>
+          <p class="service-desc">고객 카드, 시술 이력, 예약 달력, 매출 장부를 한 곳에서 관리해요. 입력한 결제수단과 수수료를 바탕으로 실 수령액을 확인할 수 있어요.</p>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span class="service-badge">한 앱에서 함께 관리</span>
+            <span class="service-badge">기록을 한 곳에서</span>
             <button class="service-preview-btn" onclick="openPreview('customer')">
               <svg viewBox="0 0 16 16"><path d="M8 3C4.5 3 1.5 5.5 1.5 8s3 5 6.5 5 6.5-2.5 6.5-5-3-5-6.5-5zm0 9c-2.8 0-5-1.8-5-4s2.2-4 5-4 5 1.8 5 4-2.2 4-5 4zm-1-6.5v5l4-2.5-4-2.5z"/></svg>
               미리보기
@@ -931,10 +921,10 @@
         </div>
         <div class="service-card reveal reveal-delay-2">
           <div class="service-icon">🤖</div>
-          <div class="service-title">말 한 줄로 실행되는 AI 비서</div>
-          <p class="service-desc">"김서연 내일 2시 예약 추가" 라고만 말하면 AI 비서가 <strong>실제로 예약을 잡아줘요.</strong> 매출 기록·고객 등록·NPS까지 말 한 줄로 끝. 타이핑은 이제 그만.</p>
+          <div class="service-title">확인 후 실행하는 AI 비서</div>
+          <p class="service-desc">“김서연 내일 2시 예약 추가”처럼 말하거나 입력하세요. 예약·매출 기록안을 확인한 뒤 실행하고, 궁금한 매장 정보는 대화로 조회해요.</p>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span class="service-badge">시술 중에 음성 입력</span>
+            <span class="service-badge">저장 전 확인</span>
             <button class="service-preview-btn" onclick="openPreview('assistant')">
               <svg viewBox="0 0 16 16"><path d="M8 3C4.5 3 1.5 5.5 1.5 8s3 5 6.5 5 6.5-2.5 6.5-5-3-5-6.5-5zm0 9c-2.8 0-5-1.8-5-4s2.2-4 5-4 5 1.8 5 4-2.2 4-5 4zm-1-6.5v5l4-2.5-4-2.5z"/></svg>
               미리보기
@@ -943,10 +933,10 @@
         </div>
         <div class="service-card reveal reveal-delay-3">
           <div class="service-icon">✍️</div>
-          <div class="service-title">AI 캡션 자동 생성</div>
-          <p class="service-desc">인스타그램 계정을 연동하면 기존 게시글을 읽고 말투·이모지·해시태그 패턴을 학습합니다. 설명 한 줄만 입력하면 사장님 스타일 그대로의 캡션이 완성됩니다.</p>
+          <div class="service-title">사장님 스타일의 홍보 글 초안</div>
+          <p class="service-desc">시술 설명과 샵 정보를 바탕으로 캡션·해시태그를 제안해요. 동의하고 연결한 인스타그램 게시글의 말투를 참고할 수 있어요. 게시 전 사실과 표현을 확인해 주세요.</p>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span class="service-badge">말투 학습 후 생성</span>
+            <span class="service-badge">게시 전 검토</span>
             <button class="service-preview-btn" onclick="openPreview('caption')">
               <svg viewBox="0 0 16 16"><path d="M8 3C4.5 3 1.5 5.5 1.5 8s3 5 6.5 5 6.5-2.5 6.5-5-3-5-6.5-5zm0 9c-2.8 0-5-1.8-5-4s2.2-4 5-4 5 1.8 5 4-2.2 4-5 4zm-1-6.5v5l4-2.5-4-2.5z"/></svg>
               미리보기
@@ -955,10 +945,10 @@
         </div>
         <div class="service-card reveal reveal-delay-4">
           <div class="service-icon">🖼️</div>
-          <div class="service-title">사진 편집 자동화</div>
-          <p class="service-desc">AI가 배경을 자동으로 제거합니다. 모자이크, 그라데이션, 단색 배경 중 탭 한 번으로 선택하면 끝. 비포/애프터 영상도 <strong>사진 2장만 올리면</strong> 릴스 MP4로 자동 완성.</p>
+          <div class="service-title">사진 편집과 비포·애프터</div>
+          <p class="service-desc">사진의 밝기·색감·배경을 조정하고 모자이크와 비교 구성을 만들어요. 외부 AI 배경 제거는 해당 기능의 전송 안내에 동의한 뒤 사용해요.</p>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span class="service-badge">사진 2장으로 시작</span>
+            <span class="service-badge">AI 전송 전 동의</span>
             <button class="service-preview-btn" onclick="openPreview('bg')">
               <svg viewBox="0 0 16 16"><path d="M8 3C4.5 3 1.5 5.5 1.5 8s3 5 6.5 5 6.5-2.5 6.5-5-3-5-6.5-5zm0 9c-2.8 0-5-1.8-5-4s2.2-4 5-4 5 1.8 5 4-2.2 4-5 4zm-1-6.5v5l4-2.5-4-2.5z"/></svg>
               미리보기
@@ -967,10 +957,10 @@
         </div>
         <div class="service-card reveal reveal-delay-5">
           <div class="service-icon">📲</div>
-          <div class="service-title">인스타그램 1탭 발행</div>
-          <p class="service-desc">편집 완료된 사진과 캡션을 확인하고 발행 버튼 하나만 누르세요. 피드와 스토리가 동시에 올라갑니다. 별도 앱 전환 없이 잇데이 안에서 모두 해결됩니다.</p>
+          <div class="service-title">확인하고 인스타그램 발행</div>
+          <p class="service-desc">사진과 문구를 확인한 뒤 원하는 게시 형식으로 발행해요. 지원 계정과 Meta 권한이 필요하며, 피드·스토리·릴스의 제공 범위와 한도는 앱에서 확인해 주세요.</p>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span class="service-badge">확인 후 직접 발행</span>
+            <span class="service-badge">연동·권한 필요</span>
             <button class="service-preview-btn" onclick="openPreview('publish')">
               <svg viewBox="0 0 16 16"><path d="M8 3C4.5 3 1.5 5.5 1.5 8s3 5 6.5 5 6.5-2.5 6.5-5-3-5-6.5-5zm0 9c-2.8 0-5-1.8-5-4s2.2-4 5-4 5 1.8 5 4-2.2 4-5 4zm-1-6.5v5l4-2.5-4-2.5z"/></svg>
               미리보기
@@ -979,10 +969,10 @@
         </div>
         <div class="service-card reveal reveal-delay-6">
           <div class="service-icon">🗂️</div>
-          <div class="service-title">스마트 포트폴리오</div>
-          <p class="service-desc">시술 사진을 태그 하나로 저장하면 종류별로 자동 분류됩니다. AI가 올리기 좋은 사진을 추천하고 캡션 생성부터 발행까지 바로 연결됩니다.</p>
+          <div class="service-title">시술 사진 포트폴리오</div>
+          <p class="service-desc">시술 사진을 저장하고 태그로 정리해요. 필요한 사진을 다시 찾아 편집·캡션 작성에 활용할 수 있어요. 저장 용량과 기능별 사용량은 앱 안내를 따릅니다.</p>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <span class="service-badge">태그 1번 → AI 추천 발행</span>
+            <span class="service-badge">태그로 사진 정리</span>
             <button class="service-preview-btn" onclick="openPreview('portfolio')">
               <svg viewBox="0 0 16 16"><path d="M8 3C4.5 3 1.5 5.5 1.5 8s3 5 6.5 5 6.5-2.5 6.5-5-3-5-6.5-5zm0 9c-2.8 0-5-1.8-5-4s2.2-4 5-4 5 1.8 5 4-2.2 4-5 4zm-1-6.5v5l4-2.5-4-2.5z"/></svg>
               미리보기
@@ -998,29 +988,22 @@
     <div class="container">
       <div class="pricing-header reveal">
         <span class="section-label">Pricing</span>
-        <h2 class="section-title">시작은 무료, 부담 없이</h2>
-        <p class="section-sub">가입 후 10일 동안 Pro 기능을 체험할 수 있습니다. 카드 정보 없이 시작합니다.</p>
+        <h2 class="section-title">가입은 무료, 구독은 직접 선택</h2>
+        <p class="section-sub">월간 앱 구독은 스토어 자격 충족 시 14일 무료 체험이 제공됩니다. 회원가입만으로 Pro 체험이나 자동 결제가 시작되지는 않습니다.</p>
       </div>
       <div class="pricing-grid">
 
         <!-- Free -->
         <div class="pricing-card reveal reveal-delay-1">
-          <div class="pricing-tier">10일 체험</div>
+          <div class="pricing-tier">무료 이용</div>
           <div class="pricing-price">
             <div class="pricing-amount">₩0</div>
-            <div class="pricing-period">/ 10일</div>
+            <div class="pricing-period">/ 기본 범위</div>
           </div>
-          <div class="pricing-desc" id="pricingDesc1">가입 뒤 10일 동안 Pro 기능을 체험하세요</div>
+          <div class="pricing-desc" id="pricingDesc1">계정을 만들고 기본 기능부터 확인하세요</div>
           <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li>카드 정보 없이 시작</li>
-            <li>체험 종료 전 남은 기간 표시</li>
-            <li>AI 캡션·사진 편집 체험</li>
-            <li>고객·예약·매출 관리</li>
-            <li>현재 사용량은 앱 안에서 확인</li>
-            <li>결제하지 않으면 자동 청구 없음</li>
-          </ul>
-          <a href="https://nopo-lab.github.io/itdasy-frontend/" class="btn-pricing outline" id="pricingBtn1">무료로 시작하기</a>
+          <ul class="pricing-features"><li>회원가입에 결제 정보 불필요</li><li>고객·예약·매출 기본 관리</li><li>AI 캡션·배경 제거 제한 체험</li><li>일일·월간 사용 한도 적용</li><li>현재 사용량은 앱에서 확인</li><li>유료 구독 구매 전 자동 청구 없음</li></ul>
+          <a href="https://nopo-lab.github.io/itdasy-frontend/" class="btn-pricing outline" id="pricingBtn1">무료 회원가입</a>
         </div>
 
         <!-- Pro Monthly -->
@@ -1031,17 +1014,10 @@
             <div class="pricing-amount">₩9,900</div>
             <div class="pricing-period">/ 월</div>
           </div>
-          <div class="pricing-desc" id="pricingDesc2">매월 결제되는 Pro 요금제</div>
+          <div class="pricing-desc" id="pricingDesc2">자격 충족 시 14일 체험 후 월 9,900원</div>
           <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li>AI 캡션 하루 10회·월 150회</li>
-            <li>배경 제거 하루 10회·월 60회</li>
-            <li>인스타그램 연동 1계정</li>
-            <li>포트폴리오 저장 무제한</li>
-            <li>AI 비서 월 150회</li>
-            <li>언제든 해지·현재 기간까지 이용</li>
-          </ul>
-          <a href="https://nopo-lab.github.io/itdasy-frontend/" class="btn-pricing primary" id="pricingBtn2">월 9,900원 시작</a>
+          <ul class="pricing-features"><li>AI 캡션 기본 한도: 하루 10회·월 150회</li><li>배경 제거 기본 한도: 하루 10회·월 60회</li><li>AI 비서 기본 한도: 월 150회</li><li>인스타그램 연동·발행(권한 필요)</li><li>체험 종료 후 월간 자동 갱신</li><li>결제한 스토어에서 구독 관리</li></ul>
+          <a href="https://nopo-lab.github.io/itdasy-frontend/" class="btn-pricing primary" id="pricingBtn2">월간 구독 조건 확인</a>
         </div>
 
         <!-- Pro Yearly -->
@@ -1051,21 +1027,14 @@
             <div class="pricing-amount">₩99,000</div>
             <div class="pricing-period">/ 년</div>
           </div>
-          <div class="pricing-desc" id="pricingDesc3">월간 결제 10개월 금액으로 1년 이용</div>
+          <div class="pricing-desc" id="pricingDesc3">연 99,000원 일시 결제 · 무료 체험 없음</div>
           <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li>월간 Pro와 같은 기능·한도</li>
-            <li>AI 캡션 하루 10회·월 150회</li>
-            <li>배경 제거 하루 10회·월 60회</li>
-            <li>인스타그램 연동 1계정</li>
-            <li>포트폴리오 저장 무제한</li>
-            <li>연간 결제는 체험 없이 시작</li>
-          </ul>
-          <a href="https://nopo-lab.github.io/itdasy-frontend/" class="btn-pricing outline" id="pricingBtn3">연 99,000원 시작</a>
+          <ul class="pricing-features"><li>월간 Pro와 같은 기능·사용 한도</li><li>월간 12회 결제보다 19,800원 절약</li><li>연간 요금 99,000원 즉시 결제</li><li>무료 체험 없이 시작</li><li>해지 전까지 12개월마다 자동 갱신</li><li>앱에서 이용 기간·사용량 확인</li></ul>
+          <a href="https://nopo-lab.github.io/itdasy-frontend/" class="btn-pricing outline" id="pricingBtn3">연간 구독 조건 확인</a>
         </div>
 
       </div>
-      <p class="pricing-note reveal">가격에는 부가세가 포함됩니다 · 해지 후에도 결제 기간 끝까지 이용할 수 있습니다 · 환불은 결제 경로의 정책을 따릅니다</p>
+      <p class="pricing-note reveal">한국 기준 가격 · 부가세 포함 · 실제 가격·체험 자격·갱신일·한도는 앱과 구매 화면에서 확인하세요. 현재 웹에서는 유료 구독을 구매할 수 없습니다.</p>
     </div>
   </section>
 
@@ -1076,43 +1045,7 @@
         <span class="section-label">FAQ</span>
         <h2 class="section-title">자주 묻는 질문</h2>
       </div>
-      <div class="faq-list reveal" id="faqList">
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            AI가 진짜 제 말투로 써줄 수 있나요?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a">네. 인스타그램 계정을 연동하면 기존 게시글 최대 30개를 AI가 분석해서 말투, 이모지 패턴, 해시태그 스타일, 고정 문구까지 학습합니다. 게시글이 많을수록 더 정확하게 학습되며, 사용할수록 점점 더 나다워집니다.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            인스타그램 계정 연동이 안전한가요?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a">Meta(구 Facebook)의 공식 Graph API를 통해 연동됩니다. 비밀번호는 절대 요구하지 않으며, 읽기/발행 권한만 사용합니다. 언제든 설정에서 연동을 해제할 수 있습니다.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            무료 체험 기간에 카드 등록이 필요한가요?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a">아니요. 10일 체험은 카드 정보 없이 이메일로 시작합니다. 체험 후 유료 플랜을 직접 선택할 때 결제 정보를 입력합니다.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            헤어샵, 네일샵 말고 다른 뷰티 업종도 되나요?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a">네. 현재 붙임머리, 헤어샵, 네일아트, 속눈썹, 반영구, 피부관리샵이 기본 지원됩니다. 업종 선택 후 AI가 해당 업종에 맞는 해시태그와 캡션 스타일을 자동으로 조정합니다.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            구독을 중간에 취소하면 어떻게 되나요?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-a">언제든 해지할 수 있고 현재 결제 기간 끝까지 이용할 수 있습니다. 환불 가능 여부와 금액은 결제한 웹·App Store·Google Play의 정책과 실제 사용 내역에 따라 안내합니다.</div>
-        </div>
-      </div>
+      <div class="faq-list reveal" id="faqList"><div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">회원가입하면 바로 14일 체험이 시작되나요?<span class="faq-icon">+</span></button><div class="faq-a">아니요. 무료 회원가입과 스토어 월간 구독의 14일 체험은 별개입니다. 체험 제공 여부는 스토어 계정의 이용 이력과 구매 화면에서 확인하세요. 체험 구독을 구매하면 종료 후 월간 요금이 자동 청구됩니다. 연간 구독은 체험 없이 즉시 결제됩니다.</div></div><div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">체험 후 요금이 청구되지 않으려면 어떻게 하나요?<span class="faq-icon">+</span></button><div class="faq-a">구독을 구매한 Apple 또는 Google 계정에서 체험 종료 전에 취소하세요. Apple은 최소 24시간 전 취소를 안내합니다. Google Play는 체험 종료 전 취소해야 합니다. 취소 후 이용 가능 기간은 해당 스토어에 표시된 만료일을 확인하세요. <a href="refund.html">구독 취소·환불 안내</a></div></div><div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">인스타그램 연동에는 어떤 조건이 필요한가요?<span class="faq-icon">+</span></button><div class="faq-a">Meta의 공식 인증을 이용하며 잇데이가 인스타그램 비밀번호를 직접 수집하지 않습니다. 지원되는 프로페셔널 계정과 기능별 권한이 필요합니다. 발행·DM·댓글 기능은 승인된 권한과 Meta 정책에 따라 제공되고, 연결은 앱에서 해제할 수 있습니다.</div></div><div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">AI에 사진이나 고객 정보가 전송되나요?<span class="faq-icon">+</span></button><div class="faq-a">요청한 AI 기능에 따라 글·사진·관련 기록이 외부 처리업체로 전송될 수 있습니다. 기능별 안내와 동의를 확인하고, 불필요한 이름·전화번호·얼굴은 가려 주세요. AI 전송을 거부해도 고객·예약·매출 기본 관리는 이용할 수 있습니다. <a href="privacy.html#ai-processing">AI 처리 안내</a></div></div><div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">구독 취소와 환불, 회원 탈퇴는 같은가요?<span class="faq-icon">+</span></button><div class="faq-a">각각 별개입니다. 구독 취소는 다음 갱신을 중단하며 자동 환불을 뜻하지 않습니다. 환불은 결제한 경로로 요청하세요. 앱 삭제나 회원 탈퇴만으로 Apple·Google 구독은 취소되지 않습니다. <a href="refund.html">환불 정책</a> · <a href="delete-account.html">계정 삭제 안내</a></div></div></div>
     </div>
   </section>
 
@@ -1120,20 +1053,20 @@
   <section id="cta">
     <div class="container">
       <div class="cta-inner reveal">
-        <h2 class="cta-title">오늘 시술하고<br>오늘 올리세요.</h2>
-        <p class="cta-desc">설치하고 인스타 계정만 연동하면<br>내일 아침부터 캡션 걱정 없이 게시물 올릴 수 있습니다.</p>
+        <h2 class="cta-title">기록하고, 준비하고,<br>확인한 뒤 올리세요.</h2>
+        <p class="cta-desc">매장 관리부터 홍보 준비까지.<br>사장님의 다음 작업을 잇데이에서 이어가세요.</p>
         <div class="cta-actions">
-          <a href="https://nopo-lab.github.io/itdasy-frontend/" class="btn-cta primary" id="ctaBtn">10일 무료 체험 시작하기 →</a>
-          <a href="https://nopo-lab.github.io/itdasy-frontend/" class="btn-cta outline" id="ctaSecondaryBtn">앱 미리보기 ↗</a>
+          <a href="https://nopo-lab.github.io/itdasy-frontend/" class="btn-cta primary" id="ctaBtn">앱 시작하기 →</a>
+          <a href="https://nopo-lab.github.io/itdasy-frontend/" class="btn-cta outline" id="ctaSecondaryBtn">앱 살펴보기 ↗</a>
         </div>
         <div class="cta-chips">
-          <span class="cta-chip">카드 정보 없이 시작</span>
+          <span class="cta-chip">회원가입 무료</span>
           <span class="cta-dot">·</span>
-          <span class="cta-chip">언제든 취소 가능</span>
+          <span class="cta-chip">구독은 직접 선택</span>
           <span class="cta-dot">·</span>
-          <span class="cta-chip">지금 연동 시 말투 분석 무료</span>
+          <span class="cta-chip">AI 결과 확인 후 실행</span>
         </div>
-        <p class="cta-final">체험과 결제 조건을 확인한 뒤 시작해 주세요.</p>
+        <p class="cta-final">결제 전에 가격·체험 자격·자동 갱신 조건을 확인해 주세요.</p>
       </div>
     </div>
   </section>
@@ -1142,20 +1075,15 @@
   <section id="email-capture">
     <div class="container">
       <div class="email-capture-inner reveal">
-        <div class="email-capture-title">
-          지금 <span>직접</span> 시작해 보세요
-        </div>
-        <p class="email-capture-sub">
-          이메일을 별도로 수집하지 않습니다.<br>
-          앱에서 회원가입하면 10일 체험이 시작됩니다.
-        </p>
+        <div class="email-capture-title">지금 <span>직접</span> 살펴보세요</div>
+        <p class="email-capture-sub">이 홍보 페이지에는 별도 이메일 수집 양식이 없습니다.<br>회원가입과 구독 선택은 앱에서 진행해 주세요.</p>
         <a class="email-form-btn" href="https://nopo-lab.github.io/itdasy-frontend/#register">앱에서 회원가입하기</a>
         <div class="email-capture-chips">
-          <span class="email-capture-chip">카드 정보 불필요</span>
+          <span class="email-capture-chip">회원가입 무료</span>
           <span class="email-capture-chip">·</span>
-          <span class="email-capture-chip">10일 체험</span>
+          <span class="email-capture-chip">월간 체험은 조건부 14일</span>
           <span class="email-capture-chip">·</span>
-          <span class="email-capture-chip">언제든 해지 가능</span>
+          <span class="email-capture-chip">구독 별도 관리</span>
         </div>
       </div>
     </div>
@@ -1167,7 +1095,8 @@
     <div class="footer-links">
       <a href="privacy.html" id="footerPrivacy">개인정보처리방침</a>
       <a href="terms.html" id="footerGuide">이용약관</a>
-      <a href="delete-account.html">계정 삭제 안내</a>
+      <a href="refund.html" id="footerRefund">구독 취소·환불</a>
+      <a href="delete-account.html" id="footerDelete">계정 삭제 안내</a>
       <a href="https://nopo-lab.github.io/itdasy-frontend/" id="footerApp">앱 바로가기</a>
     </div>
 
@@ -1188,10 +1117,10 @@
 
   <!-- Preview Modal -->
   <div class="preview-modal-overlay" id="previewOverlay" onclick="closePreviewOnBg(event)">
-    <div class="preview-modal" id="previewModal">
+    <div class="preview-modal" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
       <div class="preview-modal-header">
         <div class="preview-modal-title" id="previewTitle">미리보기</div>
-        <button class="preview-modal-close" onclick="closePreview()">✕</button>
+        <button class="preview-modal-close" onclick="closePreview()" aria-label="미리보기 닫기">✕</button>
       </div>
       <div class="preview-modal-body" id="previewBody"></div>
     </div>
@@ -1256,7 +1185,7 @@
           title: '✍️ AI 캡션 자동 생성',
           input_label: '입력:', input_text: '"오늘 오로라 젤 새로 들어왔어요, 빛에 따라 색이 바뀌어요"',
           output_label: '✨ AI 생성 결과 (사장님 말투 반영)',
-          typed_text: "오늘 오로라 젤이 들어왔어요 🥹\n빛에 따라 색이 바뀌는 게 진짜 신기하죠?\n이번 주 딱 3자리 남았으니까요~\n예약은 DM이나 카카오로 주세요 💌",
+          typed_text: "오늘 오로라 젤이 들어왔어요 🥹\n빛에 따라 색이 바뀌는 게 진짜 신기하죠?\n예약 가능 시간은 문의해 주세요.\n예약은 DM이나 카카오로 주세요 💌",
           tags: ['#젤네일','#네일아트','#오로라네일','#네일스타그램','#네일맛집','#홍대네일'],
         },
         bg: {
@@ -1266,11 +1195,11 @@
         },
         publish: {
           title: '📲 인스타그램 1탭 발행',
-          steps: ['사진 편집 완료','AI 캡션 생성','이미지 서버 전송','인스타 피드 발행','스토리 자동 발행'],
+          steps: ['사진 편집 결과 확인','AI 캡션 초안 검토','발행 형식 선택·승인','선택한 게시물 발행','발행 결과 확인'],
           wait: '대기', proc: '처리 중...', done: '완료 ✓',
           preview_label: '📱 게시물 미리보기', location: '서울 홍대',
           likes_pre: '좋아요 ', likes_suf: '개',
-          caption: "오늘 오로라 젤이 들어왔어요 🥹 빛에 따라 색이 바뀌는 게 진짜 신기하죠? 이번 주 딱 3자리 남았어요~",
+          caption: "오늘 오로라 젤이 들어왔어요 🥹 빛에 따라 색이 바뀌는 게 진짜 신기하죠? 예약 가능 시간은 문의해 주세요.",
           tags: '#젤네일 #네일아트 #오로라네일 #네일스타그램 #네일맛집 #홍대네일', time: '방금 전',
         },
         portfolio: {
@@ -1285,7 +1214,7 @@
           title: '✍️ AI Caption Generator',
           input_label: 'Input:', input_text: '"New aurora gel just arrived — color shifts in light"',
           output_label: '✨ AI Result (in your voice)',
-          typed_text: "Our new aurora gel just arrived 🥹\nThe way the color shifts in light is actually wild!\nOnly 3 spots left this week~\nDM or email to book 💌",
+          typed_text: "Our new aurora gel just arrived 🥹\nThe way the color shifts in light is actually wild!\nContact us for available bookings.\nDM or email to book 💌",
           tags: ['#gelnails','#nailart','#auroranails','#nailstagram','#nailsofinstagram','#hongdaenails'],
         },
         bg: {
@@ -1299,7 +1228,7 @@
           wait: 'Waiting', proc: 'Processing...', done: 'Done ✓',
           preview_label: '📱 Post Preview', location: 'Seoul, Hongdae',
           likes_pre: '', likes_suf: ' likes',
-          caption: "Our new aurora gel just arrived 🥹 The color shifts in light — so stunning! Only 3 spots left this week~",
+          caption: "Our new aurora gel just arrived 🥹 The color shifts in light — so stunning! Contact us for available bookings.",
           tags: '#gelnails #nailart #auroranails #nailstagram #nailsofinstagram', time: 'Just now',
         },
         portfolio: {
@@ -1369,6 +1298,31 @@
       },
     };
 
+    // Keep demo callbacks scoped to the active modal.
+    let previewTimers = [];
+    let previewFrames = [];
+    let previewOpener = null;
+    function demoTimeout(callback, delay) {
+      const id = setTimeout(callback, delay);
+      previewTimers.push(id);
+      return id;
+    }
+    function demoInterval(callback, delay) {
+      const id = setInterval(callback, delay);
+      previewTimers.push(id);
+      return id;
+    }
+    function demoFrame(callback) {
+      const id = requestAnimationFrame(callback);
+      previewFrames.push(id);
+      return id;
+    }
+    function clearPreviewTimers() {
+      previewTimers.forEach(id => { clearTimeout(id); clearInterval(id); });
+      previewFrames.forEach(cancelAnimationFrame);
+      previewTimers = [];
+      previewFrames = [];
+    }
     // ── Preview Modal ──
     const PREVIEWS = {
       caption: {
@@ -1389,7 +1343,7 @@
           const el = document.getElementById('captionTyping');
           const tagsEl = document.getElementById('captionTags');
           let i = 0;
-          const iv = setInterval(() => {
+          const iv = demoInterval(() => {
             if (i >= PL.typed_text.length) {
               clearInterval(iv);
               tagsEl.style.opacity = '1';
@@ -1477,30 +1431,30 @@
             {id:'step3',sid:'s3',delay:1800},{id:'step4',sid:'s4',delay:2600},{id:'step5',sid:'s5',delay:3400},
           ];
           steps.forEach(({id, sid, delay}, i) => {
-            setTimeout(() => {
+            demoTimeout(() => {
               const el = document.getElementById(id);
               const s = document.getElementById(sid);
               if (!el) return;
               el.classList.add('active');
               s.textContent = PL.proc; s.className = 'demo-step-status processing';
-              setTimeout(() => {
+              demoTimeout(() => {
                 el.classList.remove('active'); el.classList.add('done');
                 s.textContent = PL.done; s.className = 'demo-step-status done';
                 if (i === steps.length - 1) {
-                  setTimeout(() => {
+                  demoTimeout(() => {
                     const ig = document.getElementById('igPreview');
                     if (!ig) return;
                     ig.style.opacity = '1'; ig.style.transform = 'translateY(0)';
                     let likes = 0;
                     const likeEl = document.getElementById('igLikes');
-                    const likeIv = setInterval(() => {
+                    const likeIv = demoInterval(() => {
                       likes += Math.floor(Math.random() * 3) + 1;
                       if (likeEl) likeEl.textContent = likes;
                       if (likes >= 24) clearInterval(likeIv);
                     }, 120);
                     const capEl = document.getElementById('igCaption');
                     let ci = 0;
-                    const capIv = setInterval(() => {
+                    const capIv = demoInterval(() => {
                       if (!capEl) { clearInterval(capIv); return; }
                       capEl.textContent += PL.caption[ci++];
                       if (ci >= PL.caption.length) {
@@ -1536,8 +1490,9 @@
         init() {}
       },
       customer: {
-        get title() { return '고객·매출 통합 대시보드'; },
+        get title() { return currentLang === 'en' ? 'Customers and revenue' : '고객·매출 통합 대시보드'; },
         render() {
+          if (currentLang === 'en') return `<div style="padding:18px;line-height:1.8;background:#fff5f7;border-radius:16px"><strong>Example shop records</strong><p>Today's bookings: 4 · Birthday customers: 1</p><p>Customer A · 6 visits · Average interval: 14 days</p><p>Monthly recorded revenue: ₩4,850,000<br>Recorded fees: ₩102,000<br>Net receipts: ₩4,748,000</p></div>`;
           return `<div style="padding:14px 8px;max-width:440px;margin:0 auto;">
             <div style="background:linear-gradient(135deg,#F18091,#D95F70);color:#fff;padding:18px;border-radius:16px;margin-bottom:16px;">
               <div style="font-size:11px;opacity:0.8;margin-bottom:4px;letter-spacing:1px;">오늘의 브리핑 · 2026.04.21</div>
@@ -1552,7 +1507,7 @@
                 <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#FFB347,#FF8A5C);display:flex;align-items:center;justify-content:center;font-size:18px;margin-right:10px;">💇‍♀️</div>
                 <div style="flex:1;">
                   <div style="font-weight:700;font-size:14px;color:#222;">김서연</div>
-                  <div style="font-size:11px;color:#888;">010-1234-5678 · 단골 VIP</div>
+                  <div style="font-size:11px;color:#888;">010-****-**** · 단골 VIP</div>
                 </div>
                 <div style="font-size:10px;padding:3px 8px;background:#FFF4E6;color:#E68A00;border-radius:100px;font-weight:700;">VIP</div>
               </div>
@@ -1586,28 +1541,30 @@
             if (!el) return;
             let cur = 0;
             const step = Math.max(1, Math.floor(target / 40));
-            const iv = setInterval(() => {
+            const iv = demoInterval(() => {
               cur += step;
               if (cur >= target) { cur = target; clearInterval(iv); }
               el.textContent = prefix + cur.toLocaleString() + suffix;
             }, 30);
           };
-          setTimeout(() => animate('custBookCount', 4, '', ''), 100);
-          setTimeout(() => animate('custBirthCount', 1, '', ''), 400);
-          setTimeout(() => animate('custRiskCount', 2, '', ''), 700);
-          setTimeout(() => animate('custTotal', 4850000), 1000);
-          setTimeout(() => animate('custFee', 102000, '−'), 1400);
-          setTimeout(() => animate('custNet', 4748000), 1700);
+          demoTimeout(() => animate('custBookCount', 4, '', ''), 100);
+          demoTimeout(() => animate('custBirthCount', 1, '', ''), 400);
+          demoTimeout(() => animate('custRiskCount', 2, '', ''), 700);
+          demoTimeout(() => animate('custTotal', 4850000), 1000);
+          demoTimeout(() => animate('custFee', 102000, '−'), 1400);
+          demoTimeout(() => animate('custNet', 4748000), 1700);
         }
       },
       assistant: {
-        get title() { return 'AI 비서 — 말 한 줄로 실행'; },
+        get title() { return currentLang === 'en' ? 'AI assistant — review before saving' : 'AI 비서 — 확인 후 실행'; },
         render() {
+          if (currentLang === 'en') return `<div style="padding:18px;line-height:1.8;background:#fff5f7;border-radius:16px"><p><strong>You:</strong> Add a perm booking for Customer A tomorrow at 2pm.</p><p><strong>Assistant:</strong> Please review: Customer A, perm, 2pm tomorrow, 120 minutes.</p><p><strong>You:</strong> Confirm and save.</p><p><strong>Assistant:</strong> Booking saved. Check the calendar.</p><p style="color:#6f6464">Illustration only. An actual entry requires your confirmation.</p></div>`;
           return `<div style="padding:14px 8px;max-width:440px;margin:0 auto;">
             <div id="asstThread" style="display:flex;flex-direction:column;gap:10px;min-height:380px;"></div>
           </div>`;
         },
         init() {
+          if (currentLang === 'en') return;
           const thread = document.getElementById('asstThread');
           if (!thread) return;
           const userMsg = (text) => `
@@ -1638,6 +1595,7 @@
             { delay: 1200, html: botMsg(
               '김서연님 <strong>내일(4/22) 14:00 펌(120분) 예약</strong> 추가할까요?',
               actionCard('📅', '예약 추가', '고객: 김서연 · 서비스: 펌 · 시간: 내일 14:00')) },
+            { delay: 2500, html: userMsg('확인했어요. 예약 저장해 주세요.') },
             { delay: 3000, html: botMsg(
               '✅ 예약이 추가되었어요. 캘린더에서 확인하실 수 있어요.',
               actionCard('📅', '예약 추가됨', '김서연 · 펌 · 2026-04-22 14:00', true)) },
@@ -1645,19 +1603,20 @@
             { delay: 5700, html: botMsg(
               '이수아님(최근 속눈썹 고객) <strong>5만원 카드 매출</strong> 기록할까요? 카드 수수료 1,700원 자동 차감.',
               actionCard('💰', '매출 기록', '이수아 · 속눈썹 · 50,000원 · 실 수령 48,300원')) },
+            { delay: 7000, html: userMsg('확인했어요. 매출 저장해 주세요.') },
             { delay: 7500, html: botMsg(
               '✅ 기록 완료. 이번 달 매출 442만원 → 실 수령 430만원.',
               actionCard('💰', '매출 기록됨', '이수아 · 50,000원 · net 48,300원', true)) },
           ];
           steps.forEach(({delay, html}) => {
-            setTimeout(() => {
+            demoTimeout(() => {
               const wrap = document.createElement('div');
               wrap.innerHTML = html;
               wrap.style.opacity = '0';
               wrap.style.transition = 'opacity .35s ease, transform .35s ease';
               wrap.style.transform = 'translateY(8px)';
               thread.appendChild(wrap.firstElementChild);
-              requestAnimationFrame(() => {
+              demoFrame(() => {
                 const el = thread.lastElementChild;
                 if (el) { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }
               });
@@ -1669,23 +1628,39 @@
     };
 
     function openPreview(type) {
+      clearPreviewTimers();
+      previewOpener = document.activeElement;
       const p = PREVIEWS[type];
       document.getElementById('previewTitle').textContent = p.title;
-      document.getElementById('previewBody').innerHTML = p.render();
+      document.getElementById('previewBody').innerHTML = '<p style="padding:12px 16px;color:#6f6464;font-size:13px">' + (currentLang === 'en' ? 'Illustrative demo with fictional data. No AI request, saving or publishing occurs.' : '가상 데이터로 구성한 기능 예시입니다. 실제 AI 요청·저장·발행은 실행되지 않습니다.') + '</p>' + p.render();
       document.getElementById('previewOverlay').classList.add('open');
       document.body.style.overflow = 'hidden';
-      requestAnimationFrame(() => p.init());
+      document.querySelector('.preview-modal-body').scrollTop = 0;
+      document.querySelector('.preview-modal-close').focus();
+      demoFrame(() => p.init());
     }
 
     function closePreview() {
+      clearPreviewTimers();
       document.getElementById('previewOverlay').classList.remove('open');
       document.body.style.overflow = '';
+      if (previewOpener) previewOpener.focus();
     }
 
     function closePreviewOnBg(e) {
       if (e.target === document.getElementById('previewOverlay')) closePreview();
     }
 
+    document.addEventListener('keydown', event => {
+      if (!document.getElementById('previewOverlay').classList.contains('open')) return;
+      if (event.key === 'Escape') closePreview();
+      if (event.key === 'Tab') {
+        const controls = [...document.querySelectorAll('#previewModal button, #previewModal a[href]')];
+        const first = controls[0], last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    });
     // BG Style switcher
     function setBgStyle(btn, style) {
       document.querySelectorAll('.demo-bg-style-btn').forEach(b => b.classList.remove('active'));
@@ -1712,306 +1687,371 @@
 
     // ── i18n ──
     const LANGS = {
-      ko: {
-        flag: '🇰🇷', label: '한국어',
-        nav_cta: '무료 체험 시작하기',
-        badge1: '말투 학습 후 생성', badge2: '사진 2장으로 시작', badge3: '확인 후 직접 발행', badge4: '태그로 사진 정리',
-        cta_secondary: '앱 미리보기 ↗',
-        cta_chip1: '카드 정보 없이 시작', cta_chip2: '언제든 취소 가능', cta_chip3: '지금 연동 시 말투 분석 무료',
-        cta_final: '체험과 결제 조건을 확인한 뒤 시작해 주세요.',
-        ec_chip1: '카드 정보 불필요', ec_chip2: '10일 체험', ec_chip3: '언제든 해지 가능',
-        pricing_tiers: ['10일 체험','Pro 월간','Pro 연간'],
-        pricing_amounts: ['₩0','₩9,900','₩99,000'],
-        pricing_periods: ['/ 10일','/ 월','/ 년'], pricing_popular: '월간 결제',
-        free_desc: '가입 뒤 10일 동안 Pro 기능을 체험하세요',
-        lite_desc: '매월 결제되는 Pro 요금제',
-        pro_desc: '월간 결제 10개월 금액으로 1년 이용',
-        free_features: ['카드 정보 없이 시작','체험 종료 전 남은 기간 표시','AI 캡션·사진 편집 체험','고객·예약·매출 관리','현재 사용량은 앱 안에서 확인','결제하지 않으면 자동 청구 없음'],
-        free_features_disabled: [false,false,false,false,false,false],
-        lite_features: ['AI 캡션 하루 10회·월 150회','배경 제거 하루 10회·월 60회','인스타그램 연동 1계정','포트폴리오 저장 무제한','AI 비서 월 150회','언제든 해지·현재 기간까지 이용'],
-        lite_features_disabled: [false,false,false,false,false,false],
-        pro_features: ['월간 Pro와 같은 기능·한도','AI 캡션 하루 10회·월 150회','배경 제거 하루 10회·월 60회','인스타그램 연동 1계정','포트폴리오 저장 무제한','연간 결제는 체험 없이 시작'],
-        pro_features_disabled: [false,false,false,false,false,false],
-        free_btn: '10일 체험 시작', lite_btn: '월 9,900원 시작', pro_btn: '연 99,000원 시작',
-        faq: [
-          {q:'AI가 진짜 제 말투로 써줄 수 있나요?', a:'네. 인스타그램 계정을 연동하면 기존 게시글 최대 30개를 AI가 분석해서 말투, 이모지 패턴, 해시태그 스타일, 고정 문구까지 학습합니다. 게시글이 많을수록 더 정확하게 학습되며, 사용할수록 점점 더 나다워집니다.'},
-          {q:'인스타그램 계정 연동이 안전한가요?', a:'Meta(구 Facebook)의 공식 Graph API를 통해 연동됩니다. 비밀번호는 절대 요구하지 않으며, 읽기/발행 권한만 사용합니다. 언제든 설정에서 연동을 해제할 수 있습니다.'},
-          {q:'무료 체험 기간에 카드 등록이 필요한가요?', a:'아니요. 10일 체험은 카드 정보 없이 이메일로 시작합니다. 체험 후 유료 플랜을 직접 선택할 때 결제 정보를 입력합니다.'},
-          {q:'헤어샵, 네일샵 말고 다른 뷰티 업종도 되나요?', a:'네. 현재 붙임머리, 헤어샵, 네일아트, 속눈썹, 반영구, 피부관리샵이 기본 지원됩니다. 업종 선택 후 AI가 해당 업종에 맞는 해시태그와 캡션 스타일을 자동으로 조정합니다.'},
-          {q:'구독을 중간에 취소하면 어떻게 되나요?', a:'언제든 해지할 수 있고 현재 결제 기간 끝까지 이용할 수 있습니다. 환불은 결제한 경로의 정책과 실제 사용 내역에 따라 안내합니다.'},
-        ],
-        trust_suffix: ['명', '%', '건+', '점'],
-        phone_name: '미니네일 원장님',
-        phone_connected: '● 연동됨',
-        phone_caption_label: '✨ AI 생성 캡션',
-        phone_caption: '오늘 들어온 오로라 젤이 너무 예뻐서요 🥹<br>빛에 따라 색이 바뀌는 게 진짜 신기하죠?<br>이번 주 딱 3자리 남았어요~',
-        phone_tags: ['#젤네일','#네일아트','#오로라네일','#네일스타그램'],
-        phone_btn: '📲 피드 + 스토리 발행',
-        footer_privacy: '개인정보처리방침', footer_guide: '이용약관', footer_app: '앱 바로가기',
-        preorder_badge: '요금 안내',
-        preorder_text: '<strong>Pro 월 9,900원 · 연 99,000원</strong> &nbsp;',
-        preorder_btn: '자세히 보기 →',
-        hero_badge: '뷰티샵 전용 AI 마케팅',
-        hero_title: '인스타에 올릴 글,<br>오늘도 <span class="accent">썼다 지웠나요?</span>',
-        hero_desc: '사진은 찍었는데 캡션이 안 써지고, 써놓으면 어색하고.<br>잇데이가 사장님 말투 그대로 대신 써드립니다. 올리는 것까지.',
-        hero_cta: '지금 무료로 시작하기 →',
-        hero_note: '카드 정보 불필요 · 10일 무료 체험',
-        problem_title: '사장님 혼자 감당하기엔 너무 많아요',
-        problem_sub: '뷰티샵 원장님 102명에게 물었습니다. "SNS에서 가장 힘든 게 뭐예요?"',
-        p1_sub: '하루 평균 SNS에 쓰는 시간',
-        p1_desc: '사진 고르고, 누끼 따고, 캡션 쓰고, 해시태그 찾고…<br><strong>시술 한 타임 값어치의 시간</strong>이 사라집니다.',
-        p2_sub: '캡션 못 써서 포기한 원장님 비율',
-        p2_desc: '올리려다 포기한 게시물이 쌓일수록<br><strong>팔로워는 줄고 예약은 안 들어옵니다.</strong>',
-        p3_sub: '게시물 하나 올리는 데 쓰는 앱 수',
-        p3_desc: '캡컷으로 편집하고, ChatGPT한테 글 물어보고, 인스타에 올리고.<br><strong>앱 3개를 왔다 갔다 하다 그냥 포기합니다.</strong>',
-        problem_suffix: ['분', '%', '개 앱'],
-        testimonials: [],
-        services_title: '잇데이가 이 네 가지를 해결합니다',
-        services_sub: '찍고 → 편집하고 → 쓰고 → 올리는 흐름이 한 앱에서 완성됩니다.',
-        s1_title: 'AI 캡션 자동 생성', s1_desc: '인스타그램 계정을 연동하면 기존 게시글을 읽고 말투·이모지·해시태그 패턴을 학습합니다. 설명 한 줄만 입력하면 사장님 스타일 그대로의 캡션이 완성됩니다.',
-        s2_title: '사진 편집 자동화',  s2_desc: 'AI가 배경을 자동으로 제거합니다. 모자이크, 그라데이션, 단색 배경 중 탭 한 번으로 선택하면 끝. 포토샵도, 별도 편집 앱도 필요 없습니다.',
-        s3_title: '인스타그램 1탭 발행', s3_desc: '편집 완료된 사진과 캡션을 확인하고 발행 버튼 하나만 누르세요. 피드와 스토리가 동시에 올라갑니다.',
-        s4_title: '스마트 포트폴리오',  s4_desc: '시술 사진을 태그 하나로 저장하면 종류별로 자동 분류됩니다. AI가 올리기 좋은 사진을 추천하고 캡션 생성부터 발행까지 바로 연결됩니다.',
-        preview_btn: '미리보기',
-        testimonials_title: '먼저 써본 원장님들의 이야기',
-        testimonials_sub: '',
-        pricing_title: '시작은 무료, 부담 없이',
-        pricing_sub: '가입 후 10일 동안 Pro 기능을 체험할 수 있습니다. 카드 정보 없이 시작합니다.',
-        pricing_note: '부가세 포함 · 해지 후 결제 기간 끝까지 이용 · 환불은 결제 경로 정책 적용',
-        faq_title: '자주 묻는 질문',
-        cta_title: '오늘 시술하고<br>오늘 올리세요.',
-        cta_desc: '설치하고 인스타 계정만 연동하면<br>내일 아침부터 캡션 걱정 없이 게시물 올릴 수 있습니다.',
-        cta_primary: '10일 무료 체험 시작하기 →',
-        cta_secondary: '앱 미리보기 ↗',
-        email_title: '지금 <span>직접</span> 시작해 보세요',
-        email_sub: '이메일을 별도로 수집하지 않습니다.<br>앱에서 회원가입하면 10일 체험이 시작됩니다.',
+  "ko": {
+    "flag": "🇰🇷",
+    "label": "한국어",
+    "nav_cta": "앱 시작하기",
+    "preorder_badge": "요금 안내",
+    "preorder_text": "<strong>Pro 월 9,900원 · 연 99,000원</strong>",
+    "preorder_btn": "자세히 보기 →",
+    "hero_badge": "뷰티샵 사장님을 위한 AI 비서",
+    "hero_title": "시술에 집중하세요.<br><span class=\"accent\">고객 · 예약 · 매출 · 홍보</span>는<br>잇데이에서 함께.",
+    "hero_desc": "기록부터 사진 편집, 홍보 글 초안까지 한 곳에서.<br>AI가 제안한 내용을 확인하고 사장님이 저장·발행을 결정해요.",
+    "hero_cta": "잇데이 시작하기 →",
+    "hero_note": "회원가입 무료 · 월간 앱 구독은 자격 충족 시 14일 체험",
+    "services_title": "관리부터 SNS까지, 한 앱에서",
+    "services_sub": "고객·예약·매출을 기록하고, 사진과 홍보 글을 준비하세요. 외부 연동 기능은 계정 유형·권한과 제공 상태에 따라 달라집니다.",
+    "preview_btn": "미리보기",
+    "s1_title": "고객·예약·매출 통합 관리",
+    "s1_desc": "고객 카드, 시술 이력, 예약 달력, 매출 장부를 한 곳에서 관리해요. 입력한 결제수단과 수수료를 바탕으로 실 수령액을 확인할 수 있어요.",
+    "s2_title": "확인 후 실행하는 AI 비서",
+    "s2_desc": "“김서연 내일 2시 예약 추가”처럼 말하거나 입력하세요. 예약·매출 기록안을 확인한 뒤 실행하고, 궁금한 매장 정보는 대화로 조회해요.",
+    "s3_title": "사장님 스타일의 홍보 글 초안",
+    "s3_desc": "시술 설명과 샵 정보를 바탕으로 캡션·해시태그를 제안해요. 동의하고 연결한 인스타그램 게시글의 말투를 참고할 수 있어요. 게시 전 사실과 표현을 확인해 주세요.",
+    "s4_title": "사진 편집과 비포·애프터",
+    "s4_desc": "사진의 밝기·색감·배경을 조정하고 모자이크와 비교 구성을 만들어요. 외부 AI 배경 제거는 해당 기능의 전송 안내에 동의한 뒤 사용해요.",
+    "s5_title": "확인하고 인스타그램 발행",
+    "s5_desc": "사진과 문구를 확인한 뒤 원하는 게시 형식으로 발행해요. 지원 계정과 Meta 권한이 필요하며, 피드·스토리·릴스의 제공 범위와 한도는 앱에서 확인해 주세요.",
+    "s6_title": "시술 사진 포트폴리오",
+    "s6_desc": "시술 사진을 저장하고 태그로 정리해요. 필요한 사진을 다시 찾아 편집·캡션 작성에 활용할 수 있어요. 저장 용량과 기능별 사용량은 앱 안내를 따릅니다.",
+    "badge1": "기록을 한 곳에서",
+    "badge2": "저장 전 확인",
+    "badge3": "게시 전 검토",
+    "badge4": "AI 전송 전 동의",
+    "badge5": "연동·권한 필요",
+    "badge6": "태그로 사진 정리",
+    "pricing_title": "가입은 무료, 구독은 직접 선택",
+    "pricing_sub": "월간 앱 구독은 스토어 자격 충족 시 14일 무료 체험이 제공됩니다. 회원가입만으로 Pro 체험이나 자동 결제가 시작되지는 않습니다.",
+    "pricing_tiers": [
+      "무료 이용",
+      "Pro 월간",
+      "Pro 연간"
+    ],
+    "pricing_amounts": [
+      "₩0",
+      "₩9,900",
+      "₩99,000"
+    ],
+    "pricing_periods": [
+      "/ 기본 범위",
+      "/ 월",
+      "/ 년"
+    ],
+    "pricing_popular": "월간 구독",
+    "free_desc": "계정을 만들고 기본 기능부터 확인하세요",
+    "lite_desc": "자격 충족 시 14일 체험 후 월 9,900원",
+    "pro_desc": "연 99,000원 일시 결제 · 무료 체험 없음",
+    "free_features": [
+      "회원가입에 결제 정보 불필요",
+      "고객·예약·매출 기본 관리",
+      "AI 캡션·배경 제거 제한 체험",
+      "일일·월간 사용 한도 적용",
+      "현재 사용량은 앱에서 확인",
+      "유료 구독 구매 전 자동 청구 없음"
+    ],
+    "lite_features": [
+      "AI 캡션 기본 한도: 하루 10회·월 150회",
+      "배경 제거 기본 한도: 하루 10회·월 60회",
+      "AI 비서 기본 한도: 월 150회",
+      "인스타그램 연동·발행(권한 필요)",
+      "체험 종료 후 월간 자동 갱신",
+      "결제한 스토어에서 구독 관리"
+    ],
+    "pro_features": [
+      "월간 Pro와 같은 기능·사용 한도",
+      "월간 12회 결제보다 19,800원 절약",
+      "연간 요금 99,000원 즉시 결제",
+      "무료 체험 없이 시작",
+      "해지 전까지 12개월마다 자동 갱신",
+      "앱에서 이용 기간·사용량 확인"
+    ],
+    "free_features_disabled": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "lite_features_disabled": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "pro_features_disabled": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "free_btn": "무료 회원가입",
+    "lite_btn": "월간 구독 조건 확인",
+    "pro_btn": "연간 구독 조건 확인",
+    "pricing_note": "한국 기준 가격 · 부가세 포함 · 실제 가격·체험 자격·갱신일·한도는 앱과 구매 화면에서 확인하세요. 현재 웹에서는 유료 구독을 구매할 수 없습니다.",
+    "faq_title": "자주 묻는 질문",
+    "faq": [
+      {
+        "q": "회원가입하면 바로 14일 체험이 시작되나요?",
+        "a": "아니요. 무료 회원가입과 스토어 월간 구독의 14일 체험은 별개입니다. 체험 제공 여부는 스토어 계정의 이용 이력과 구매 화면에서 확인하세요. 체험 구독을 구매하면 종료 후 월간 요금이 자동 청구됩니다. 연간 구독은 체험 없이 즉시 결제됩니다."
       },
-      en: {
-        flag: '🇺🇸', label: 'English',
-        nav_cta: 'Start Free Trial',
-        preorder_badge: 'Pricing',
-        preorder_text: '<strong>Pro ₩9,900/month · ₩99,000/year</strong> &nbsp;',
-        preorder_btn: 'View details →',
-        hero_badge: 'AI Marketing for Beauty Shops',
-        hero_title: 'Wrote an Instagram caption<br><span class="accent">and deleted it again?</span>',
-        hero_desc: 'You have the photo but the caption just won\'t come.<br>Itdasy writes it in your voice — and posts it too.',
-        hero_cta: 'Start Free Now →',
-        hero_note: 'No credit card · 10-day free trial',
-        problem_title: 'Too much for one person to handle',
-        problem_sub: 'We asked 102 beauty shop owners: "What\'s hardest about SNS?"',
-        p1_sub: 'Avg. time spent on SNS per day',
-        p1_desc: 'Choosing photos, removing backgrounds, writing captions, finding hashtags…<br><strong>One session\'s worth of time</strong> disappears.',
-        p2_sub: 'Owners who give up writing captions',
-        p2_desc: 'The more posts you skip,<br><strong>the fewer followers — and bookings.</strong>',
-        p3_sub: 'Apps used for a single post',
-        p3_desc: 'Edit in CapCut, ask ChatGPT for copy, upload to Instagram.<br><strong>Juggling 3 apps — then giving up.</strong>',
-        problem_suffix: [' min', '%', ' apps'],
-        testimonials: [],
-        services_title: 'Itdasy solves all four',
-        services_sub: 'Shoot → Edit → Write → Post. All in one app.',
-        s1_title: 'AI Caption Generator', s1_desc: 'Connect your Instagram and Itdasy learns your tone, emojis, and hashtag style from past posts. Type one line and get a caption that sounds exactly like you.',
-        s2_title: 'Auto Photo Editing',   s2_desc: 'AI removes backgrounds instantly. Pick mosaic, gradient, or solid color with one tap. No Photoshop needed.',
-        s3_title: '1-Tap Instagram Post', s3_desc: 'Review your photo and caption, then hit publish. Feed and Story go up simultaneously.',
-        s4_title: 'Smart Portfolio',      s4_desc: 'Save photos with one tag and they\'re sorted automatically. AI picks the best shots and connects straight to caption + publish.',
-        preview_btn: 'Preview',
-        badge1: 'Generate after tone analysis', badge2: 'Start with two photos', badge3: 'Review before publishing', badge4: 'Organize photos with tags',
-        testimonials_title: 'From owners who tried it first',
-        testimonials_sub: '',
-        pricing_title: 'Start free, no pressure',
-        pricing_sub: 'Try Pro for 10 days after signup. No credit card is required to start.',
-        pricing_note: 'VAT included · Access continues through the paid period after cancellation · Refund rules depend on the payment channel',
-        pricing_tiers: ['10-Day Trial','Pro Monthly','Pro Annual'],
-        pricing_amounts: ['₩0','₩9,900','₩99,000'],
-        pricing_periods: ['/ 10 days','/ month','/ year'], pricing_popular: 'Monthly billing',
-        free_desc: 'Try Pro features for 10 days after signup',
-        lite_desc: 'Pro billed monthly',
-        pro_desc: 'One year for the price of ten monthly payments',
-        free_features: ['Start without a card','See trial time remaining','Try AI captions and photo tools','Manage customers, bookings, and sales','See current usage in the app','No automatic charge without a purchase'],
-        free_features_disabled: [false,false,false,false,false,false],
-        lite_features: ['10 AI captions/day, 150/month','10 background removals/day, 60/month','Connect one Instagram account','Unlimited portfolio storage','150 AI assistant requests/month','Cancel anytime; use through period end'],
-        lite_features_disabled: [false,false,false,false,false,false],
-        pro_features: ['Same features and limits as monthly Pro','10 AI captions/day, 150/month','10 background removals/day, 60/month','Connect one Instagram account','Unlimited portfolio storage','Annual billing starts without a trial'],
-        pro_features_disabled: [false,false,false,false,false,false],
-        free_btn: 'Start 10-Day Trial', lite_btn: 'Start for ₩9,900/month', pro_btn: 'Start for ₩99,000/year',
-        faq_title: 'Frequently Asked Questions',
-        faq: [
-          {q:'Can AI really write in my voice?', a:'Yes. Connect your Instagram and the AI analyzes up to 30 of your posts to learn your tone, emoji patterns, hashtag style, and signature phrases. The more posts you have, the more accurate it gets — and it keeps improving with use.'},
-          {q:'Is connecting my Instagram account safe?', a:'It connects through Meta\'s official Graph API. We never ask for your password — only read and publish permissions are used. You can disconnect at any time from settings.'},
-          {q:'Do I need to enter a card for the free trial?', a:'No. The 10-day trial starts with your email and no payment details. You enter payment details only when you choose a paid plan.'},
-          {q:'Does it work for beauty types beyond hair and nail?', a:'Yes. Currently supported: hair extensions, hair salons, nail art, eyelash extensions, semi-permanent makeup, and skin care. After selecting your type, the AI automatically adjusts hashtags and caption style.'},
-          {q:'What happens if I cancel mid-subscription?', a:'You can cancel any time and keep access through the current paid period. Refund eligibility follows the payment channel policy and actual usage.'},
-        ],
-        cta_title: 'Do the treatment today.<br>Post it today.',
-        cta_desc: 'Connect your Instagram account and you\'re ready.<br>No more caption anxiety starting tomorrow morning.',
-        cta_primary: 'Start 10-Day Free Trial →',
-        cta_secondary: 'Preview App ↗',
-        cta_chip1: 'No credit card needed', cta_chip2: 'Cancel anytime', cta_chip3: 'Free style analysis on connect',
-        cta_final: 'Review the trial and payment terms before starting.',
-        email_title: 'Start <span>in the app</span>',
-        email_sub: 'We do not collect a separate marketing email here.<br>Sign up in the app to start the 10-day trial.',
-        ec_chip1: 'No card required', ec_chip2: '10-day trial', ec_chip3: 'Cancel anytime',
-        trust_suffix: ['', '%', '+', ''],
-        phone_name: 'MiniNail Studio',
-        phone_connected: '● Connected',
-        phone_caption_label: '✨ AI-Generated Caption',
-        phone_caption: 'Our new aurora gel just arrived 🥹<br>The color shifts in light — so stunning!<br>Only 3 spots left this week~',
-        phone_tags: ['#gelnails','#nailart','#auroranails','#nailstagram'],
-        phone_btn: '📲 Post to Feed + Story',
-        footer_privacy: 'Privacy Policy', footer_guide: 'Terms of Service', footer_app: 'Open App',
+      {
+        "q": "체험 후 요금이 청구되지 않으려면 어떻게 하나요?",
+        "a": "구독을 구매한 Apple 또는 Google 계정에서 체험 종료 전에 취소하세요. Apple은 최소 24시간 전 취소를 안내합니다. Google Play는 체험 종료 전 취소해야 합니다. 취소 후 이용 가능 기간은 해당 스토어에 표시된 만료일을 확인하세요. <a href=\"refund.html\">구독 취소·환불 안내</a>"
       },
-      ja: {
-        flag: '🇯🇵', label: '日本語',
-        nav_cta: '無料トライアル開始',
-        preorder_badge: '料金案内',
-        preorder_text: '<strong>Pro 月額₩9,900 · 年額₩99,000</strong> &nbsp;',
-        preorder_btn: '詳細を見る →',
-        hero_badge: 'ビューティサロン専用 AI マーケティング',
-        hero_title: 'インスタの投稿文、<br>今日も<span class="accent">書いて消しましたか？</span>',
-        hero_desc: '写真は撮ったのに、キャプションが書けない。書いても違和感がある。<br>Itdasyがオーナー様の言葉でそのまま代わりに書きます。投稿まで。',
-        hero_cta: '今すぐ無料で始める →',
-        hero_note: 'カード不要 · 10日間無料体験',
-        problem_title: '一人でこなすには多すぎます',
-        problem_sub: '撮影、編集、文章作成、投稿までの作業を1つのアプリにまとめます。',
-        p1_sub: '1日平均SNSに使う時間',
-        p1_desc: '写真選び、背景消し、キャプション、ハッシュタグ…<br><strong>施術1セット分の時間</strong>が消えます。',
-        p2_sub: 'キャプションが書けず諦めたオーナーの割合',
-        p2_desc: '投稿をためればためるほど<br><strong>フォロワーが減り、予約が入らなくなります。</strong>',
-        p3_sub: '1投稿に使うアプリ数',
-        p3_desc: 'CapCutで編集、ChatGPTで文章作成、Instagramで投稿。<br><strong>3アプリを行ったり来たりして結局諦める。</strong>',
-        problem_suffix: ['分', '%', '個のアプリ'],
-        testimonials: [],
-        services_title: 'Itdasyがこの4つを解決します',
-        services_sub: '撮影 → 編集 → 執筆 → 投稿。すべて1つのアプリで。',
-        s1_title: 'AIキャプション自動生成', s1_desc: 'Instagramを連携するとAIが過去の投稿を読み込み、口調・絵文字・ハッシュタグのパターンを学習。説明を1行入力するだけで、オーナー様のスタイルそのままのキャプションが完成。',
-        s2_title: '写真編集自動化',         s2_desc: 'AIが背景を自動除去。モザイク・グラデーション・単色からタップ1つで選択。Photoshopも別アプリも不要。',
-        s3_title: 'Instagram 1タップ投稿',  s3_desc: '編集済みの写真とキャプションを確認して投稿ボタンを1回押すだけ。フィードとストーリーが同時にアップされます。',
-        s4_title: 'スマートポートフォリオ', s4_desc: '施術写真をタグ1つで保存すると種類別に自動分類。AIがおすすめの写真を提案し、キャプション生成から投稿まで直結します。',
-        preview_btn: 'プレビュー',
-        badge1: '口調分析後に生成', badge2: '写真2枚から開始', badge3: '確認後に投稿', badge4: 'タグで写真整理',
-        testimonials_title: '先に使ったオーナー様の声',
-        testimonials_sub: '',
-        pricing_title: '無料から、気軽に始められます',
-        pricing_sub: '登録後10日間Pro機能を体験できます。カード情報は不要です。',
-        pricing_note: '税込 · 解約後も支払期間末まで利用可能 · 返金は決済経路の規定に従います',
-        pricing_tiers: ['10日間体験','Pro 月額','Pro 年額'],
-        pricing_amounts: ['₩0','₩9,900','₩99,000'],
-        pricing_periods: ['/ 10日','/ 月','/ 年'], pricing_popular: '月額決済',
-        free_desc: '登録後10日間Pro機能を体験',
-        lite_desc: 'Pro月額プラン ₩9,900',
-        pro_desc: 'Pro年額プラン ₩99,000',
-        free_features: ['カード不要で開始','体験の残り期間をアプリで確認','AIキャプション・写真編集を体験','顧客・予約・売上管理','現在の利用量をアプリで確認','購入しなければ自動課金なし'],
-        free_features_disabled: [false,false,false,false,false,false],
-        lite_features: ['AIキャプション 1日10回・月150回','背景削除 1日10回・月60回','Instagram連携 1アカウント','ポートフォリオ保存','AIアシスタント 月150回','いつでも解約・期間末まで利用'],
-        lite_features_disabled: [false,false,false,false,false,false],
-        pro_features: ['月額Proと同じ機能・上限','AIキャプション 1日10回・月150回','背景削除 1日10回・月60回','Instagram連携 1アカウント','ポートフォリオ保存','年額決済は体験なしで開始'],
-        pro_features_disabled: [false,false,false,false,false,false],
-        free_btn: '10日体験を開始', lite_btn: '月額₩9,900で開始', pro_btn: '年額₩99,000で開始',
-        faq_title: 'よくある質問',
-        faq: [
-          {q:'AIが本当に私の言葉で書いてくれますか？', a:'はい。Instagramを連携すると、AIが過去の投稿を最大30件分析し、口調・絵文字のパターン・ハッシュタグスタイル・定型フレーズを学習します。投稿数が多いほど精度が上がり、使うほどより「自分らしく」なります。'},
-          {q:'Instagramアカウントの連携は安全ですか？', a:'MetaのGraph API（公式）を通じて連携します。パスワードは不要で、読み取り・投稿権限のみ使用します。設定からいつでも連携解除が可能です。'},
-          {q:'無料トライアル中にカード登録は必要ですか？', a:'不要です。10日間の体験はメールアドレスだけで始められます。有料プランを選ぶ時に支払い情報を入力します。'},
-          {q:'ヘアサロン・ネイル以外のビューティ業種にも対応していますか？', a:'はい。現在対応中：ヘアエクステ・ヘアサロン・ネイルアート・まつ毛エクステ・半永久メイク・スキンケアサロン。業種選択後、AIが対応するハッシュタグとキャプションスタイルを自動調整します。'},
-          {q:'途中でサブスクをキャンセルするとどうなりますか？', a:'いつでも解約でき、現在の支払期間末まで利用できます。返金は決済経路の規定と利用状況に従います。'},
-        ],
-        cta_title: '今日施術して、<br>今日投稿しましょう。',
-        cta_desc: 'Instagramアカウントを連携すると、<br>キャプション作成から投稿までアプリで進められます。',
-        cta_primary: '10日間無料トライアルを始める →',
-        cta_secondary: 'アプリを試す ↗',
-        cta_chip1: 'クレジットカード不要', cta_chip2: 'いつでもキャンセル', cta_chip3: '連携時に口調分析無料',
-        cta_final: '体験と決済条件をご確認の上で開始してください。',
-        email_title: 'アプリで<span>今すぐ</span>始める',
-        email_sub: 'このページではマーケティング用メールを収集しません。<br>アプリで登録すると10日間の体験が始まります。',
-        email_placeholder: 'メールアドレスを入力',
-        email_btn: '事前予約する',
-        email_success: '✓ 事前登録完了！オープン時に真っ先にお知らせします 🎉',
-        ec_chip1: 'スパムなし', ec_chip2: 'オープン通知1回のみ', ec_chip3: 'いつでも配信停止',
-        trust_suffix: ['名', '%', '件+', '点'],
-        phone_name: 'ミニネイル スタジオ',
-        phone_connected: '● 連携済み',
-        phone_caption_label: '✨ AI生成キャプション',
-        phone_caption: '新しいオーロラジェルが入荷しました🥹<br>光で色が変わるのが不思議ですよね？<br>今週あと3枠です~',
-        phone_tags: ['#ジェルネイル','#ネイルアート','#オーロラネイル','#ネイルスタグラム'],
-        phone_btn: '📲 フィード＋ストーリー投稿',
-        footer_privacy: 'プライバシーポリシー', footer_guide: '利用ガイド', footer_app: 'アプリを開く',
+      {
+        "q": "인스타그램 연동에는 어떤 조건이 필요한가요?",
+        "a": "Meta의 공식 인증을 이용하며 잇데이가 인스타그램 비밀번호를 직접 수집하지 않습니다. 지원되는 프로페셔널 계정과 기능별 권한이 필요합니다. 발행·DM·댓글 기능은 승인된 권한과 Meta 정책에 따라 제공되고, 연결은 앱에서 해제할 수 있습니다."
       },
-      zh: {
-        flag: '🇨🇳', label: '中文',
-        nav_cta: '免费试用',
-        preorder_badge: '价格说明',
-        preorder_text: '<strong>Pro 每月₩9,900 · 每年₩99,000</strong> &nbsp;',
-        preorder_btn: '查看详情 →',
-        hero_badge: '美容院专属 AI 营销工具',
-        hero_title: 'Instagram 发帖文案，<br>今天又<span class="accent">写了又删？</span>',
-        hero_desc: '照片拍好了，文案却写不出来。Itdasy 用您的语气代您撰写，一键发布。',
-        hero_cta: '立即免费开始 →',
-        hero_note: '无需信用卡 · 10天免费试用',
-        problem_title: '一个人扛太多了',
-        problem_sub: '把拍摄、编辑、撰文和发布集中在一个应用中完成。',
-        p1_sub: '每天花在SNS上的平均时间',
-        p1_desc: '选照片、抠图、写文案、找标签……<br><strong>相当于一个客人服务费</strong>的时间就这样消失了。',
-        p2_sub: '因写不了文案而放弃发帖的老板比例',
-        p2_desc: '越来越多的帖子被搁置，<br><strong>粉丝减少，预约也随之减少。</strong>',
-        p3_sub: '发一条帖子要用的APP数量',
-        p3_desc: '用CapCut剪辑，问ChatGPT写文，再上传Instagram。<br><strong>在3个APP之间来回切换，最后干脆放弃。</strong>',
-        problem_suffix: ['分钟', '%', '个APP'],
-        testimonials: [],
-        services_title: 'Itdasy 解决这四大痛点',
-        services_sub: '拍摄 → 编辑 → 撰文 → 发布，全部在一个APP完成。',
-        s1_title: 'AI文案自动生成',   s1_desc: '连接Instagram后，AI读取历史帖子，学习您的语气、表情符号和标签习惯。输入一句话描述，即可生成完全符合您风格的文案。',
-        s2_title: '照片编辑自动化',   s2_desc: 'AI自动抠图。马赛克、渐变色、纯色背景一键切换。无需Photoshop，无需其他编辑软件。',
-        s3_title: '一键Instagram发布', s3_desc: '确认照片和文案后，点击一次发布按钮，动态和故事同步上传。',
-        s4_title: '智能作品集管理',   s4_desc: '用一个标签保存施术照片，自动按类型分类。AI推荐最适合发布的照片，直连文案生成和一键发布。',
-        preview_btn: '预览',
-        badge1: '分析语气后生成', badge2: '从两张照片开始', badge3: '确认后发布', badge4: '用标签整理照片',
-        testimonials_title: '来自先行体验者的评价',
-        testimonials_sub: '',
-        pricing_title: '免费开始，零压力',
-        pricing_sub: '注册后可体验10天Pro功能，无需信用卡。',
-        pricing_note: '含税 · 取消后可使用至本期结束 · 退款遵循支付渠道规则',
-        pricing_tiers: ['10天试用','Pro 月付','Pro 年付'],
-        pricing_amounts: ['₩0','₩9,900','₩99,000'],
-        pricing_periods: ['/ 10天','/ 月','/ 年'], pricing_popular: '按月付费',
-        free_desc: '注册后体验10天Pro功能',
-        lite_desc: 'Pro月付套餐 ₩9,900',
-        pro_desc: 'Pro年付套餐 ₩99,000',
-        free_features: ['无需银行卡开始','在应用内查看试用剩余时间','试用AI文案和图片编辑','管理客户、预约和销售','在应用内查看使用量','未购买则不会自动扣款'],
-        free_features_disabled: [false,false,false,false,false,false],
-        lite_features: ['AI文案 每天10次、每月150次','背景去除 每天10次、每月60次','Instagram账号 1个','作品集保存','AI助手 每月150次','可随时取消并用至本期结束'],
-        lite_features_disabled: [false,false,false,false,false,false],
-        pro_features: ['与月付Pro相同的功能和限额','AI文案 每天10次、每月150次','背景去除 每天10次、每月60次','Instagram账号 1个','作品集保存','年付购买无试用期'],
-        pro_features_disabled: [false,false,false,false,false,false],
-        free_btn: '开始10天试用', lite_btn: '每月₩9,900开始', pro_btn: '每年₩99,000开始',
-        faq_title: '常见问题',
-        faq: [
-          {q:'AI真的能用我的语气写文案吗？', a:'可以。连接Instagram后，AI分析您最多30篇历史帖子，学习您的语气、表情符号习惯、标签风格和固定用语。帖子越多，学习越精准——而且会随使用不断进化。'},
-          {q:'连接Instagram账号安全吗？', a:'通过Meta官方Graph API连接。我们不需要您的密码，仅使用读取和发布权限。您可以随时在设置中解除连接。'},
-          {q:'免费试用期间需要绑定信用卡吗？', a:'不需要。10天试用只需邮箱即可开始。选择付费套餐时再输入支付信息。'},
-          {q:'除了美发和美甲，其他美容类型也支持吗？', a:'支持。目前已支持：接发、美发沙龙、美甲、睫毛嫁接、半永久妆容、皮肤护理。选择业务类型后，AI自动调整对应的标签和文案风格。'},
-          {q:'中途取消订阅会怎样？', a:'可随时取消，并使用至当前付费周期结束。退款遵循支付渠道规则和实际使用情况。'},
-        ],
-        cta_title: '今天做了护理，<br>今天就发出去。',
-        cta_desc: '连接Instagram账号后，<br>可在应用内完成文案制作和发布。',
-        cta_primary: '开始10天免费试用 →',
-        cta_secondary: '预览APP ↗',
-        cta_chip1: '无需信用卡', cta_chip2: '随时取消', cta_chip3: '连接时免费分析语气',
-        cta_final: '开始前请确认试用和付款条件。',
-        email_title: '立即在<span>应用内</span>开始',
-        email_sub: '本页面不单独收集营销邮箱。<br>在应用内注册即可开始10天试用。',
-        email_placeholder: '请输入您的邮箱地址',
-        email_btn: '立即预约',
-        email_success: '✓ 预约成功！开放时将第一时间通知您 🎉',
-        ec_chip1: '无垃圾邮件', ec_chip2: '仅发送一次开放通知', ec_chip3: '随时退订',
-        trust_suffix: ['名', '%', '条+', '分'],
-        phone_name: '美甲工作室',
-        phone_connected: '● 已连接',
-        phone_caption_label: '✨ AI生成文案',
-        phone_caption: '新到了欧若拉凝胶🥹<br>在光线下颜色变化真的好神奇！<br>本周只剩3个位置了~',
-        phone_tags: ['#美甲','#光疗甲','#欧若拉美甲','#美甲打卡'],
-        phone_btn: '📲 发布到动态＋故事',
-        footer_privacy: '隐私政策', footer_guide: '使用指南', footer_app: '打开APP',
+      {
+        "q": "AI에 사진이나 고객 정보가 전송되나요?",
+        "a": "요청한 AI 기능에 따라 글·사진·관련 기록이 외부 처리업체로 전송될 수 있습니다. 기능별 안내와 동의를 확인하고, 불필요한 이름·전화번호·얼굴은 가려 주세요. AI 전송을 거부해도 고객·예약·매출 기본 관리는 이용할 수 있습니다. <a href=\"privacy.html#ai-processing\">AI 처리 안내</a>"
       },
-    };
+      {
+        "q": "구독 취소와 환불, 회원 탈퇴는 같은가요?",
+        "a": "각각 별개입니다. 구독 취소는 다음 갱신을 중단하며 자동 환불을 뜻하지 않습니다. 환불은 결제한 경로로 요청하세요. 앱 삭제나 회원 탈퇴만으로 Apple·Google 구독은 취소되지 않습니다. <a href=\"refund.html\">환불 정책</a> · <a href=\"delete-account.html\">계정 삭제 안내</a>"
+      }
+    ],
+    "cta_title": "기록하고, 준비하고,<br>확인한 뒤 올리세요.",
+    "cta_desc": "매장 관리부터 홍보 준비까지.<br>사장님의 다음 작업을 잇데이에서 이어가세요.",
+    "cta_primary": "앱 시작하기 →",
+    "cta_secondary": "앱 살펴보기 ↗",
+    "cta_chip1": "회원가입 무료",
+    "cta_chip2": "구독은 직접 선택",
+    "cta_chip3": "AI 결과 확인 후 실행",
+    "cta_final": "결제 전에 가격·체험 자격·자동 갱신 조건을 확인해 주세요.",
+    "email_title": "지금 <span>직접</span> 살펴보세요",
+    "email_sub": "이 홍보 페이지에는 별도 이메일 수집 양식이 없습니다.<br>회원가입과 구독 선택은 앱에서 진행해 주세요.",
+    "ec_chip1": "회원가입 무료",
+    "ec_chip2": "월간 체험은 조건부 14일",
+    "ec_chip3": "구독 별도 관리",
+    "phone_name": "미니네일 원장님",
+    "phone_connected": "화면 예시",
+    "phone_caption_label": "✨ AI 캡션 초안 예시",
+    "phone_caption": "오늘 들어온 오로라 젤을 소개해요 🥹<br>빛에 따라 색이 달라 보여요.<br>예약 가능 시간은 문의해 주세요.",
+    "phone_tags": [
+      "#젤네일",
+      "#네일아트",
+      "#오로라네일",
+      "#네일스타그램"
+    ],
+    "phone_btn": "📲 확인 후 발행",
+    "footer_privacy": "개인정보처리방침",
+    "footer_guide": "이용약관",
+    "footer_app": "앱 바로가기",
+    "footer_refund": "구독 취소·환불",
+    "footer_delete": "계정 삭제 안내",
+    "killer_label": "✨ 기록과 홍보 준비",
+    "killer_title": "시술 사이의 작은 작업도,<br><span style=\"color:#F18091\">AI와 함께 준비하세요</span>",
+    "killer_sub": "AI 제안과 인식 결과를 확인하고 다음 작업으로 이어가세요.",
+    "killer_titles": [
+      "음성으로 기록 초안 만들기",
+      "사진으로 이전 시작",
+      "비포·애프터 콘텐츠 구성",
+      "AI 비서에게 조회",
+      "재방문 시점 참고",
+      "생일 단골 챙기기"
+    ],
+    "killer_descs": [
+      "고객·시술·금액을 말하거나 입력하고, 저장 전 내용을 확인해요.",
+      "이전 앱 화면을 읽어 고객·매출 자료의 이전을 준비해요. 전송 안내에 동의하고 결과를 확인해 주세요.",
+      "사진 2장을 비교하고 시술 결과를 보여줄 구성을 준비해요. 저장 전 결과를 확인하세요.",
+      "매출과 시술 기록을 대화로 조회해요. 답변은 기록에 따른 참고 정보입니다.",
+      "평소 방문 간격을 바탕으로 다음 연락 시점을 참고해요. 고객의 실제 상태는 직접 확인해 주세요.",
+      "입력한 생일로 고객을 찾고 축하 메시지 초안을 준비해요. 수신 동의와 발송 내용을 확인해 주세요."
+    ],
+    "migration_label": "📦 데이터 이전 도구",
+    "migration_title": "쌓아두신 단골·매출,<br>확인하면서 옮겨보세요",
+    "migration_desc": "엑셀 파일·앱 화면 사진·대화 자료로 이전을 준비할 수 있어요.<br>제3자 정보 제공 권한을 확인하고, 인식·분류 결과를 검토한 뒤 저장하세요.",
+    "demo_close": "미리보기 닫기"
+  },
+  "en": {
+    "flag": "🇺🇸",
+    "label": "English",
+    "nav_cta": "Open app",
+    "preorder_badge": "Pricing",
+    "preorder_text": "<strong>Pro ₩9,900/month · ₩99,000/year</strong>",
+    "preorder_btn": "View details →",
+    "hero_badge": "An AI assistant for beauty shops",
+    "hero_title": "Focus on your clients.<br><span class=\"accent\">Customers, bookings,<br>revenue and content</span> in Itdasy.",
+    "hero_desc": "Prepare records, photos and caption drafts in one place.<br>Review AI suggestions before saving or publishing.",
+    "hero_cta": "Open Itdasy →",
+    "hero_note": "Free signup · Eligible monthly in-app subscriptions: 14-day trial",
+    "services_title": "Shop management and content in one app",
+    "services_sub": "Record customers, bookings and revenue, then prepare photos and captions. Connected features depend on account type, permissions and availability.",
+    "preview_btn": "Preview",
+    "s1_title": "Customers, bookings and revenue",
+    "s1_desc": "Keep customer cards, treatment history, calendars and revenue records together. View net receipts based on the payment methods and fees you record.",
+    "s2_title": "Review before your assistant acts",
+    "s2_desc": "Type or say a request. Review the proposed booking or revenue entry before executing it, and ask questions about your shop records.",
+    "s3_title": "Caption drafts in your style",
+    "s3_desc": "Get caption and hashtag suggestions from your treatment and shop details. With consent, connected Instagram posts can inform your style. Check facts and wording before publishing.",
+    "s4_title": "Photo editing and before/after",
+    "s4_desc": "Adjust lighting, color and backgrounds, add mosaics and compose comparisons. External AI background removal requires the feature-specific transfer notice and consent.",
+    "s5_title": "Review and publish to Instagram",
+    "s5_desc": "Review your photo and caption, then choose a supported format. An eligible account and Meta permissions are required. Check in-app availability and limits for feeds, Stories and Reels.",
+    "s6_title": "Treatment photo portfolio",
+    "s6_desc": "Save and tag photos, then find them again for editing and caption writing. Storage capacity and feature usage follow the limits shown in the app.",
+    "badge1": "Records together",
+    "badge2": "Confirm before saving",
+    "badge3": "Review before posting",
+    "badge4": "Consent before AI transfer",
+    "badge5": "Permissions required",
+    "badge6": "Organize with tags",
+    "pricing_title": "Free signup. Choose a subscription.",
+    "pricing_sub": "Eligible monthly in-app subscriptions may include a 14-day trial. Creating an account alone does not start a Pro trial or recurring billing.",
+    "pricing_tiers": [
+      "Free access",
+      "Pro Monthly",
+      "Pro Yearly"
+    ],
+    "pricing_amounts": [
+      "₩0",
+      "₩9,900",
+      "₩99,000"
+    ],
+    "pricing_periods": [
+      "/ basic access",
+      "/ month",
+      "/ year"
+    ],
+    "pricing_popular": "Monthly subscription",
+    "free_desc": "Create an account and explore basic features",
+    "lite_desc": "Eligible accounts: 14 days, then ₩9,900/month",
+    "pro_desc": "₩99,000 charged upfront · No free trial",
+    "free_features": [
+      "No payment details for signup",
+      "Basic customer, booking and revenue tools",
+      "Limited caption and background removal access",
+      "Daily and monthly limits apply",
+      "Check current usage in the app",
+      "No charge before purchasing a subscription"
+    ],
+    "lite_features": [
+      "Default captions: 10/day, 150/month",
+      "Default background removal: 10/day, 60/month",
+      "Default assistant usage: 150/month",
+      "Instagram features require permissions",
+      "Renews monthly after any trial",
+      "Manage through the store of purchase"
+    ],
+    "pro_features": [
+      "Same features and limits as Monthly",
+      "Save ₩19,800 vs. 12 monthly payments",
+      "₩99,000 charged immediately",
+      "No free trial",
+      "Renews every 12 months until canceled",
+      "View usage and expiry in the app"
+    ],
+    "free_features_disabled": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "lite_features_disabled": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "pro_features_disabled": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "free_btn": "Create an account",
+    "lite_btn": "View monthly conditions",
+    "pro_btn": "View yearly conditions",
+    "pricing_note": "Korean reference prices include VAT. Check checkout for your actual price, trial eligibility, renewal date and limits. Paid subscriptions are currently unavailable for purchase on the web.",
+    "faq_title": "Frequently asked questions",
+    "faq": [
+      {
+        "q": "Does signup start a 14-day trial?",
+        "a": "No. Free registration and a store subscription trial are separate. Eligible monthly in-app purchases may include 14 days, based on store account history and checkout. A purchased trial renews into a paid monthly subscription unless canceled. Yearly purchases charge immediately without a trial."
+      },
+      {
+        "q": "How do I avoid a charge after a trial?",
+        "a": "Cancel through the Apple or Google account used to purchase before the trial ends. Apple advises cancellation at least 24 hours before expiry. Google Play requires cancellation before the trial ends. Check the store for the resulting access expiry. <a href=\"refund-en.html\">Cancellation and refund guide</a>"
+      },
+      {
+        "q": "What is required to connect Instagram?",
+        "a": "We use Meta authentication and do not collect your Instagram password directly. Supported professional accounts and feature-specific permissions are required. Publishing, DM and comment features depend on approved permissions and Meta policy. You can disconnect in the app."
+      },
+      {
+        "q": "Does AI receive my photos or customer data?",
+        "a": "Requested AI features may send text, images or relevant records to external processors, after feature-specific notice and consent. Remove unnecessary identifiers before submitting. Basic customer, booking and revenue tools remain available if you decline AI transfers. <a href=\"privacy-en.html#ai-processing\">AI processing notice</a>"
+      },
+      {
+        "q": "Are cancellation, refunds and account deletion separate?",
+        "a": "Yes. Cancellation stops future renewal and does not automatically refund a purchase. Request a refund through the payment channel. Uninstalling the app or deleting an account does not cancel Apple or Google subscriptions. <a href=\"refund-en.html\">Refund policy</a> · <a href=\"delete-account.html\">Account deletion</a>"
+      }
+    ],
+    "cta_title": "Record, prepare,<br>review and publish.",
+    "cta_desc": "Keep your shop records and content workflow together.<br>Continue your next task in Itdasy.",
+    "cta_primary": "Open app →",
+    "cta_secondary": "Explore the app ↗",
+    "cta_chip1": "Free registration",
+    "cta_chip2": "Subscription is optional",
+    "cta_chip3": "Review before execution",
+    "cta_final": "Check price, trial eligibility and automatic renewal before purchasing.",
+    "email_title": "Take a <span>closer look</span>",
+    "email_sub": "This marketing page has no separate email collection form.<br>Create an account and choose subscriptions in the app.",
+    "ec_chip1": "Free registration",
+    "ec_chip2": "Eligible monthly trial: 14 days",
+    "ec_chip3": "Manage subscription separately",
+    "phone_name": "Mini Nail Studio",
+    "phone_connected": "Illustration",
+    "phone_caption_label": "✨ Example caption draft",
+    "phone_caption": "Meet our new aurora gel 🥹<br>It looks different as the light changes.<br>Contact us for available bookings.",
+    "phone_tags": [
+      "#gelnails",
+      "#nailart",
+      "#auroranails",
+      "#nailstagram"
+    ],
+    "phone_btn": "📲 Review before posting",
+    "footer_privacy": "Privacy Policy",
+    "footer_guide": "Terms of Service",
+    "footer_app": "Open App",
+    "footer_refund": "Cancellation & Refunds",
+    "footer_delete": "Account deletion",
+    "killer_label": "✨ Records and content preparation",
+    "killer_title": "Prepare the small tasks<br><span style=\"color:#F18091\">between appointments with AI</span>",
+    "killer_sub": "Review AI suggestions and recognition results before continuing.",
+    "killer_titles": [
+      "Draft records by voice",
+      "Start importing from a photo",
+      "Compose before/after content",
+      "Ask your AI assistant",
+      "Reference return-visit timing",
+      "Remember customer birthdays"
+    ],
+    "killer_descs": [
+      "Say or type customer, treatment and amount details. Review them before saving.",
+      "Prepare an import from a previous app screenshot. Check the transfer notice and review recognition results.",
+      "Compare two photos to prepare content showing treatment results. Review before saving.",
+      "Ask about recorded revenue and treatments. Answers are references based on your records.",
+      "Use recorded visit intervals as a reference for follow-up timing. Confirm the customer’s situation yourself.",
+      "Find customers by recorded birthdays and prepare a greeting draft. Check recipient consent and message content before sending."
+    ],
+    "migration_label": "📦 Data import tools",
+    "migration_title": "Bring your customer and revenue records<br>with review at every step",
+    "migration_desc": "Prepare imports from spreadsheets, app screenshots or conversations.<br>Confirm your authority to provide third-party data, then review recognized and mapped records before saving.",
+    "demo_close": "Close preview"
+  }
+};
 
     let currentLang = 'ko';
 
@@ -2026,7 +2066,9 @@
     });
 
     function setLang(lang) {
+      if (!['ko', 'en'].includes(lang)) return;
       currentLang = lang;
+      document.documentElement.lang = lang;
       const L = LANGS[lang];
       document.getElementById('currentFlag').textContent = L.flag;
       document.getElementById('currentLangLabel').textContent = L.label;
@@ -2079,11 +2121,28 @@
         });
       }
 
+      const killer = document.getElementById('killer-features');
+      const intro = killer.querySelector('.container > div');
+      intro.querySelector('div').textContent = L.killer_label;
+      intro.querySelector('h2').innerHTML = L.killer_title;
+      intro.querySelector('p').textContent = L.killer_sub;
+      const killerCards = killer.querySelectorAll('.container > div:nth-child(2) > div');
+      killerCards.forEach((card, i) => {
+        card.querySelector('div:nth-child(2)').textContent = L.killer_titles[i];
+        card.querySelector('p').textContent = L.killer_descs[i];
+      });
+      const migration = document.querySelector('#data-import .container');
+      migration.querySelector('div').textContent = L.migration_label;
+      migration.querySelector('h2').innerHTML = L.migration_title;
+      migration.querySelector('p').innerHTML = L.migration_desc;
+      document.querySelector('.preview-modal-close').setAttribute('aria-label', L.demo_close);
+      document.querySelector('#email-capture .email-form-btn').textContent = lang === 'en' ? 'Create an account in the app' : '앱에서 회원가입하기';
+
       // Services
       const sHeader = document.querySelector('#services .services-header');
       if (sHeader) { sHeader.querySelector('.section-title').innerHTML = L.services_title; sHeader.querySelector('.section-sub').innerHTML = L.services_sub; }
       const scards = document.querySelectorAll('.service-card');
-      [[L.s1_title,L.s1_desc],[L.s2_title,L.s2_desc],[L.s3_title,L.s3_desc],[L.s4_title,L.s4_desc]].forEach((sd, i) => {
+      [[L.s1_title,L.s1_desc],[L.s2_title,L.s2_desc],[L.s3_title,L.s3_desc],[L.s4_title,L.s4_desc],[L.s5_title,L.s5_desc],[L.s6_title,L.s6_desc]].forEach((sd, i) => {
         const card = scards[i]; if (!card) return;
         card.querySelector('.service-title').textContent = sd[0];
         card.querySelector('.service-desc').textContent = sd[1];
@@ -2141,7 +2200,7 @@
       if (faqListEl && L.faq) {
         faqListEl.innerHTML = L.faq.map(item => `
           <div class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)">${item.q}<span class="faq-icon">+</span></button>
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">${item.q}<span class="faq-icon">+</span></button>
             <div class="faq-a">${item.a}</div>
           </div>`).join('');
       }
@@ -2186,6 +2245,12 @@
         });
       }
 
+      set('#footerRefund', L.footer_refund);
+      document.getElementById('footerRefund').href = lang === 'en' ? 'refund-en.html' : 'refund.html';
+      set('#footerDelete', L.footer_delete);
+      document.getElementById('footerPrivacy').href = lang === 'en' ? 'privacy-en.html' : 'privacy.html';
+      document.getElementById('footerGuide').href = lang === 'en' ? 'terms-en.html' : 'terms.html';
+
       // Footer
       const fp = document.getElementById('footerPrivacy'); if (fp && L.footer_privacy) fp.textContent = L.footer_privacy;
       const fg = document.getElementById('footerGuide'); if (fg && L.footer_guide) fg.textContent = L.footer_guide;
@@ -2196,9 +2261,11 @@
     function toggleFaq(btn) {
       const item = btn.closest('.faq-item');
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      document.querySelectorAll('.faq-item.open').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-q').setAttribute('aria-expanded', 'false'); });
       if (!isOpen) item.classList.add('open');
+      btn.setAttribute('aria-expanded', String(!isOpen));
     }
+    setLang('ko');
   </script>
 </body>
 </html>
